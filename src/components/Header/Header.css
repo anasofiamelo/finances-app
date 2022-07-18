@@ -1,0 +1,10 @@
+#main-title {
+  font-size: var(--main-title-font-size);
+  text-transform: uppercase;
+  font-family: var(--nothing-you-could-do);
+}
+
+.main-header * {
+  /* justify-content: space-around; */
+  margin-bottom: 6rem;
+}
