@@ -1,14 +1,9 @@
-import { Header, Body, Footer } from "./components";
+import { Finance } from "./components";
 
 function App() {
   return (
     <div className="App">
-      <div className="content">
-        <Header />
-        <Body />
-      </div>
-
-      <Footer />
+      <Finance />
     </div>
   );
 }

@@ -1,12 +1,7 @@
-import Header from "./Header";
-import Footer from "./Footer";
-import Body from "./Body";
+import Finance from "./Finance";
+import Incomes from "./Incomes";
+import Transaction from "./Transaction";
+import Balance from "./Balance";
+import Expenses from "./Expenses";
 
-import Navbar from "./Navbar";
-
-import About from "./About";
-import Skills from "./Skills";
-import Projects from "./Projects";
-import Contact from "./Contact";
-
-export { Navbar, About, Skills, Header, Footer, Body, Projects, Contact };
+export { Finance, Incomes, Transaction, Balance, Expenses };

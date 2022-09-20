@@ -1,0 +1,23 @@
+table {
+  font-size: 1.2rem;
+  width: 100%;
+}
+
+tr {
+  background-color: #98c1d9;
+}
+
+td {
+  padding: 0.5rem 1rem;
+}
+
+thead tr td {
+  font-weight: bolder;
+}
+
+.balance-header,
+.transactions-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
