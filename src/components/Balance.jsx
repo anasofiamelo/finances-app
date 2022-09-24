@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from "react";
-import { monthNames, lastYears } from "../utils/";
-import { Transaction, Incomes, Expenses } from "../components";
+import { monthNames, lastYears } from "../utils";
+import { Transaction } from ".";
 import { useTransactions } from "../context/finances.context";
 
 const Balance = () => {
@@ -73,15 +73,19 @@ const Balance = () => {
   };
 
   const monthOptions = monthNames.map((month, index) => (
-    <option value={index}>{month}</option>
+    <option key={month} value={index}>
+      {month}
+    </option>
   ));
 
   const yearOptions = lastYears.map((year) => (
-    <option value={year}>{year}</option>
+    <option key={year} value={year}>
+      {year}
+    </option>
   ));
 
   return (
-    <div className="container">
+    <>
       <Transaction
         balanceType="Balance"
         transactions={selectedValue.filteredTransactions}
@@ -107,11 +111,11 @@ const Balance = () => {
         )}
       </Transaction>
 
-      <div className="transactions-container">
+      {/* <div className="transactions-container">
         <Incomes />
         <Expenses />
-      </div>
-    </div>
+      </div> */}
+    </>
   );
 };
 

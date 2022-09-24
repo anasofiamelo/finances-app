@@ -1,5 +1,5 @@
-import Transaction from "./Transaction";
-import { useTransactions } from "../context/finances.context";
+import Transaction from "../Transaction";
+import { useTransactions } from "../../context/finances.context";
 
 const Expenses = (props) => {
   const { transactions } = useTransactions();

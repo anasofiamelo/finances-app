@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import { monthNames } from "../utils/";
+import { monthNames } from "../utils";
 
 const Transaction = (props) => {
-  const [showTable, setShowTable] = useState(false);
+  const [showTable, setShowTable] = useState(true);
 
   const formattedDate = (date) =>
     `${monthNames[date.getMonth()]}, ${date.getFullYear()}`;
@@ -18,7 +18,7 @@ const Transaction = (props) => {
   );
 
   const formattedBalance = props.transactions.map(({ type, value, date }) => (
-    <tr>
+    <tr key={value}>
       <td>{type}</td>
       <td style={{ color: `${value > 0 ? "green" : "red"}` }}>
         $ {value.toFixed(2)}
@@ -29,6 +29,9 @@ const Transaction = (props) => {
 
   return (
     <div style={{ minWidth: "500px" }}>
+      {/* <div style={{ marginTop: "1rem" }} className="container">
+        <h2>Saldo $ {totalBalanceTransactions.toFixed(2)}</h2>
+      </div> */}
       <div className="balance-header">
         <h1>{props.balanceType}</h1>
         <button onClick={showBalanceTableHandler}>

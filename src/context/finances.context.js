@@ -1,19 +1,40 @@
-import { useContext, createContext, useState } from "react";
-import { finances } from "../utils/";
+import {
+  useContext,
+  createContext,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
+import { finances } from "../utils";
 
 const TransactionsContext = createContext({});
 
 export const TransactionsContextProvider = (props) => {
   const [transactions, setTransactions] = useState(finances);
-  console.log(transactions);
+  const [totalBalance, setTotalBalance] = useState(
+    transactions.reduce((prev, current) => prev + current.value, 0)
+  );
+
+  const updateTotalBalanceHandler = useCallback(() => {
+    const total = transactions.reduce(
+      (prev, current) => prev + current.value,
+      0
+    );
+    console.log("uopdate!!!", total);
+    setTotalBalance(total);
+  }, [transactions]);
+
+  useEffect(() => {
+    updateTotalBalanceHandler();
+  }, [transactions, updateTotalBalanceHandler]);
+
   function addTransactionHandler(transaction) {
     setTransactions((prev) => [...prev, transaction]);
-    console.log("foi");
   }
 
   return (
     <TransactionsContext.Provider
-      value={{ transactions, addTransactionHandler }}
+      value={{ transactions, totalBalance, addTransactionHandler }}
     >
       {props.children}
     </TransactionsContext.Provider>

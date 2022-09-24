@@ -1,7 +1,6 @@
-import Finance from "./Finance";
-import Incomes from "./Incomes";
+import Incomes from "./Incomes/Incomes";
 import Transaction from "./Transaction";
 import Balance from "./Balance";
-import Expenses from "./Expenses";
+import Expenses from "./Expenses/Expenses";
 
-export { Finance, Incomes, Transaction, Balance, Expenses };
+export { Incomes, Transaction, Balance, Expenses };
