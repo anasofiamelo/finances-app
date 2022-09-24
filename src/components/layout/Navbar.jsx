@@ -1,3 +1,5 @@
+import { Finance } from "../index";
+
 const Navbar = (props) => {
   return (
     <nav>
@@ -6,7 +8,13 @@ const Navbar = (props) => {
           <a>Transactions</a>
         </li>
         <li>
-          <a></a>
+          <a>Incomes</a>
+        </li>
+        <li>
+          <a>Expenses</a>
+        </li>
+        <li>
+          <Finance />
         </li>
       </ul>
     </nav>

@@ -50,6 +50,10 @@ body {
 
 ul {
   list-style: none;
+  display: flex;
+}
+ul * {
+  margin-right: 10px;
 }
 
 select {
