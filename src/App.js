@@ -1,9 +1,14 @@
 import { Finance } from "./components";
+import Navbar from "./components/layout/Navbar";
+import { TransactionsContextProvider } from "./context/finances.context";
 
 function App() {
   return (
     <div className="App">
-      <Finance />
+      <TransactionsContextProvider>
+        <Navbar />
+        <Finance />
+      </TransactionsContextProvider>
     </div>
   );
 }

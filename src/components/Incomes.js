@@ -1,8 +1,9 @@
-import { finances } from "../utils/";
 import Transaction from "./Transaction";
+import { useTransactions } from "../context/finances.context";
 
-const Incomes = (props) => {
-  const incomes = finances.filter((finance) => finance.value > 0);
+const Incomes = () => {
+  const { transactions } = useTransactions();
+  const incomes = transactions.filter((finance) => finance.value > 0);
   return (
     <>
       <Transaction transactions={incomes} balanceType="Incomes" />

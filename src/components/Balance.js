@@ -1,49 +1,62 @@
-import { useReducer } from "react";
-import { finances, monthNames, lastYears } from "../utils/";
+import { useEffect, useReducer } from "react";
+import { monthNames, lastYears } from "../utils/";
 import { Transaction, Incomes, Expenses } from "../components";
+import { useTransactions } from "../context/finances.context";
 
-const selectStateManagement = (state, action) => {
-  if (action.type === "CURRENT_YEAR") {
-    if (action.year === "All") {
-      return { ...state, year: "All", filteredFinances: finances };
+const Balance = () => {
+  const { transactions } = useTransactions();
+
+  useEffect(() => {
+    dispatchSelectState({ type: "TRANSACTIONS_UPDATE" });
+  }, [transactions]);
+
+  const selectStateManagement = (state, action) => {
+    if (action.type === "TRANSACTIONS_UPDATE") {
+      return { ...state, filteredTransactions: transactions };
     }
-    return {
-      ...state,
-      year: action.year,
-      filteredFinances: finances.filter(
-        (finance) => String(finance.date.getFullYear()) === action.year
-      ),
-    };
-  }
 
-  if (action.type === "CURRENT_MONTH") {
-    if (action.month === "All") {
+    if (action.type === "CURRENT_YEAR") {
+      if (action.year === "All") {
+        return { ...state, year: "All", filteredTransactions: transactions };
+      }
       return {
         ...state,
-        filteredFinances: finances.filter(
-          (finance) => String(finance.date.getFullYear()) === state.year
+        year: action.year,
+        filteredTransactions: transactions.filter(
+          (transaction) =>
+            String(transaction.date.getFullYear()) === action.year
         ),
       };
     }
-    return {
-      ...state,
-      month: action.month,
-      filteredFinances: finances.filter(
-        (finance) =>
-          String(finance.date.getMonth()) === action.month &&
-          String(finance.date.getFullYear()) === state.year
-      ),
-    };
-  }
-};
 
-const initialReducerState = {
-  year: "All",
-  month: "All",
-  filteredFinances: finances,
-};
+    if (action.type === "CURRENT_MONTH") {
+      if (action.month === "All") {
+        return {
+          ...state,
+          filteredTransactions: transactions.filter(
+            (transaction) =>
+              String(transaction.date.getFullYear()) === state.year
+          ),
+        };
+      }
+      return {
+        ...state,
+        month: action.month,
+        filteredTransactions: transactions.filter(
+          (transaction) =>
+            String(transaction.date.getMonth()) === action.month &&
+            String(transaction.date.getFullYear()) === state.year
+        ),
+      };
+    }
+  };
 
-const Balance = () => {
+  const initialReducerState = {
+    year: "All",
+    month: "All",
+    filteredTransactions: transactions,
+  };
+
   const [selectedValue, dispatchSelectState] = useReducer(
     selectStateManagement,
     initialReducerState
@@ -71,7 +84,7 @@ const Balance = () => {
     <div className="container">
       <Transaction
         balanceType="Balance"
-        transactions={selectedValue.filteredFinances}
+        transactions={selectedValue.filteredTransactions}
       >
         <select
           style={{ marginBottom: "1rem" }}
