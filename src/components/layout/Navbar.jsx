@@ -1,9 +1,15 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import AddIncome from "../Incomes/AddIncome";
+import { AddIncome, AddExpense } from "../../components";
 
-import AddExpense from "../Expenses/AddExpense";
 import { FiPlusCircle } from "react-icons/fi";
+
+const navlinks = [
+  { title: "Transactions", link: "/transactions" },
+  { title: "Incomes", link: "/incomes" },
+  { title: "Expenses", link: "/expenses" },
+  { title: "Fatura", link: "/fatura" },
+];
 
 const Navbar = (props) => {
   const [showAddIncome, setShowAddIncome] = useState(false);
@@ -21,27 +27,22 @@ const Navbar = (props) => {
   const hideAddExpenseHandler = () => {
     setShowAddExpense(false);
   };
+
+  const mappedNavlinks = navlinks.map((navlink) => (
+    <li key={navlink.title}>
+      <NavLink to={navlink.link}>{navlink.title}</NavLink>
+    </li>
+  ));
+
   return (
     <nav>
-      <ul>
-        <li>
-          <NavLink to="/transactions">Transactions</NavLink>
-        </li>
-        <li>
-          <NavLink to="/incomes">Incomes</NavLink>
-        </li>
-        <li>
-          <NavLink to="/expenses">Expenses</NavLink>
-        </li>
-        <li>
-          <NavLink to="/fatura">Fatura</NavLink>
-        </li>
-
+      <ul className="navbar_links">
+        {mappedNavlinks}
         {showAddIncome && <AddIncome onClose={hideAddIncomeHandler} />}
         {showAddExpense && <AddExpense onClose={hideAddExpenseHandler} />}
       </ul>
 
-      <ul>
+      <ul className="navbar_buttons">
         <li>
           <button
             onClick={showAddIncomeHandler}

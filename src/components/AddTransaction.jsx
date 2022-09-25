@@ -2,6 +2,8 @@ import Modal from "./layout/Modal";
 import { useState } from "react";
 import { useTransactions } from "../context/finances.context";
 
+const recorrencias = ["Uma vez", "Todo mês", "Todo dia", "Todo ano"];
+
 const AddTransaction = (props) => {
   const { addTransactionHandler } = useTransactions();
 
@@ -9,9 +11,14 @@ const AddTransaction = (props) => {
     props.typesOfTransactions[0]
   );
   const [transactionValue, setTransactionValue] = useState("");
+  const [recorrencia, setRecorrencia] = useState("");
 
   const onChangeTransactionTypeHandler = (event) => {
     setTransactionType(event.target.value);
+  };
+
+  const onChangeRecorrenciaHandler = (event) => {
+    setRecorrencia(event.target.value);
   };
 
   const onChangeTransactionValueHandler = (event) => {
@@ -44,6 +51,12 @@ const AddTransaction = (props) => {
     </option>
   ));
 
+  const mappedRecorrencia = recorrencias.map((type) => (
+    <option key={type} value={type}>
+      {type}
+    </option>
+  ));
+
   let valuePlaceholder =
     props.transactionType === "income" ? "Valor ganho" : "Valor gasto";
 
@@ -51,12 +64,18 @@ const AddTransaction = (props) => {
     <Modal onClose={props.onClose}>
       <form onSubmit={submitAddTransactionFormHandler} className="column">
         <h1>Add new {props.transactionType}</h1>
+
         <select
           onChange={onChangeTransactionTypeHandler}
           value={transactionType}
         >
           {mappedTransactionTypes}
         </select>
+
+        <select onChange={onChangeRecorrenciaHandler} value={recorrencia}>
+          {mappedRecorrencia}
+        </select>
+
         <input
           value={transactionValue}
           onChange={onChangeTransactionValueHandler}
