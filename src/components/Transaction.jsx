@@ -6,7 +6,7 @@ const Transaction = (props) => {
   const [showTable, setShowTable] = useState(true);
 
   const formattedDate = (date) =>
-    `${monthNames[date.getMonth()]}, ${date.getFullYear()}`;
+    `${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
 
   const showBalanceTableHandler = () => {
     setShowTable((prev) => !prev);
@@ -20,7 +20,7 @@ const Transaction = (props) => {
   const formattedBalance = props.transactions.map(({ type, value, date }) => (
     <tr key={value}>
       <td>{type}</td>
-      <td style={{ color: `${value > 0 ? "green" : "red"}` }}>
+      <td style={{ color: `${value > 0 ? "var(--green)" : "var(--red)"}` }}>
         $ {value.toFixed(2)}
       </td>
       <td>{formattedDate(date)}</td>

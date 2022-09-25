@@ -14,11 +14,14 @@ html {
 
   /* colors */
   --black: #080f0f;
-  --blue: #3d5a80;
-  --dark-blue: #293241;
-  --white: #e0fbfc;
-  --light-blue: #98c1d9;
+  --dark-blue: #221e22;
+  --white: #faf9f9;
+  --grey: #e1e5f2;
   --coral: #ee6c4d;
+  --red: #bc4749;
+  --dark-green: #386641;
+  --green: #6a994e;
+  --light-green: #6a994e;
 
   /* fonts */
   --raleway: "Raleway";
@@ -26,8 +29,8 @@ html {
   --nothing-you-could-do: "Nothing You Could Do";
 
   /* named colors */
-  --background: var(--dark-blue);
-  --text-color: var(--white);
+  --background: var(--white);
+  --text-color: var(--black);
   --title-color: var(--dark-blue);
 }
 
@@ -73,7 +76,7 @@ ul:nth-child(2) * {
 
 select {
   border: none;
-  background-color: var(--white);
+  background-color: var(--grey);
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-size: 1rem;
@@ -83,22 +86,22 @@ select {
 
 input {
   border: none;
-  background-color: var(--white);
+  background-color: var(--grey);
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-size: 1rem;
-  color: var(--dark-blue);
+  color: var(--black);
   font-family: var(--poppins);
 }
 
 button {
   border: none;
-  background-color: var(--dark-blue);
+  background-color: var(--black);
   cursor: pointer;
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-size: 1rem;
-  color: var(--text-color);
+  color: var(--white);
   font-family: var(--poppins);
   display: flex;
   align-items: center;
@@ -120,6 +123,6 @@ input:focus {
 
 .column {
   display: flex;
+  align-items: flex-start;
   flex-direction: column;
-  width: fit-content;
 }

@@ -1,8 +1,6 @@
-import Modal from "./layout/Modal";
 import { useState } from "react";
+import { Modal, Input } from "../components";
 import { useTransactions } from "../context/finances.context";
-
-const recorrencias = ["Uma vez", "Todo mês", "Todo dia", "Todo ano"];
 
 const AddTransaction = (props) => {
   const { addTransactionHandler } = useTransactions();
@@ -10,20 +8,32 @@ const AddTransaction = (props) => {
   const [transactionType, setTransactionType] = useState(
     props.typesOfTransactions[0]
   );
-  const [transactionValue, setTransactionValue] = useState("");
-  const [recorrencia, setRecorrencia] = useState("");
+  const [transactionValue, setTransactionValue] = useState(0);
 
-  const onChangeTransactionTypeHandler = (event) => {
+  const [isRecurrenceOnce, setIsRecurrenceOnce] = useState(true);
+
+  // const [isMonthlyUndefined, setIsMonthlyUndefined] = useState(false);
+  // console.log(isMonthlyUndefined);
+
+  const changeTransactionTypeHandler = (event) => {
     setTransactionType(event.target.value);
   };
 
-  const onChangeRecorrenciaHandler = (event) => {
-    setRecorrencia(event.target.value);
-  };
-
-  const onChangeTransactionValueHandler = (event) => {
+  const changeTransactionValueHandler = (event) => {
     setTransactionValue(event.target.value);
   };
+
+  const changeRecurrenceToMonthly = () => {
+    setIsRecurrenceOnce(false);
+  };
+
+  const changeRecurrenceToOnce = () => {
+    setIsRecurrenceOnce(true);
+  };
+
+  // const changeMonthlyToUndefined = () => {
+  //   setIsMonthlyUndefined((prev) => !prev);
+  // };
 
   const submitAddTransactionFormHandler = (event) => {
     event.preventDefault();
@@ -51,12 +61,6 @@ const AddTransaction = (props) => {
     </option>
   ));
 
-  const mappedRecorrencia = recorrencias.map((type) => (
-    <option key={type} value={type}>
-      {type}
-    </option>
-  ));
-
   let valuePlaceholder =
     props.transactionType === "income" ? "Valor ganho" : "Valor gasto";
 
@@ -65,25 +69,60 @@ const AddTransaction = (props) => {
       <form onSubmit={submitAddTransactionFormHandler} className="column">
         <h1>Add new {props.transactionType}</h1>
 
-        <select
-          onChange={onChangeTransactionTypeHandler}
-          value={transactionType}
-        >
+        <Input
+          value={transactionValue}
+          onChange={changeTransactionValueHandler}
+          type="number"
+          placeholder={valuePlaceholder}
+        />
+
+        <select onChange={changeTransactionTypeHandler} value={transactionType}>
           {mappedTransactionTypes}
         </select>
 
-        <select onChange={onChangeRecorrenciaHandler} value={recorrencia}>
-          {mappedRecorrencia}
-        </select>
+        <Input
+          value="Uma vez"
+          type="radio"
+          name="recorrencia"
+          label="Uma vez"
+          id="once"
+          onChange={changeRecurrenceToOnce}
+        />
 
-        <input
-          value={transactionValue}
-          onChange={onChangeTransactionValueHandler}
-          type="number"
-          placeholder={valuePlaceholder}
-        ></input>
+        <Input
+          value="Mensal"
+          type="radio"
+          name="recorrencia"
+          label="Mensal"
+          id="monthly"
+          onChange={changeRecurrenceToMonthly}
+        />
 
-        <button type="submit">Add {props.transactionType}</button>
+        {/* {!isRecurrenceOnce && (
+          <Input type="date" />
+          <div className="monthly">
+            <Input
+              value={isMonthlyUndefined}
+              type="checkbox"
+              label="Indefinido"
+              onChange={changeMonthlyToUndefined}
+            />
+            {!isMonthlyUndefined && <Input type="date" />}
+          </div>
+        )} */}
+
+        <button
+          style={{
+            backgroundColor: `${
+              props.transactionType === "expense"
+                ? "var(--red)"
+                : "var(--green)"
+            }`,
+          }}
+          type="submit"
+        >
+          Add {props.transactionType}
+        </button>
       </form>
     </Modal>
   );

@@ -4,7 +4,8 @@ table {
 }
 
 tr {
-  background-color: #98c1d9;
+  background-color: var(--grey);
+  color: var(--black);
 }
 
 td {

@@ -46,14 +46,17 @@ const Navbar = (props) => {
         <li>
           <button
             onClick={showAddIncomeHandler}
-            style={{ background: "green" }}
+            style={{ background: "var(--green)", color: "var(--white)" }}
           >
             Add Income
             <FiPlusCircle style={{ fontSize: "2rem", cursor: "pointer" }} />
           </button>
         </li>
         <li>
-          <button onClick={showAddExpenseHandler} style={{ background: "red" }}>
+          <button
+            onClick={showAddExpenseHandler}
+            style={{ background: "var(--red)", color: "var(--white)" }}
+          >
             Add Expense
             <FiPlusCircle style={{ fontSize: "2rem", cursor: "pointer" }} />
           </button>

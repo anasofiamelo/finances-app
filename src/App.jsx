@@ -9,7 +9,11 @@ function App() {
       <Navbar />
       <h3>
         Saldo{" "}
-        <span style={{ color: `${totalBalance > 0 ? "green" : "red"}` }}>
+        <span
+          style={{
+            color: `${totalBalance > 0 ? "var(--green)" : "var(--red)"}`,
+          }}
+        >
           ${totalBalance}
         </span>
       </h3>

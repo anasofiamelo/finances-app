@@ -85,37 +85,30 @@ const Balance = () => {
   ));
 
   return (
-    <>
-      <Transaction
-        balanceType="Balance"
-        transactions={selectedValue.filteredTransactions}
+    <Transaction
+      balanceType="Balance"
+      transactions={selectedValue.filteredTransactions}
+    >
+      <select
+        style={{ marginBottom: "1rem" }}
+        value={selectedValue.current}
+        onChange={yearValueChangeHandler}
       >
+        <option value="All">All years</option>
+        {yearOptions}
+      </select>
+
+      {selectedValue.year !== "All" && (
         <select
-          style={{ marginBottom: "1rem" }}
-          value={selectedValue.current}
-          onChange={yearValueChangeHandler}
+          onChange={monthValueChangeHandler}
+          value={selectedValue.which}
+          style={{ marginLeft: "2rem" }}
         >
-          <option value="All">All years</option>
-          {yearOptions}
+          <option value="All">All months</option>
+          {monthOptions}
         </select>
-
-        {selectedValue.year !== "All" && (
-          <select
-            onChange={monthValueChangeHandler}
-            value={selectedValue.which}
-            style={{ marginLeft: "2rem" }}
-          >
-            <option value="All">All months</option>
-            {monthOptions}
-          </select>
-        )}
-      </Transaction>
-
-      {/* <div className="transactions-container">
-        <Incomes />
-        <Expenses />
-      </div> */}
-    </>
+      )}
+    </Transaction>
   );
 };
 
