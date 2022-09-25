@@ -11,17 +11,14 @@ const TransactionsContext = createContext({});
 
 export const TransactionsContextProvider = (props) => {
   const [transactions, setTransactions] = useState(finances);
-  const [totalBalance, setTotalBalance] = useState(
-    transactions.reduce((prev, current) => prev + current.value, 0)
-  );
+  const [totalBalance, setTotalBalance] = useState();
 
   const updateTotalBalanceHandler = useCallback(() => {
     const total = transactions.reduce(
       (prev, current) => prev + current.value,
       0
     );
-    console.log("uopdate!!!", total);
-    setTotalBalance(total);
+    setTotalBalance(total.toFixed(2));
   }, [transactions]);
 
   useEffect(() => {

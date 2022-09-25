@@ -48,6 +48,10 @@ body {
   margin-bottom: 2rem;
 }
 
+h3 {
+  font-size: 3rem;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -59,8 +63,12 @@ ul {
   align-items: center;
 }
 
-ul * {
+ul:nth-child(1) * {
   margin-right: 10px;
+}
+
+ul:nth-child(2) * {
+  margin-left: 10px;
 }
 
 select {

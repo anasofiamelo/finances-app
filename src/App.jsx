@@ -1,26 +1,24 @@
-// import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import {
-  TransactionsContextProvider,
-  useTransactions,
-} from "./context/finances.context";
-import Navbar from "./components/layout/Navbar";
-import { Balance, Incomes, Expenses } from "./components";
+import { useTransactions } from "./context/finances.context";
+import { Balance, Incomes, Expenses, Navbar } from "./components";
 
 function App() {
   const { totalBalance } = useTransactions();
-  console.log(totalBalance);
   return (
     <>
-      <TransactionsContextProvider>
-        <Navbar />
-        <p>olá {String(totalBalance)}</p>
-        <Routes>
-          <Route path="/transactions" element={<Balance />} />
-          <Route path="/incomes" element={<Incomes />} />
-          <Route path="/expenses" element={<Expenses />} />
-        </Routes>
-      </TransactionsContextProvider>
+      <Navbar />
+      <h3>
+        Saldo{" "}
+        <span style={{ color: `${totalBalance > 0 ? "green" : "red"}` }}>
+          ${totalBalance}
+        </span>
+      </h3>
+      <Routes>
+        <Route path="/transactions" element={<Balance />} />
+        <Route path="/incomes" element={<Incomes />} />
+        <Route path="/expenses" element={<Expenses />} />
+        <Route path="/fatura" />
+      </Routes>
     </>
   );
 }

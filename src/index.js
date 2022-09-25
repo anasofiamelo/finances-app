@@ -4,12 +4,15 @@ import "./index.css";
 import "./table.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import { TransactionsContextProvider } from "./context/finances.context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <TransactionsContextProvider>
+        <App />
+      </TransactionsContextProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

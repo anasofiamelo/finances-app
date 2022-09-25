@@ -1,12 +1,13 @@
-import Modal from "./Modal";
+import Modal from "./layout/Modal";
 import { useState } from "react";
 import { useTransactions } from "../context/finances.context";
-const typeofTransactions = ["Comida", "Contas", "Fatura", "Salário"];
 
 const AddTransaction = (props) => {
   const { addTransactionHandler } = useTransactions();
 
-  const [transactionType, setTransactionType] = useState("Comida");
+  const [transactionType, setTransactionType] = useState(
+    props.typesOfTransactions[0]
+  );
   const [transactionValue, setTransactionValue] = useState("");
 
   const onChangeTransactionTypeHandler = (event) => {
@@ -19,25 +20,37 @@ const AddTransaction = (props) => {
 
   const submitAddTransactionFormHandler = (event) => {
     event.preventDefault();
+    const value =
+      props.transactionType === "income"
+        ? Number(transactionValue)
+        : Number(-transactionValue);
+
     const transaction = {
       type: transactionType,
       payment: "Cash",
-      value: Number(transactionValue),
+      value,
       date: new Date(),
     };
+
     if (!transactionValue) return;
+
     addTransactionHandler(transaction);
     props.onClose();
   };
 
-  const mappedTransactionTypes = typeofTransactions.map((type) => (
-    <option value={type}>{type}</option>
+  const mappedTransactionTypes = props.typesOfTransactions.map((type) => (
+    <option key={type} value={type}>
+      {type}
+    </option>
   ));
+
+  let valuePlaceholder =
+    props.transactionType === "income" ? "Valor ganho" : "Valor gasto";
 
   return (
     <Modal onClose={props.onClose}>
       <form onSubmit={submitAddTransactionFormHandler} className="column">
-        <h1>Add new transaction</h1>
+        <h1>Add new {props.transactionType}</h1>
         <select
           onChange={onChangeTransactionTypeHandler}
           value={transactionType}
@@ -48,9 +61,10 @@ const AddTransaction = (props) => {
           value={transactionValue}
           onChange={onChangeTransactionValueHandler}
           type="number"
-          placeholder="Valor"
+          placeholder={valuePlaceholder}
         ></input>
-        <button type="submit">Add</button>
+
+        <button type="submit">Add {props.transactionType}</button>
       </form>
     </Modal>
   );
