@@ -9,6 +9,8 @@ const navlinks = [
   { title: "Incomes", link: "/incomes" },
   { title: "Expenses", link: "/expenses" },
   { title: "Fatura", link: "/fatura" },
+  { title: "Metas", link: "/metas" },
+  { title: "Orçamento", link: "/orcamento" },
 ];
 
 const Navbar = (props) => {

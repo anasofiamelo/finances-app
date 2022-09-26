@@ -17,15 +17,18 @@ const Transaction = (props) => {
     0
   );
 
-  const formattedBalance = props.transactions.map(({ type, value, date }) => (
-    <tr key={value}>
-      <td>{type}</td>
-      <td style={{ color: `${value > 0 ? "var(--green)" : "var(--red)"}` }}>
-        $ {value.toFixed(2)}
-      </td>
-      <td>{formattedDate(date)}</td>
-    </tr>
-  ));
+  const formattedBalance = props.transactions.map(
+    ({ type, value, date, description }) => (
+      <tr key={value}>
+        <td>{type}</td>
+        <td>{description}</td>
+        <td style={{ color: `${value > 0 ? "var(--green)" : "var(--red)"}` }}>
+          $ {value.toFixed(2)}
+        </td>
+        <td>{formattedDate(date)}</td>
+      </tr>
+    )
+  );
 
   return (
     <div style={{ minWidth: "500px" }}>
@@ -48,6 +51,7 @@ const Transaction = (props) => {
           <thead>
             <tr>
               <td>Type</td>
+              <td>Description</td>
               <td>Value</td>
               <td>Date</td>
             </tr>

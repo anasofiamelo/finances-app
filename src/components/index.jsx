@@ -1,4 +1,7 @@
 import Incomes from "./Incomes/Incomes";
+import Fatura from "./Invoices/Fatura";
+import Goals from "./Goals/Goals";
+import AddGoal from "./Goals/AddGoal";
 import AddIncome from "./Incomes/AddIncome";
 import Transaction from "./Transaction";
 import Balance from "./Balance";
@@ -20,4 +23,7 @@ export {
   AddExpense,
   Input,
   Modal,
+  Fatura,
+  Goals,
+  AddGoal,
 };

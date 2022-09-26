@@ -1,6 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import { useTransactions } from "./context/finances.context";
-import { Balance, Incomes, Expenses, Navbar } from "./components";
+import {
+  Balance,
+  Incomes,
+  Expenses,
+  Navbar,
+  Fatura,
+  Goals,
+} from "./components";
 
 function App() {
   const { totalBalance } = useTransactions();
@@ -21,7 +28,8 @@ function App() {
         <Route path="/transactions" element={<Balance />} />
         <Route path="/incomes" element={<Incomes />} />
         <Route path="/expenses" element={<Expenses />} />
-        <Route path="/fatura" />
+        <Route path="/fatura" element={<Fatura />} />
+        <Route path="/metas" element={<Goals />} />
       </Routes>
     </>
   );

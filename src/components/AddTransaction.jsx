@@ -9,11 +9,11 @@ const AddTransaction = (props) => {
     props.typesOfTransactions[0]
   );
   const [transactionValue, setTransactionValue] = useState(0);
+  const [transactionDescription, setTransactionDescription] = useState("");
 
-  const [isRecurrenceOnce, setIsRecurrenceOnce] = useState(true);
-
-  // const [isMonthlyUndefined, setIsMonthlyUndefined] = useState(false);
-  // console.log(isMonthlyUndefined);
+  const changeTransactionDescriptionHandler = (event) => {
+    setTransactionDescription(event.target.value);
+  };
 
   const changeTransactionTypeHandler = (event) => {
     setTransactionType(event.target.value);
@@ -22,18 +22,6 @@ const AddTransaction = (props) => {
   const changeTransactionValueHandler = (event) => {
     setTransactionValue(event.target.value);
   };
-
-  const changeRecurrenceToMonthly = () => {
-    setIsRecurrenceOnce(false);
-  };
-
-  const changeRecurrenceToOnce = () => {
-    setIsRecurrenceOnce(true);
-  };
-
-  // const changeMonthlyToUndefined = () => {
-  //   setIsMonthlyUndefined((prev) => !prev);
-  // };
 
   const submitAddTransactionFormHandler = (event) => {
     event.preventDefault();
@@ -46,6 +34,7 @@ const AddTransaction = (props) => {
       type: transactionType,
       payment: "Cash",
       value,
+      description: transactionDescription,
       date: new Date(),
     };
 
@@ -70,6 +59,12 @@ const AddTransaction = (props) => {
         <h1>Add new {props.transactionType}</h1>
 
         <Input
+          value={transactionDescription}
+          onChange={changeTransactionDescriptionHandler}
+          placeholder="Description"
+        />
+
+        <Input
           value={transactionValue}
           onChange={changeTransactionValueHandler}
           type="number"
@@ -81,35 +76,22 @@ const AddTransaction = (props) => {
         </select>
 
         <Input
-          value="Uma vez"
+          value="Once"
           type="radio"
           name="recorrencia"
-          label="Uma vez"
+          label="Once"
           id="once"
-          onChange={changeRecurrenceToOnce}
+          // onChange={changeRecurrenceToOnce}
         />
 
         <Input
-          value="Mensal"
+          value="Monthly"
           type="radio"
           name="recorrencia"
-          label="Mensal"
+          label="Monthly"
           id="monthly"
-          onChange={changeRecurrenceToMonthly}
+          // onChange={changeRecurrenceToMonthly}
         />
-
-        {/* {!isRecurrenceOnce && (
-          <Input type="date" />
-          <div className="monthly">
-            <Input
-              value={isMonthlyUndefined}
-              type="checkbox"
-              label="Indefinido"
-              onChange={changeMonthlyToUndefined}
-            />
-            {!isMonthlyUndefined && <Input type="date" />}
-          </div>
-        )} */}
 
         <button
           style={{
