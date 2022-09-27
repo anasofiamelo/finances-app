@@ -10,6 +10,7 @@ const AddTransaction = (props) => {
   );
   const [transactionValue, setTransactionValue] = useState(0);
   const [transactionDescription, setTransactionDescription] = useState("");
+  const [transactionDate, setTransactionDate] = useState("");
 
   const changeTransactionDescriptionHandler = (event) => {
     setTransactionDescription(event.target.value);
@@ -21,6 +22,9 @@ const AddTransaction = (props) => {
 
   const changeTransactionValueHandler = (event) => {
     setTransactionValue(event.target.value);
+  };
+  const changeTransactionDateHandler = (event) => {
+    setTransactionDate(event.target.value);
   };
 
   const submitAddTransactionFormHandler = (event) => {
@@ -35,7 +39,7 @@ const AddTransaction = (props) => {
       payment: "Cash",
       value,
       description: transactionDescription,
-      date: new Date(),
+      date: new Date(transactionDate),
     };
 
     if (!transactionValue) return;
@@ -58,6 +62,10 @@ const AddTransaction = (props) => {
       <form onSubmit={submitAddTransactionFormHandler} className="column">
         <h1>Add new {props.transactionType}</h1>
 
+        <select onChange={changeTransactionTypeHandler} value={transactionType}>
+          {mappedTransactionTypes}
+        </select>
+
         <Input
           value={transactionDescription}
           onChange={changeTransactionDescriptionHandler}
@@ -71,9 +79,11 @@ const AddTransaction = (props) => {
           placeholder={valuePlaceholder}
         />
 
-        <select onChange={changeTransactionTypeHandler} value={transactionType}>
-          {mappedTransactionTypes}
-        </select>
+        <Input
+          value={transactionDate}
+          onChange={changeTransactionDateHandler}
+          type="date"
+        />
 
         <Input
           value="Once"
@@ -81,7 +91,6 @@ const AddTransaction = (props) => {
           name="recorrencia"
           label="Once"
           id="once"
-          // onChange={changeRecurrenceToOnce}
         />
 
         <Input
@@ -90,7 +99,6 @@ const AddTransaction = (props) => {
           name="recorrencia"
           label="Monthly"
           id="monthly"
-          // onChange={changeRecurrenceToMonthly}
         />
 
         <button

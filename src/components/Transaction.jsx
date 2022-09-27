@@ -32,9 +32,6 @@ const Transaction = (props) => {
 
   return (
     <div style={{ minWidth: "500px" }}>
-      {/* <div style={{ marginTop: "1rem" }} className="container">
-        <h2>Saldo $ {totalBalanceTransactions.toFixed(2)}</h2>
-      </div> */}
       <div className="balance-header">
         <h1>{props.balanceType}</h1>
         <button onClick={showBalanceTableHandler}>

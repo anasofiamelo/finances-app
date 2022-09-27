@@ -1,7 +1,6 @@
 import monthNames from "./months";
 import finances from "./finances";
 import lastYears from "./lastYears";
-import user from "./user";
-import fatura from "./fatura";
+import userCards from "./userCards";
 
-export { fatura, monthNames, lastYears, finances, user };
+export { monthNames, lastYears, finances, userCards };

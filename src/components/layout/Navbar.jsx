@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { AddIncome, AddExpense } from "../../components";
+import { AddIncome, AddExpense, AddTransaction } from "../../components";
 
 import { FiPlusCircle } from "react-icons/fi";
 
@@ -8,7 +8,7 @@ const navlinks = [
   { title: "Transactions", link: "/transactions" },
   { title: "Incomes", link: "/incomes" },
   { title: "Expenses", link: "/expenses" },
-  { title: "Fatura", link: "/fatura" },
+  { title: "Credit Card", link: "/credit-card" },
   { title: "Metas", link: "/metas" },
   { title: "Orçamento", link: "/orcamento" },
 ];
@@ -16,18 +16,25 @@ const navlinks = [
 const Navbar = (props) => {
   const [showAddIncome, setShowAddIncome] = useState(false);
   const [showAddExpense, setShowAddExpense] = useState(false);
+  const [showAddTransaction, setShowAddTransaction] = useState(false);
 
   const showAddIncomeHandler = () => {
-    setShowAddIncome((prev) => !prev);
-  };
-  const showAddExpenseHandler = () => {
-    setShowAddExpense((prev) => !prev);
+    setShowAddIncome(true);
   };
   const hideAddIncomeHandler = () => {
     setShowAddIncome(false);
   };
+  const showAddExpenseHandler = () => {
+    setShowAddExpense(true);
+  };
   const hideAddExpenseHandler = () => {
     setShowAddExpense(false);
+  };
+  const showAddTransactionHandler = () => {
+    setShowAddTransaction(true);
+  };
+  const hideAddTransactionHandler = () => {
+    setShowAddTransaction(false);
   };
 
   const mappedNavlinks = navlinks.map((navlink) => (
@@ -42,6 +49,14 @@ const Navbar = (props) => {
         {mappedNavlinks}
         {showAddIncome && <AddIncome onClose={hideAddIncomeHandler} />}
         {showAddExpense && <AddExpense onClose={hideAddExpenseHandler} />}
+
+        {showAddTransaction && (
+          <AddTransaction
+            transactionType="expense"
+            typesOfTransactions={["Expense", "Income"]}
+            onClose={hideAddTransactionHandler}
+          />
+        )}
       </ul>
 
       <ul className="navbar_buttons">
@@ -60,6 +75,15 @@ const Navbar = (props) => {
             style={{ background: "var(--red)", color: "var(--white)" }}
           >
             Add Expense
+            <FiPlusCircle style={{ fontSize: "2rem", cursor: "pointer" }} />
+          </button>
+        </li>
+        <li>
+          <button
+            onClick={showAddTransactionHandler}
+            style={{ background: "var(--black)", color: "var(--white)" }}
+          >
+            Add Transaction
             <FiPlusCircle style={{ fontSize: "2rem", cursor: "pointer" }} />
           </button>
         </li>

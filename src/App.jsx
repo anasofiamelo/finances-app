@@ -7,6 +7,7 @@ import {
   Navbar,
   Fatura,
   Goals,
+  CreditCard,
 } from "./components";
 
 function App() {
@@ -28,7 +29,8 @@ function App() {
         <Route path="/transactions" element={<Balance />} />
         <Route path="/incomes" element={<Incomes />} />
         <Route path="/expenses" element={<Expenses />} />
-        <Route path="/fatura" element={<Fatura />} />
+        <Route path="/credit-card" element={<Fatura />} />
+        <Route path="/credit-card/:creditCard" element={<CreditCard />} />
         <Route path="/metas" element={<Goals />} />
       </Routes>
     </>

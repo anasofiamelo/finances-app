@@ -1,5 +1,6 @@
 import Incomes from "./Incomes/Incomes";
 import Fatura from "./Invoices/Fatura";
+import CreditCard from "./Invoices/CreditCard";
 import Goals from "./Goals/Goals";
 import AddGoal from "./Goals/AddGoal";
 import AddIncome from "./Incomes/AddIncome";
@@ -26,4 +27,5 @@ export {
   Fatura,
   Goals,
   AddGoal,
+  CreditCard,
 };
