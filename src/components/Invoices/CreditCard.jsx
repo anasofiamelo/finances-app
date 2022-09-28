@@ -1,10 +1,8 @@
 import { useParams } from "react-router-dom";
-import { userCards, monthNames } from "../../utils";
+import { userCards } from "../../utils";
 import moment from "moment";
 
 const CreditCard = (props) => {
-  const data = moment().format("MM-DD-YYYY");
-  console.log(data);
   const { creditCard } = useParams();
 
   const foundCreditCard = userCards.find(
@@ -17,7 +15,8 @@ const CreditCard = (props) => {
         <td>{item}</td>
         <td>${totalValue.toFixed(2)}</td>
         <td>{times}x</td>
-        <td>{`${monthNames[start.getMonth()]}, ${start.getFullYear()}`}</td>
+        <td>${(totalValue / times).toFixed(2)}</td>
+        <td>{`${moment(start).format("MMMM, YYYY")}`}</td>
         <td>{`${moment(start).add(times, "months").format("MMMM, YYYY")}`}</td>
       </tr>
     )
@@ -32,6 +31,7 @@ const CreditCard = (props) => {
             <td>Purchased Item</td>
             <td>Value</td>
             <td>Parcels</td>
+            <td>Installment Value</td>
             <td>From</td>
             <td>To</td>
           </tr>
