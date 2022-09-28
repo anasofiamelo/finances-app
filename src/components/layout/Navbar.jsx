@@ -14,22 +14,8 @@ const navlinks = [
 ];
 
 const Navbar = (props) => {
-  const [showAddIncome, setShowAddIncome] = useState(false);
-  const [showAddExpense, setShowAddExpense] = useState(false);
   const [showAddTransaction, setShowAddTransaction] = useState(false);
 
-  const showAddIncomeHandler = () => {
-    setShowAddIncome(true);
-  };
-  const hideAddIncomeHandler = () => {
-    setShowAddIncome(false);
-  };
-  const showAddExpenseHandler = () => {
-    setShowAddExpense(true);
-  };
-  const hideAddExpenseHandler = () => {
-    setShowAddExpense(false);
-  };
   const showAddTransactionHandler = () => {
     setShowAddTransaction(true);
   };
@@ -47,37 +33,16 @@ const Navbar = (props) => {
     <nav>
       <ul className="navbar_links">
         {mappedNavlinks}
-        {showAddIncome && <AddIncome onClose={hideAddIncomeHandler} />}
-        {showAddExpense && <AddExpense onClose={hideAddExpenseHandler} />}
 
         {showAddTransaction && (
           <AddTransaction
             transactionType="expense"
-            typesOfTransactions={["Expense", "Income"]}
             onClose={hideAddTransactionHandler}
           />
         )}
       </ul>
 
       <ul className="navbar_buttons">
-        <li>
-          <button
-            onClick={showAddIncomeHandler}
-            style={{ background: "var(--green)", color: "var(--white)" }}
-          >
-            Add Income
-            <FiPlusCircle style={{ fontSize: "2rem", cursor: "pointer" }} />
-          </button>
-        </li>
-        <li>
-          <button
-            onClick={showAddExpenseHandler}
-            style={{ background: "var(--red)", color: "var(--white)" }}
-          >
-            Add Expense
-            <FiPlusCircle style={{ fontSize: "2rem", cursor: "pointer" }} />
-          </button>
-        </li>
         <li>
           <button
             onClick={showAddTransactionHandler}

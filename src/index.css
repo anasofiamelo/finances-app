@@ -126,3 +126,7 @@ input:focus {
   align-items: flex-start;
   flex-direction: column;
 }
+
+.row {
+  display: flex;
+}

@@ -2,16 +2,26 @@ import { useState } from "react";
 import { Modal, Input } from "../components";
 import { useTransactions } from "../context/finances.context";
 
+const typesOfTransactions = ["Expense", "Income"];
+const incomesCategorys = ["Vale", "Salário"];
+const expensesCategorys = ["Conta", "Telefone"];
+
+const mappedCategorys = (categorysArr) =>
+  categorysArr.map((category) => (
+    <option key={category} value={category}>
+      {category}
+    </option>
+  ));
+
 const AddTransaction = (props) => {
   const { addTransactionHandler } = useTransactions();
 
-  const [transactionType, setTransactionType] = useState(
-    props.typesOfTransactions[0]
-  );
-  const [transactionValue, setTransactionValue] = useState(0);
-  const [transactionDescription, setTransactionDescription] = useState("");
-  const [transactionDate, setTransactionDate] = useState("");
-
+  const [transactionDescription, setTransactionDescription] = useState();
+  const [transactionValue, setTransactionValue] = useState();
+  const [transactionDate, setTransactionDate] = useState();
+  const [transactionType, setTransactionType] = useState();
+  const [transactionCategory, setTransactionCategory] = useState();
+  console.log(transactionCategory);
   const changeTransactionDescriptionHandler = (event) => {
     setTransactionDescription(event.target.value);
   };
@@ -20,9 +30,14 @@ const AddTransaction = (props) => {
     setTransactionType(event.target.value);
   };
 
+  const changeTransactionCategoryHandler = (event) => {
+    setTransactionCategory(event.target.value);
+  };
+
   const changeTransactionValueHandler = (event) => {
     setTransactionValue(event.target.value);
   };
+
   const changeTransactionDateHandler = (event) => {
     setTransactionDate(event.target.value);
   };
@@ -30,12 +45,12 @@ const AddTransaction = (props) => {
   const submitAddTransactionFormHandler = (event) => {
     event.preventDefault();
     const value =
-      props.transactionType === "income"
+      transactionType === "Income"
         ? Number(transactionValue)
         : Number(-transactionValue);
 
     const transaction = {
-      type: transactionType,
+      type: transactionCategory,
       payment: "Cash",
       value,
       description: transactionDescription,
@@ -48,36 +63,48 @@ const AddTransaction = (props) => {
     props.onClose();
   };
 
-  const mappedTransactionTypes = props.typesOfTransactions.map((type) => (
-    <option key={type} value={type}>
-      {type}
-    </option>
+  const transactionTypesRadio = typesOfTransactions.map((type) => (
+    <Input
+      style={{ marginRight: "1rem" }}
+      label={type}
+      key={type}
+      type="radio"
+      value={type}
+      name="transactionType"
+      onChange={changeTransactionTypeHandler}
+    />
   ));
-
-  let valuePlaceholder =
-    props.transactionType === "income" ? "Valor ganho" : "Valor gasto";
 
   return (
     <Modal onClose={props.onClose}>
       <form onSubmit={submitAddTransactionFormHandler} className="column">
-        <h1>Add new {props.transactionType}</h1>
+        <h1>Add new transaction</h1>
 
-        <select onChange={changeTransactionTypeHandler} value={transactionType}>
-          {mappedTransactionTypes}
-        </select>
+        <div className="row">{transactionTypesRadio}</div>
 
         <Input
           value={transactionDescription}
           onChange={changeTransactionDescriptionHandler}
-          placeholder="Description"
+          placeholder="Descrição"
         />
 
         <Input
           value={transactionValue}
           onChange={changeTransactionValueHandler}
           type="number"
-          placeholder={valuePlaceholder}
+          placeholder="Valor"
         />
+
+        {transactionType && (
+          <select
+            value={transactionCategory}
+            onChange={changeTransactionCategoryHandler}
+          >
+            {transactionType === "Income"
+              ? mappedCategorys(incomesCategorys)
+              : mappedCategorys(expensesCategorys)}
+          </select>
+        )}
 
         <Input
           value={transactionDate}
@@ -103,15 +130,11 @@ const AddTransaction = (props) => {
 
         <button
           style={{
-            backgroundColor: `${
-              props.transactionType === "expense"
-                ? "var(--red)"
-                : "var(--green)"
-            }`,
+            backgroundColor: "black",
           }}
           type="submit"
         >
-          Add {props.transactionType}
+          Add transaction
         </button>
       </form>
     </Modal>

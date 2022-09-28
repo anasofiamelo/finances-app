@@ -1,6 +1,6 @@
 const Input = (props) => {
   return (
-    <div className="form-group">
+    <div className="form-group" style={props.style}>
       <input
         style={{
           marginRight: "0.6rem",
