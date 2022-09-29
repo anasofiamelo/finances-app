@@ -7,7 +7,7 @@ const Expenses = (props) => {
   return (
     <>
       <Transaction
-        customTr={["Type", "Description", "Value", "Date"]}
+        balanceThead={["Type", "Description", "Value", "Date"]}
         transactions={expenses}
         balanceType="Expenses"
       />

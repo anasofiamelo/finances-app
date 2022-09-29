@@ -1,8 +1,9 @@
 import { useState, useReducer, useEffect } from "react";
-import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import { monthNames, lastYears } from "../../utils";
+import { monthOptions, yearOptions } from "../../utils";
 import { useTransactions } from "../../context/finances.context";
+import { Table, Select } from "../";
 import moment from "moment";
+import TransactionHeader from "./TransactionHeader";
 
 const Transaction = (props) => {
   const context = useTransactions();
@@ -64,8 +65,6 @@ const Transaction = (props) => {
     initialReducerState
   );
 
-  console.log(selectedValue);
-
   const yearValueChangeHandler = (event) => {
     const inputValue = event.target.value;
     dispatchSelectState({ type: "CURRENT_YEAR", year: inputValue });
@@ -84,10 +83,9 @@ const Transaction = (props) => {
     setShowTable((prev) => !prev);
   };
 
-  const totalBalanceTransactions = props.transactions.reduce(
-    (prev, current) => prev + current.value,
-    0
-  );
+  const totalBalanceTransactions = selectedValue.filteredTransactions
+    .reduce((prev, current) => prev + current.value, 0)
+    .toFixed(2);
 
   const formattedBalance = selectedValue.filteredTransactions.map(
     ({ type, value, date, description }) => (
@@ -102,65 +100,36 @@ const Transaction = (props) => {
     )
   );
 
-  const monthOptions = monthNames.map((month, index) => (
-    <option key={month} value={index}>
-      {month}
-    </option>
-  ));
+  const showMonthSelect = selectedValue.year !== "All";
 
-  const yearOptions = lastYears.map((year) => (
-    <option key={year} value={year}>
-      {year}
-    </option>
-  ));
+  const formattedThead = props.balanceThead.map((td) => <td>{td}</td>);
 
   return (
     <div style={{ minWidth: "500px" }}>
-      <div className="balance-header">
-        <h1>{props.balanceType}</h1>
-        <button onClick={showBalanceTableHandler}>
-          {showTable ? (
-            <FiChevronUp style={{ fontSize: "2.5rem" }} />
-          ) : (
-            <FiChevronDown style={{ fontSize: "2.5rem" }} />
-          )}
-        </button>
-      </div>
+      <TransactionHeader
+        showTable={showTable}
+        onShowBalanceTable={showBalanceTableHandler}
+        title={props.balanceType}
+      />
 
-      <select
-        style={{ marginBottom: "1rem" }}
+      <Select
         value={selectedValue.current}
         onChange={yearValueChangeHandler}
-      >
-        <option value="All">All years</option>
-        {yearOptions}
-      </select>
+        options={yearOptions}
+      />
 
-      {selectedValue.year !== "All" && (
-        <select
-          onChange={monthValueChangeHandler}
+      {showMonthSelect && (
+        <Select
           value={selectedValue.which}
+          onChange={monthValueChangeHandler}
+          options={monthOptions}
           style={{ marginLeft: "2rem" }}
-        >
-          <option value="All">All months</option>
-          {monthOptions}
-        </select>
+        />
       )}
 
-      {showTable && (
-        <table>
-          <thead>
-            <tr>
-              {props.customTr.map((tr) => (
-                <td>{tr}</td>
-              ))}
-            </tr>
-          </thead>
-          <tbody>{formattedBalance}</tbody>
-        </table>
-      )}
+      {showTable && <Table thead={formattedThead}>{formattedBalance}</Table>}
 
-      <h2>Total $ {totalBalanceTransactions.toFixed(2)}</h2>
+      <h2>Total $ {totalBalanceTransactions}</h2>
     </div>
   );
 };

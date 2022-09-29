@@ -13,4 +13,10 @@ const months = [
   "December",
 ];
 
+export const monthOptions = months.map((month, index) => (
+  <option key={month} value={index}>
+    {month}
+  </option>
+));
+
 export default months;

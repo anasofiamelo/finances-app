@@ -13,7 +13,9 @@ import AddGoal from "./Goals/AddGoal";
 
 import Navbar from "./layout/Navbar";
 import Modal from "./layout/Modal";
+import Table from "./layout/Table";
 import Input from "./ui/Input";
+import Select from "./ui/Select";
 
 export {
   Incomes,
@@ -25,9 +27,11 @@ export {
   AddIncome,
   AddExpense,
   Input,
+  Select,
   Modal,
   Fatura,
   Goals,
   AddGoal,
   CreditCard,
+  Table,
 };

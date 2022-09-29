@@ -8,7 +8,7 @@ const Incomes = () => {
   return (
     <>
       <Transaction
-        customTr={["Type", "Description", "Value", "Date"]}
+        balanceThead={["Type", "Description", "Value", "Date"]}
         transactions={incomes}
         balanceType="Incomes"
       />
