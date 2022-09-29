@@ -1,4 +1,4 @@
-import { AddTransaction } from "..";
+import { AddTransaction } from "../../";
 
 const typeofExpenses = ["Comida", "Conta", "Fatura"];
 

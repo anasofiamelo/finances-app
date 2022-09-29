@@ -1,5 +1,5 @@
 import React from "react";
-import { AddTransaction } from "..";
+import { AddTransaction } from "../../";
 
 const typesofIncome = ["Venda", "Salário", "Vale"];
 
