@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { AddIncome, AddExpense, AddTransaction } from "../../components";
+import { AddTransaction } from "../../components";
 
 import { FiPlusCircle } from "react-icons/fi";
 
 const navlinks = [
   { title: "Transactions", link: "/transactions" },
-  { title: "Incomes", link: "/incomes" },
-  { title: "Expenses", link: "/expenses" },
   { title: "Credit Card", link: "/credit-card" },
   { title: "Metas", link: "/metas" },
   { title: "Orçamento", link: "/orcamento" },

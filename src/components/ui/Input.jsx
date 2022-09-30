@@ -4,6 +4,7 @@ const Input = (props) => {
       <input
         style={{
           marginRight: "0.6rem",
+          ...props.style,
         }}
         id={props.id}
         type={props.type || "text"}
@@ -11,6 +12,7 @@ const Input = (props) => {
         value={props.value || ""}
         placeholder={props.placeholder || props.label}
         onChange={props.onChange}
+        checked={props.checked}
       />
       {props.label && <label htmlFor={props.id}>{props.label}</label>}
     </div>

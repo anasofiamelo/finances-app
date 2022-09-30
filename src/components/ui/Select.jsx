@@ -1,7 +1,7 @@
 const Select = (props) => {
   return (
     <select
-      style={{ marginBottom: "1rem", ...props.style }}
+      style={{ ...props.style }}
       value={props.value}
       onChange={props.onChange}
     >

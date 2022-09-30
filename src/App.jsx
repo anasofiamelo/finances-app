@@ -1,14 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { useTransactions } from "./context/finances.context";
-import {
-  Balance,
-  Incomes,
-  Expenses,
-  Navbar,
-  Fatura,
-  Goals,
-  CreditCard,
-} from "./components";
+import { Balance, Navbar, Fatura, Goals, CreditCard } from "./components";
 
 function App() {
   const { totalBalance } = useTransactions();
@@ -27,8 +19,6 @@ function App() {
       </h3>
       <Routes>
         <Route path="/transactions" element={<Balance />} />
-        <Route path="/incomes" element={<Incomes />} />
-        <Route path="/expenses" element={<Expenses />} />
         <Route path="/credit-card" element={<Fatura />} />
         <Route path="/credit-card/:creditCard" element={<CreditCard />} />
         <Route path="/metas" element={<Goals />} />
