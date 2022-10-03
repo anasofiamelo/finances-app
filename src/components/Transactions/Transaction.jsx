@@ -1,7 +1,7 @@
 import { useState, useReducer, useEffect } from "react";
 import { monthOptions, yearOptions } from "../../utils";
 import { useTransactions } from "../../context/finances.context";
-import { Table, Select, Input } from "../";
+import { Table, Select, Input, Container } from "../../components";
 import moment from "moment";
 import TransactionHeader from "./TransactionHeader";
 import transactionTypes from "../../hooks/transactionTypes";
@@ -99,7 +99,7 @@ const Transaction = (props) => {
   );
 
   return (
-    <div style={{ minWidth: "500px" }}>
+    <Container style={{ minWidth: "500px" }}>
       <TransactionHeader
         showTable={showTable}
         onShowBalanceTable={showBalanceTableHandler}
@@ -153,7 +153,7 @@ const Transaction = (props) => {
       )}
 
       <h2>Total $ {totalBalanceTransactions}</h2>
-    </div>
+    </Container>
   );
 };
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { AddTransaction } from "../../components";
+import { AddTransaction, ButtonAnimated } from "../../components";
 
 import { FiPlusCircle } from "react-icons/fi";
 
@@ -22,7 +22,7 @@ const Navbar = (props) => {
   };
 
   const mappedNavlinks = navlinks.map((navlink) => (
-    <li key={navlink.title}>
+    <li className="navlink" key={navlink.title}>
       <NavLink to={navlink.link}>{navlink.title}</NavLink>
     </li>
   ));
@@ -42,13 +42,13 @@ const Navbar = (props) => {
 
       <ul className="navbar_buttons">
         <li>
-          <button
+          <ButtonAnimated
             onClick={showAddTransactionHandler}
-            style={{ background: "var(--black)", color: "var(--white)" }}
-          >
-            Add Transaction
-            <FiPlusCircle style={{ fontSize: "2rem", cursor: "pointer" }} />
-          </button>
+            buttonText="Add Transaction"
+            buttonIcon={
+              <FiPlusCircle style={{ fontSize: "2rem", margin: "0" }} />
+            }
+          ></ButtonAnimated>
         </li>
       </ul>
     </nav>

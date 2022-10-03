@@ -6,16 +6,18 @@ import Transaction from "./Transactions/Transaction";
 import AddTransaction from "./AddTransaction";
 import Balance from "./Balance";
 
-import Fatura from "./Invoices/Fatura";
+import CreditCardList from "./Invoices/CreditCardList";
 import CreditCard from "./Invoices/CreditCard";
 import Goals from "./Goals/Goals";
 import AddGoal from "./Goals/AddGoal";
 
 import Navbar from "./layout/Navbar";
 import Modal from "./layout/Modal";
-import Table from "./layout/Table";
+import Table from "./ui/Table";
+import Container from "./layout/Container";
 import Input from "./ui/Input";
 import Select from "./ui/Select";
+import ButtonAnimated from "./ui/ButtonAnimated";
 
 export {
   Incomes,
@@ -29,9 +31,11 @@ export {
   Input,
   Select,
   Modal,
-  Fatura,
+  CreditCardList,
   Goals,
   AddGoal,
   CreditCard,
   Table,
+  Container,
+  ButtonAnimated,
 };

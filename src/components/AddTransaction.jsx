@@ -6,13 +6,6 @@ const typesOfTransactions = ["Expense", "Income"];
 const incomesCategorys = ["Vale", "Salário"];
 const expensesCategorys = ["Conta", "Telefone"];
 
-const mappedCategorys = (categorysArr) =>
-  categorysArr.map((category) => (
-    <option key={category} value={category}>
-      {category}
-    </option>
-  ));
-
 const AddTransaction = (props) => {
   const { addTransactionHandler } = useTransactions();
 
@@ -21,7 +14,15 @@ const AddTransaction = (props) => {
   const [transactionDate, setTransactionDate] = useState();
   const [transactionType, setTransactionType] = useState();
   const [transactionCategory, setTransactionCategory] = useState();
-  console.log(transactionCategory);
+
+  const mappedCategorys = (categorysArr) => {
+    return categorysArr.map((category) => (
+      <option key={category} value={category}>
+        {category}
+      </option>
+    ));
+  };
+
   const changeTransactionDescriptionHandler = (event) => {
     setTransactionDescription(event.target.value);
   };
@@ -128,14 +129,7 @@ const AddTransaction = (props) => {
           id="monthly"
         />
 
-        <button
-          style={{
-            backgroundColor: "black",
-          }}
-          type="submit"
-        >
-          Add transaction
-        </button>
+        <button type="submit">Add transaction</button>
       </form>
     </Modal>
   );

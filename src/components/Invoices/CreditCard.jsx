@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
-import { userCards } from "../../utils";
+import { useCreditCard } from "../../context/credit_card.context";
+import { Table, Container } from "../../components";
 import moment from "moment";
 
 const CreditCard = (props) => {
   const { creditCard } = useParams();
+  const { cards } = useCreditCard();
 
-  const foundCreditCard = userCards.find(
-    (card) => card.creditCard === creditCard
-  );
+  const foundCreditCard = cards.find((card) => card.creditCard === creditCard);
 
   const mappedFatura = foundCreditCard.invoices.map(
     ({ item, totalValue, times, start }) => (
@@ -23,22 +23,23 @@ const CreditCard = (props) => {
   );
 
   return (
-    <div>
+    <Container>
       <h2 style={{ marginBottom: "1rem" }}>{creditCard}</h2>
-      <table>
-        <thead>
-          <tr>
+      <Table
+        thead={
+          <>
             <td>Purchased Item</td>
             <td>Value</td>
             <td>Parcels</td>
             <td>Installment Value</td>
             <td>From</td>
             <td>To</td>
-          </tr>
-        </thead>
-        <tbody>{mappedFatura}</tbody>
-      </table>
-    </div>
+          </>
+        }
+      >
+        {mappedFatura}
+      </Table>
+    </Container>
   );
 };
 

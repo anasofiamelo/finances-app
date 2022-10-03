@@ -4,7 +4,7 @@ table {
 }
 
 tr {
-  background-color: var(--grey);
+  background-color: var(--ghost-white);
   color: var(--black);
 }
 
@@ -17,7 +17,8 @@ thead tr td {
 }
 
 .balance-header,
-.transactions-container {
+.transactions-container,
+.wallet {
   display: flex;
   justify-content: space-between;
 }

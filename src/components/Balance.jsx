@@ -8,7 +8,7 @@ const Balance = () => {
     <Transaction
       balanceType="Balance"
       transactions={transactions}
-      balanceThead={["Type", "Description", "Value", "Date"]}
+      balanceThead={["Category", "Description", "Value", "Date"]}
     />
   );
 };

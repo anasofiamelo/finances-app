@@ -1,0 +1,22 @@
+button {
+  background-color: var(--blue);
+  align-items: center;
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+}
+.button_animated-container {
+  background-color: var(--blue);
+  border-radius: 0.4rem;
+  transition: 0.3s width;
+  height: fit-content;
+  color: var(--white);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+}
+.button-text_animated {
+  padding: 0.5rem 0.4rem;
+}
