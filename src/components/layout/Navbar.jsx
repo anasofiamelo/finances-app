@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { AddTransaction, ButtonAnimated } from "../../components";
+import { Button, AddTransactionDropdown } from "../../components";
 
 import { FiPlusCircle } from "react-icons/fi";
 
@@ -14,9 +14,10 @@ const navlinks = [
 const Navbar = (props) => {
   const [showAddTransaction, setShowAddTransaction] = useState(false);
 
-  const showAddTransactionHandler = () => {
-    setShowAddTransaction(true);
+  const toggleAddTransactionHandler = () => {
+    setShowAddTransaction((prev) => !prev);
   };
+
   const hideAddTransactionHandler = () => {
     setShowAddTransaction(false);
   };
@@ -29,26 +30,22 @@ const Navbar = (props) => {
 
   return (
     <nav>
-      <ul className="navbar_links">
-        {mappedNavlinks}
-
-        {showAddTransaction && (
-          <AddTransaction
-            transactionType="expense"
-            onClose={hideAddTransactionHandler}
-          />
-        )}
-      </ul>
+      <ul className="navbar_links">{mappedNavlinks}</ul>
 
       <ul className="navbar_buttons">
-        <li>
-          <ButtonAnimated
-            onClick={showAddTransactionHandler}
+        <li
+          style={{
+            position: "relative",
+          }}
+        >
+          <Button
+            onClick={toggleAddTransactionHandler}
             buttonText="Add Transaction"
             buttonIcon={
               <FiPlusCircle style={{ fontSize: "2rem", margin: "0" }} />
             }
-          ></ButtonAnimated>
+          ></Button>
+          {showAddTransaction && <AddTransactionDropdown />}
         </li>
       </ul>
     </nav>

@@ -3,6 +3,7 @@ import AddIncome from "./Transactions/Incomes/AddIncome";
 import Expenses from "./Transactions/Expenses/Expenses";
 import AddExpense from "./Transactions/Expenses/AddExpense";
 import Transaction from "./Transactions/Transaction";
+import AddTransactionDropdown from "./Transactions/AddTransactionDropdown";
 import AddTransaction from "./AddTransaction";
 import Balance from "./Balance";
 
@@ -17,7 +18,7 @@ import Table from "./ui/Table";
 import Container from "./layout/Container";
 import Input from "./ui/Input";
 import Select from "./ui/Select";
-import ButtonAnimated from "./ui/ButtonAnimated";
+import Button from "./ui/Button";
 
 export {
   Incomes,
@@ -37,5 +38,6 @@ export {
   CreditCard,
   Table,
   Container,
-  ButtonAnimated,
+  Button,
+  AddTransactionDropdown,
 };

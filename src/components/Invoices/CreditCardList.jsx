@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useCreditCard } from "../../context/credit_card.context";
-import { Container, ButtonAnimated } from "../../components";
+import { Container, Button } from "../../components";
 import { FiPlusCircle } from "react-icons/fi";
 
 const CreditCardList = (props) => {
@@ -24,7 +24,7 @@ const CreditCardList = (props) => {
           <h2>Your credit card list</h2>
           <div className="row">{mappedCreditCards}</div>
         </div>
-        <ButtonAnimated
+        <Button
           buttonText="Add credit card"
           buttonIcon={<FiPlusCircle style={{ fontSize: "2rem" }} />}
         />

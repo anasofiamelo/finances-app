@@ -109,12 +109,12 @@ const Transaction = (props) => {
       {showTable && (
         <div>
           <div className="balance-header">
-            <Input
+            {/* <Input
               onChange={showPreviousBalanceHandler}
               checked={showPreviousBalance}
               type="checkbox"
               label="Show balance from previous months "
-            />
+            /> */}
 
             <div className="row">
               <Input

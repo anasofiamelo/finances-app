@@ -1,8 +1,10 @@
 const Input = (props) => {
   return (
     <div className="form-group" style={props.style}>
+      {props.inputIcon}
       <input
         style={{
+          width: "100%",
           marginRight: "0.6rem",
           ...props.style,
         }}

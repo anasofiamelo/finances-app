@@ -1,13 +1,17 @@
-import monthNames, { monthOptions } from "./months";
+import typeofExpenses from "./Transactions/typeofExpenses";
+import typeofIncomes from "./Transactions/typeofIncomes";
+import monthNames, { monthOptions } from "./Date/months";
+import years, { yearOptions } from "./Date/years";
 import finances from "./finances";
-import lastYears, { yearOptions } from "./lastYears";
 import userCards from "./userCards";
 
 export {
   monthNames,
   monthOptions,
-  lastYears,
+  years,
   yearOptions,
   finances,
   userCards,
+  typeofExpenses,
+  typeofIncomes,
 };

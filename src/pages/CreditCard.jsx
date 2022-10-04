@@ -1,4 +1,4 @@
-import { CreditCardList, ButtonAnimated } from "../components";
+import { CreditCardList, Button } from "../components";
 
 const CreditCard = (props) => {
   return (

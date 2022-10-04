@@ -75,14 +75,20 @@ button {
   font-size: 1rem;
   font-family: var(--poppins);
   border-radius: 0.4rem;
+  background-color: white;
+}
+option {
+  color: var(--black);
 }
 select {
-  background-color: var(--ghost-white);
   color: var(--black);
 }
 input {
-  background-color: var(--white);
+  background-color: none;
   color: var(--black);
+}
+input::placeholder {
+  font-weight: 300;
 }
 a {
   text-decoration: none;
@@ -111,4 +117,19 @@ input:focus {
   display: grid;
   gap: 1rem;
   grid-template-columns: 70% 28.5%;
+}
+.form-group {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--light-grey);
+  /* box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3); */
+}
+.input-icon {
+  opacity: 0.6;
+  color: var(--grey);
+  font-size: 1.2rem;
+  margin-left: 0.8rem;
+}
+.button-icon {
+  font-size: 1.5rem;
 }
