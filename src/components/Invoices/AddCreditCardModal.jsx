@@ -25,7 +25,7 @@ const AddCreditCardModal = (props) => {
 
   const submitNewCardFormHandler = (e) => {
     e.preventDefault();
-    if (limit < 0) return;
+    if (limit <= 0) return;
     creditCardContext.addCardHandler({
       cardLimit: limit,
       cardName: name,

@@ -34,38 +34,28 @@ html {
   --text-color: var(--black);
   --title-color: var(--blue);
 }
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: var(--poppins);
+
+body,
+a,
+select,
+input {
   color: var(--text-color);
-  font-size: var(--normal-font-size);
-  background-color: var(--background);
-  padding: 1rem 20%;
 }
-.container {
-  background-color: var(--white);
-  padding: 2rem 1rem;
-  border-radius: 1rem;
-  box-shadow: 2px 2px 5px var(--light-grey);
-  margin: 1rem 0;
-}
-h3 {
-  font-size: 3rem;
-}
+
+.column,
+.row,
+.form-group,
 nav,
+ul,
 .space-between {
   display: flex;
+}
+
+nav,
+.space-between {
   justify-content: space-between;
 }
-ul {
-  list-style: none;
-  display: flex;
-  align-items: center;
-}
-.navlink {
-  margin-right: 1rem;
-}
+
 select,
 input,
 button {
@@ -77,79 +67,125 @@ button {
   border-radius: 0.4rem;
   background-color: white;
 }
-option {
-  color: var(--black);
-}
-select {
-  color: var(--black);
-}
-input {
-  background-color: none;
-  color: var(--black);
-}
-input::placeholder {
-  font-weight: 300;
-}
-a {
-  text-decoration: none;
-  color: var(--text-color);
-  cursor: pointer;
-}
+
 select:focus,
 input:focus {
   outline: none;
 }
+
+.credit-card_grid,
+.balance_grid,
+.credit-card_page_grid {
+  display: grid;
+}
+
+ul,
+.row,
+.form-group {
+  align-items: center;
+}
+
+.input-icon,
+.subtitle {
+  color: var(--grey);
+  font-size: 1.2rem;
+}
+
+.subtitle,
+input::placeholder {
+  font-weight: 300;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--poppins);
+  font-size: var(--normal-font-size);
+  background-color: var(--background);
+  padding: 1rem 15%;
+}
+
+.container {
+  background-color: var(--white);
+  padding: 2rem 1rem;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 5px var(--light-grey);
+  margin: 1rem 0;
+}
+
+h3 {
+  font-size: 3rem;
+}
+
+ul {
+  list-style: none;
+}
+
+.navlink {
+  margin-right: 1rem;
+}
+
+input {
+  background-color: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .column {
-  display: flex;
   align-items: flex-start;
   flex-direction: column;
 }
-.row {
-  display: flex;
-  align-items: center;
-}
+
 .line {
   height: 0.1rem;
   width: 40%;
   background-color: var(--light-grey);
 }
-.credit-card_grid {
-  display: grid;
+
+.credit-card_page_grid {
   gap: 1rem;
-  grid-template-columns: 70% 28.5%;
+  grid-template-columns: 2fr 1fr;
 }
+
+.credit-card_grid {
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
+
 .balance_grid {
-  display: grid;
   gap: 3rem;
   grid-template-columns: 1fr 1fr 1fr;
 }
+
 .form-group {
-  display: flex;
-  align-items: center;
   border-bottom: 1px solid var(--light-grey);
 }
+
 .form-group > * {
   margin: 0;
 }
+
 .input-icon {
   opacity: 0.6;
-  color: var(--grey);
-  font-size: 1.2rem;
   margin-left: 0.8rem;
 }
+
 .button-icon {
   font-size: 1.5rem;
 }
+
 .subtitle {
-  color: var(--grey);
-  font-weight: 300;
-  font-size: 1.2rem;
   width: 100%;
 }
+
 h2.subtitle {
   font-size: 1.8rem;
   color: var(--dark);
 }
+
 .label {
   color: var(--light-grey);
   font-size: 0.85rem;

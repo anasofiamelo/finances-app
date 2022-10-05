@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useCreditCard } from "../../context/credit_card.context";
-import { Table, Container } from "../../components";
+import { Table, Container } from "..";
 import moment from "moment";
 
-const CreditCard = (props) => {
+const CreditCardInvoices = (props) => {
   const { creditCard } = useParams();
   const { cards } = useCreditCard();
 
@@ -43,4 +43,4 @@ const CreditCard = (props) => {
   );
 };
 
-export default CreditCard;
+export default CreditCardInvoices;

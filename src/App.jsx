@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Balance, Navbar, Goals, CreditCard } from "./components";
+import { Balance, Navbar, Goals, CreditCardInvoices } from "./components";
 import { CreditCardPage } from "./pages";
 
 function App() {
@@ -9,7 +9,10 @@ function App() {
       <Routes>
         <Route path="/transactions" element={<Balance />} />
         <Route path="/credit-card" element={<CreditCardPage />} />
-        <Route path="/credit-card/:creditCard" element={<CreditCard />} />
+        <Route
+          path="/credit-card/:creditCard"
+          element={<CreditCardInvoices />}
+        />
         <Route path="/metas" element={<Goals />} />
       </Routes>
     </>

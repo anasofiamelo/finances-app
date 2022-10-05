@@ -8,7 +8,8 @@ import AddTransaction from "./AddTransaction";
 import Balance from "./Balance";
 
 import CreditCardList from "./Invoices/CreditCardList";
-import CreditCard from "./Invoices/CreditCard";
+import CreditCardInvoices from "./Invoices/CreditCardInvoices";
+import CreditCardCard from "./Invoices/CreditCardCard";
 import Goals from "./Goals/Goals";
 import AddGoal from "./Goals/AddGoal";
 
@@ -23,23 +24,24 @@ import Button from "./ui/Button";
 
 export {
   Incomes,
-  Transaction,
-  Balance,
-  Expenses,
-  Navbar,
-  AddTransaction,
   AddIncome,
+  Expenses,
   AddExpense,
-  Input,
-  Select,
-  Modal,
+  Balance,
+  Transaction,
+  AddTransaction,
+  AddTransactionDropdown,
+  CreditCardInvoices,
   CreditCardList,
+  CreditCardCard,
   Goals,
   AddGoal,
-  CreditCard,
-  Table,
+  Modal,
   Container,
+  Navbar,
+  Table,
+  Select,
   Button,
-  AddTransactionDropdown,
+  Input,
   InputLabel,
 };

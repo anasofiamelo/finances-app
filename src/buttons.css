@@ -1,21 +1,17 @@
-button {
-  background-color: var(--blue);
-  align-items: center;
-  color: var(--white);
-  cursor: pointer;
-  display: flex;
-}
+button,
 .button_animated-container {
   background-color: var(--blue);
-  border-radius: 0.4rem;
-  transition: 0.3s width;
-  height: fit-content;
   color: var(--white);
-  overflow: hidden;
-  cursor: pointer;
   display: flex;
   align-items: center;
+  cursor: pointer;
+}
+.button_animated-container {
+  transition: 0.3s width;
+  border-radius: 0.4rem;
+  height: fit-content;
   width: fit-content;
+  overflow: hidden;
 }
 .button-text_animated {
   padding: 0.5rem 0.4rem;
