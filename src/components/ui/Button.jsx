@@ -9,6 +9,7 @@ const Button = (props) => {
         style={props.style}
         className="button_animated"
         onClick={props.onClick}
+        type={props.type || "button"}
       >
         {props.buttonIcon}
       </button>

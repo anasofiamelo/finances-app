@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Modal, Input, Button, Select } from "../components";
+import { Modal, Input, Select } from "../components";
 import { useTransactions } from "../context/finances.context";
 import {
   BsFillCalculatorFill,
@@ -34,6 +34,7 @@ const AddTransaction = (props) => {
   };
 
   const submitAddTransactionFormHandler = (event) => {
+    console.log("clikei");
     event.preventDefault();
     const value =
       props.transactionType === "Income"
@@ -99,7 +100,8 @@ const AddTransaction = (props) => {
           type="date"
         />
 
-        <Button
+        <button
+          type="submit"
           style={{
             float: "right",
             backgroundColor:
@@ -107,10 +109,13 @@ const AddTransaction = (props) => {
                 ? "var(--green)"
                 : "var(--red)",
           }}
-          type="submit"
-          buttonText={`Add ${props.transactionType}`}
-          buttonIcon={<BsFillPlusCircleFill className="button-icon" />}
-        />
+        >
+          <BsFillPlusCircleFill
+            style={{ marginRight: "1rem" }}
+            className="button-icon"
+          />
+          Add {props.transactionType}
+        </button>
       </form>
     </Modal>
   );
