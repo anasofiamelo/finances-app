@@ -162,6 +162,7 @@ a {
 
 .form-group {
   border-bottom: 1px solid var(--light-grey);
+  margin-bottom: 1.5rem;
 }
 
 .form-group > * {
@@ -170,7 +171,6 @@ a {
 
 .input-icon {
   opacity: 0.6;
-  margin-left: 0.8rem;
 }
 
 .button-icon {

@@ -1,9 +1,6 @@
 const InputLabel = (props) => {
   return (
-    <div
-      className="form-group column"
-      style={{ ...props.style, alignItems: "flex-start", marginBottom: "1rem" }}
-    >
+    <div className="form-group column" style={{ ...props.style }}>
       {props.label && (
         <label className="label" htmlFor={props.id}>
           {props.label}

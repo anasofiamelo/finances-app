@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Modal, Input, Select } from "../components";
+import { Modal, InputLabel, Select } from "../components";
 import { useTransactions } from "../context/finances.context";
 import {
   BsFillCalculatorFill,
@@ -34,7 +34,6 @@ const AddTransaction = (props) => {
   };
 
   const submitAddTransactionFormHandler = (event) => {
-    console.log("clikei");
     event.preventDefault();
     const value =
       props.transactionType === "Income"
@@ -56,7 +55,7 @@ const AddTransaction = (props) => {
   };
 
   const mappedTransactionCategories = props.transactionCategories.map(
-    ({ value, icon }) => (
+    ({ value }) => (
       <option key={value} value={value}>
         {value}
       </option>
@@ -72,7 +71,8 @@ const AddTransaction = (props) => {
         style={{ width: "100%" }}
       >
         <h1>Add {props.transactionType}</h1>
-        <Input
+        <InputLabel
+          label="Value"
           inputIcon={<BsFillCalculatorFill className="input-icon" />}
           value={transactionValue}
           onChange={changeTransactionValueHandler}
@@ -81,20 +81,23 @@ const AddTransaction = (props) => {
         />
 
         <Select
+          label="Category"
           style={{ width: "100%" }}
           value={transactionCategory}
           onChange={changeTransactionCategoryHandler}
           options={mappedTransactionCategories}
         />
 
-        <Input
+        <InputLabel
+          label="Description"
           inputIcon={<BsJournalText className="input-icon" />}
           value={transactionDescription}
           onChange={changeTransactionDescriptionHandler}
-          placeholder="Description"
+          placeholder="Car wash"
         />
 
-        <Input
+        <InputLabel
+          label="Date of transaction"
           value={transactionDate}
           onChange={changeTransactionDateHandler}
           type="date"
