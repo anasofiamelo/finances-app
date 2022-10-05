@@ -12,6 +12,7 @@ const typeofIncomes = [
   { value: "Commission", label: <BsShieldPlus /> },
   { value: "Investment", label: <BsTools /> },
   { value: "Gift", label: <BsPhone /> },
+  { value: "Work Benefit", label: <BsFillBagFill /> },
 ];
 
 export default typeofIncomes;

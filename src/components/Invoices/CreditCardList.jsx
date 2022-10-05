@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useCreditCard } from "../../context/credit_card.context";
-import { Container, Button } from "../../components";
-import { FiPlusCircle } from "react-icons/fi";
+import { Container } from "../../components";
+import AddCreditCard from "./AddCreditCard";
 
 const CreditCardList = (props) => {
   const { cards } = useCreditCard();
@@ -10,10 +10,10 @@ const CreditCardList = (props) => {
     <div>
       <NavLink
         style={{ marginRight: "1rem" }}
-        key={card.creditCard}
-        to={`/credit-card/${card.creditCard}`}
+        key={card.cardName}
+        to={`/credit-card/${card.cardName}`}
       >
-        {card.creditCard}
+        {card.cardName}
       </NavLink>
     </div>
   ));
@@ -24,10 +24,7 @@ const CreditCardList = (props) => {
           <h2>Your credit card list</h2>
           <div className="row">{mappedCreditCards}</div>
         </div>
-        <Button
-          buttonText="Add credit card"
-          buttonIcon={<FiPlusCircle style={{ fontSize: "2rem" }} />}
-        />
+        <AddCreditCard />
       </div>
     </Container>
   );

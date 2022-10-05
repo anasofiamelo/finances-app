@@ -17,6 +17,7 @@ import Modal from "./layout/Modal";
 import Table from "./ui/Table";
 import Container from "./layout/Container";
 import Input from "./ui/Input";
+import InputLabel from "./ui/InputLabel";
 import Select from "./ui/Select";
 import Button from "./ui/Button";
 
@@ -40,4 +41,5 @@ export {
   Container,
   Button,
   AddTransactionDropdown,
+  InputLabel,
 };

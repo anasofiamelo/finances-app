@@ -10,13 +10,13 @@ export const CreditCardContextProvider = (props) => {
     setCards((prev) => [...prev, card]);
   }
 
-  function getCardInvoice(cardTitle) {
+  function getCardInvoices(cardTitle) {
     return cards.filter((card) => card.creditCard === cardTitle);
   }
 
   return (
     <CreditCardContext.Provider
-      value={{ cards, addCardHandler, getCardInvoice }}
+      value={{ cards, addCardHandler, getCardInvoices }}
     >
       {props.children}
     </CreditCardContext.Provider>

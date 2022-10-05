@@ -128,6 +128,9 @@ input:focus {
   align-items: center;
   border-bottom: 1px solid var(--light-grey);
 }
+.form-group > * {
+  margin: 0;
+}
 .input-icon {
   opacity: 0.6;
   color: var(--grey);
@@ -146,4 +149,8 @@ input:focus {
 h2.subtitle {
   font-size: 1.8rem;
   color: var(--dark);
+}
+.label {
+  color: var(--light-grey);
+  font-size: 0.85rem;
 }

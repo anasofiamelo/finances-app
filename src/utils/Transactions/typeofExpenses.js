@@ -14,6 +14,7 @@ const typeofExpenses = [
   { value: "Utilities", label: <BsPhone /> },
   { value: "Shop", label: <BsFillBagFill /> },
   { value: "Supermarket", label: <BsShop /> },
+  { value: "Food", label: <BsShop /> },
 ];
 
 export default typeofExpenses;

@@ -7,7 +7,7 @@ const CreditCard = (props) => {
   const { creditCard } = useParams();
   const { cards } = useCreditCard();
 
-  const foundCreditCard = cards.find((card) => card.creditCard === creditCard);
+  const foundCreditCard = cards.find((card) => card.cardName === creditCard);
 
   const mappedFatura = foundCreditCard.invoices.map(
     ({ item, totalValue, times, start }) => (

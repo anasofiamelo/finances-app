@@ -1,6 +1,9 @@
 const userCards = [
   {
-    creditCard: "Nubank",
+    cardLimit: 200.0,
+    cardClosureDate: new Date(),
+    cardDueDate: new Date(),
+    cardName: "Nubank",
     invoices: [
       {
         start: new Date("01/21/2022"),
@@ -19,28 +22,6 @@ const userCards = [
         times: 6,
         item: "Mega Hair",
         totalValue: 800,
-      },
-    ],
-  },
-  {
-    creditCard: "MasterCard",
-    invoices: [
-      {
-        start: new Date("01/21/2022"),
-        times: 24,
-        item: "Bag",
-        totalValue: 5000,
-      },
-    ],
-  },
-  {
-    creditCard: "OuroCard",
-    invoices: [
-      {
-        start: new Date("01/21/2022"),
-        times: 24,
-        item: "Bag",
-        totalValue: 5000,
       },
     ],
   },

@@ -1,20 +1,20 @@
 const finances = [
   {
-    type: "Salário",
+    type: "Salary",
     payment: "Cash",
     value: 3791.66,
     date: new Date(),
     description: "Salário Setembro",
   },
   {
-    type: "Vale Alimentação",
+    type: "Work Benefit",
     payment: "Cash",
     value: 500.0,
     date: new Date(),
     description: "Caju",
   },
   {
-    type: "Conta",
+    type: "House",
     payment: "Cash",
     value: -639,
     date: new Date(),
