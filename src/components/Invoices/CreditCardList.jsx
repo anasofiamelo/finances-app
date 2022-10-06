@@ -17,13 +17,14 @@ const CreditCardList = (props) => {
   ));
   return (
     <>
-      <AddCreditCard />
       <div className="credit-card_page_grid">
         <div className="credit-card_grid">{mappedCreditCards}</div>
         <div>
           <Container>
             <h2>Teste</h2>
           </Container>
+          <AddCreditCard />
+          {/* <Container></Container> */}
         </div>
       </div>
     </>

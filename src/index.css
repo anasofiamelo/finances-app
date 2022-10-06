@@ -148,6 +148,7 @@ a {
 .credit-card_page_grid {
   gap: 1rem;
   grid-template-columns: 2fr 1fr;
+  min-height: 0;
 }
 
 .credit-card_grid {
@@ -186,7 +187,17 @@ h2.subtitle {
   color: var(--dark);
 }
 
+.card_subtitle {
+  border-bottom: 2px solid var(--blue);
+  width: fit-content;
+  margin-bottom: 1rem;
+}
+
 .label {
   color: var(--light-grey);
   font-size: 0.85rem;
+}
+
+.credit-card_invoices_title {
+  color: var(--blue);
 }
