@@ -1,19 +1,14 @@
 const Button = (props) => {
   return (
-    <div
-      style={props.style}
-      onClick={props.onClick}
-      className="button_animated-container"
-    >
+    <div style={props.style} onClick={props.onClick}>
       <button
         style={props.style}
         className="button_animated"
-        onClick={props.onClick}
         type={props.type || "button"}
       >
         {props.buttonIcon}
+        <span style={{ marginLeft: "1rem" }}>{props.buttonText}</span>
       </button>
-      <span className="button-text_animated">{props.buttonText}</span>
     </div>
   );
 };

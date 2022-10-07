@@ -102,7 +102,7 @@ body {
   font-family: var(--poppins);
   font-size: var(--normal-font-size);
   background-color: var(--background);
-  padding: 1rem 15%;
+  padding: 1rem 20%;
 }
 
 .container {

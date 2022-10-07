@@ -1,19 +1,33 @@
 table {
   font-size: 1.2rem;
   width: 100%;
+  border-collapse: collapse;
+  --table-color: var(--blue);
 }
-
-tr {
-  background-color: var(--ghost-white);
-  color: var(--black);
+thead th:first-child,
+tbody td:first-child {
+  border-radius: 0.4rem 0rem 0rem 0.4rem;
 }
-
-td {
+thead th:last-child,
+tbody td:last-child {
+  border-radius: 0rem 0.4rem 0.4rem 0rem;
+}
+tbody tr {
+  color: var(--dark-black);
+}
+tbody tr:hover {
+  background-color: var(--light-grey);
+}
+td,
+th {
   padding: 0.5rem 1rem;
 }
 
-thead tr td {
-  font-weight: bolder;
+th {
+  background-color: var(--table-color);
+  color: var(--white);
+  font-size: 0.9rem;
+  text-align: left;
 }
 
 .balance-header,

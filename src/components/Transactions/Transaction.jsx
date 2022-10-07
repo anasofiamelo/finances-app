@@ -51,9 +51,6 @@ const Transaction = (props) => {
   const showBalanceTableHandler = () => {
     setShowTable((prev) => !prev);
   };
-  const showPreviousBalanceHandler = () => {
-    setShowPreviousBalance((prev) => !prev);
-  };
   const showIncomesHandler = () => {
     setShowIncomes((prev) => !prev);
   };
@@ -62,7 +59,7 @@ const Transaction = (props) => {
   };
 
   const showMonthSelect = selectedBalance.year !== "All";
-  const formattedThead = props.balanceThead.map((td) => <td>{td}</td>);
+  const formattedThead = props.balanceThead.map((th) => <th>{th}</th>);
   const totalBalanceTransactions = selectedBalance.filteredTransactions
     .reduce((prev, current) => prev + current.value, 0)
     .toFixed(2);
@@ -109,13 +106,6 @@ const Transaction = (props) => {
       {showTable && (
         <div>
           <div className="balance-header">
-            {/* <Input
-              onChange={showPreviousBalanceHandler}
-              checked={showPreviousBalance}
-              type="checkbox"
-              label="Show balance from previous months "
-            /> */}
-
             <div className="row">
               <Input
                 onChange={showIncomesHandler}

@@ -10,13 +10,28 @@ export const CreditCardContextProvider = (props) => {
     setCards((prev) => [...prev, card]);
   }
 
-  function getCardInvoices(cardTitle) {
-    return cards.filter((card) => card.creditCard === cardTitle);
+  function addInvoiceToCreditCard(cardName, invoice) {
+    let cardInvoices = getCardInvoices(cardName);
+    cardInvoices = [...cardInvoices, invoice];
+    setCards((prev) => {
+      prev.find((card) => card.cardName === cardName)["invoices"] =
+        cardInvoices;
+      return prev;
+    });
+  }
+
+  function getCard(cardName) {
+    return cards.find((card) => card.cardName === cardName);
+  }
+
+  function getCardInvoices(cardName) {
+    const teste = getCard(cardName);
+    return teste.invoices;
   }
 
   return (
     <CreditCardContext.Provider
-      value={{ cards, addCardHandler, getCardInvoices }}
+      value={{ cards, addCardHandler, getCard, addInvoiceToCreditCard }}
     >
       {props.children}
     </CreditCardContext.Provider>

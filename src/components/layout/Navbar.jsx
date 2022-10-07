@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Button, AddTransactionDropdown } from "../../components";
 
@@ -12,16 +11,6 @@ const navlinks = [
 ];
 
 const Navbar = (props) => {
-  const [showAddTransaction, setShowAddTransaction] = useState(false);
-
-  const toggleAddTransactionHandler = () => {
-    setShowAddTransaction((prev) => !prev);
-  };
-
-  const hideAddTransactionHandler = () => {
-    setShowAddTransaction(false);
-  };
-
   const mappedNavlinks = navlinks.map((navlink) => (
     <li className="navlink" key={navlink.title}>
       <NavLink to={navlink.link}>{navlink.title}</NavLink>
@@ -39,13 +28,13 @@ const Navbar = (props) => {
           }}
         >
           <Button
-            onClick={toggleAddTransactionHandler}
+            onClick={props.onToggleAddTransaction}
             buttonText="Add Transaction"
             buttonIcon={
               <FiPlusCircle style={{ fontSize: "2rem", margin: "0" }} />
             }
-          ></Button>
-          {showAddTransaction && <AddTransactionDropdown />}
+          />
+          {props.showAddTransaction && <AddTransactionDropdown />}
         </li>
       </ul>
     </nav>
