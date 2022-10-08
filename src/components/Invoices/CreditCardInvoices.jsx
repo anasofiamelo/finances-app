@@ -2,16 +2,18 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useCreditCard } from "../../context/credit_card.context";
 import {
-  Table,
   Container,
   Button,
   AddCreditCardPurchase,
+  CreditCardInvoicesTable,
 } from "../../components";
 import { BsCreditCard, BsFillPlusCircleFill } from "react-icons/bs";
 
-const CreditCardInvoices = (props) => {
+const CreditCardInvoices = () => {
   const { creditCard } = useParams();
   const { cards } = useCreditCard();
+  const foundCreditCard = cards.find((card) => card.cardName === creditCard);
+  const { invoices, cardLimit } = foundCreditCard;
 
   const [showAddCreditCardPurchase, setShowAddCreditCardPurchase] =
     useState(false);
@@ -22,19 +24,6 @@ const CreditCardInvoices = (props) => {
   const hideAddCreditCardPurchaseHandler = () => {
     setShowAddCreditCardPurchase(false);
   };
-
-  const foundCreditCard = cards.find((card) => card.cardName === creditCard);
-
-  const mappedFatura = foundCreditCard.invoices.map(
-    ({ purchasedItem, purchaseValue, timesPurchased }) => (
-      <tr key={purchasedItem}>
-        <td>{purchasedItem}</td>
-        <td>{purchaseValue.toFixed(2)}</td>
-        <td>{timesPurchased}x</td>
-        <td>{(purchaseValue / timesPurchased).toFixed(2)}</td>
-      </tr>
-    )
-  );
 
   return (
     <div className="credit-card_page_grid">
@@ -52,7 +41,7 @@ const CreditCardInvoices = (props) => {
           </div>
 
           <h3 style={{ width: "fit-content" }} className="subtitle">
-            Limit of <b>${foundCreditCard.cardLimit.toFixed(2)}</b>
+            Limit of <b>${cardLimit.toFixed(2)}</b>
           </h3>
         </div>
       </Container>
@@ -86,20 +75,10 @@ const CreditCardInvoices = (props) => {
         </div>
       </Container>
 
-      <Container>
-        <Table
-          thead={
-            <>
-              <th>Item</th>
-              <th>Value</th>
-              <th>Parcels</th>
-              <th>Each Installment</th>
-            </>
-          }
-        >
-          {mappedFatura}
-        </Table>
-      </Container>
+      <CreditCardInvoicesTable
+        invoices={invoices}
+        creditCard={foundCreditCard}
+      />
     </div>
   );
 };

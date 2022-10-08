@@ -14,6 +14,8 @@ tbody td:last-child {
 }
 tbody tr {
   color: var(--dark-black);
+  transition: all 0.2s;
+  cursor: pointer;
 }
 tbody tr:hover {
   background-color: var(--light-grey);
@@ -21,15 +23,15 @@ tbody tr:hover {
 td,
 th {
   padding: 0.5rem 1rem;
+  font-weight: 300;
+  font-size: 1.1rem;
 }
-
 th {
+  font-size: 0.9rem;
   background-color: var(--table-color);
   color: var(--white);
-  font-size: 0.9rem;
   text-align: left;
 }
-
 .balance-header,
 .transactions-container,
 .wallet {

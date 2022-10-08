@@ -30,7 +30,8 @@ html {
   --nothing-you-could-do: "Nothing You Could Do";
 
   /* named colors */
-  --background: var(--ghost-white);
+  /* --background: var(--ghost-white); */
+  --background: #e5e5e5;
   --text-color: var(--black);
   --title-color: var(--blue);
 }
@@ -102,7 +103,7 @@ body {
   font-family: var(--poppins);
   font-size: var(--normal-font-size);
   background-color: var(--background);
-  padding: 1rem 20%;
+  padding: 1rem 15%;
 }
 
 .container {

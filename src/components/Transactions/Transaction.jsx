@@ -1,7 +1,6 @@
 import { useState, useReducer, useEffect } from "react";
-import { monthOptions, yearOptions } from "../../utils";
 import { useTransactions } from "../../context/finances.context";
-import { Table, Select, Input, Container } from "../../components";
+import { Table, Input, Container } from "../../components";
 import moment from "moment";
 import TransactionHeader from "./TransactionHeader";
 import transactionTypes from "../../hooks/transactionTypes";
@@ -26,39 +25,28 @@ const Transaction = (props) => {
     ),
   };
 
-  const manageBalances = (state, action) => {
+  const manageBalance = (state, action) => {
     return transactionTypes(state, action, transactions);
   };
 
   const [selectedBalance, dispatchSelectState] = useReducer(
-    manageBalances,
+    manageBalance,
     initialManageBalancesState
   );
 
-  const [showTable, setShowTable] = useState(true);
-  const [showPreviousBalance, setShowPreviousBalance] = useState(false);
   const [showIncomes, setShowIncomes] = useState(true);
   const [showExpenses, setShowExpenses] = useState(true);
 
-  const yearValueChangeHandler = (event) => {
-    const inputValue = event.target.value;
-    dispatchSelectState({ type: "CHOOSE_YEAR", year: inputValue });
-  };
-  const monthValueChangeHandler = (event) => {
-    const inputValue = event.target.value;
-    dispatchSelectState({ type: "CHOOSE_MONTH", month: inputValue });
-  };
-  const showBalanceTableHandler = () => {
-    setShowTable((prev) => !prev);
-  };
   const showIncomesHandler = () => {
     setShowIncomes((prev) => !prev);
   };
   const showExpensesHandler = () => {
     setShowExpenses((prev) => !prev);
   };
+  const changeSelectedMonthHandler = (value) => {
+    dispatchSelectState({ type: "CHOOSE_MONTH", month: value });
+  };
 
-  const showMonthSelect = selectedBalance.year !== "All";
   const formattedThead = props.balanceThead.map((th) => <th>{th}</th>);
   const totalBalanceTransactions = selectedBalance.filteredTransactions
     .reduce((prev, current) => prev + current.value, 0)
@@ -71,6 +59,7 @@ const Transaction = (props) => {
       dispatchSelectState({ type: "ADD_INCOMES" });
     }
   }, [showIncomes]);
+
   useEffect(() => {
     if (!showExpenses) {
       dispatchSelectState({ type: "REMOVE_EXPENSES" });
@@ -78,6 +67,7 @@ const Transaction = (props) => {
       dispatchSelectState({ type: "ADD_EXPENSES" });
     }
   }, [showExpenses]);
+
   useEffect(() => {
     return dispatchSelectState({ type: "TRANSACTIONS_UPDATE" });
   }, [transactions]);
@@ -98,50 +88,31 @@ const Transaction = (props) => {
   return (
     <Container style={{ minWidth: "500px" }}>
       <TransactionHeader
-        showTable={showTable}
-        onShowBalanceTable={showBalanceTableHandler}
+        onChangeSelectedMonth={changeSelectedMonthHandler}
         title={props.balanceType}
       />
 
-      {showTable && (
-        <div>
-          <div className="balance-header">
-            <div className="row">
-              <Input
-                onChange={showIncomesHandler}
-                checked={showIncomes}
-                type="checkbox"
-                label="Incomes"
-                style={{ marginRight: "1rem" }}
-              />
-              <Input
-                onChange={showExpensesHandler}
-                checked={showExpenses}
-                type="checkbox"
-                label="Expenses"
-              />
-            </div>
+      <div>
+        <div className="balance-header">
+          <div className="row">
+            <Input
+              onChange={showIncomesHandler}
+              checked={showIncomes}
+              type="checkbox"
+              label="Incomes"
+              style={{ marginRight: "1rem" }}
+            />
+            <Input
+              onChange={showExpensesHandler}
+              checked={showExpenses}
+              type="checkbox"
+              label="Expenses"
+            />
           </div>
-          {showPreviousBalance && (
-            <Select
-              value={selectedBalance.current}
-              onChange={yearValueChangeHandler}
-              options={yearOptions}
-            />
-          )}
-
-          {showMonthSelect && showPreviousBalance && (
-            <Select
-              value={selectedBalance.which}
-              onChange={monthValueChangeHandler}
-              options={monthOptions}
-              style={{ marginLeft: "2rem" }}
-            />
-          )}
-          <Table thead={formattedThead}>{formattedBalance}</Table>
         </div>
-      )}
 
+        <Table thead={formattedThead}>{formattedBalance}</Table>
+      </div>
       <h2>Total $ {totalBalanceTransactions}</h2>
     </Container>
   );

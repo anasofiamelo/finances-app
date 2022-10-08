@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useCreditCard } from "../../context/credit_card.context";
-import { CreditCardCard, Container } from "../../components";
-import AddCreditCard from "./AddCreditCard";
+import { CreditCardCard, Container, AddCreditCard } from "../../components";
 
 const CreditCardList = (props) => {
   const { cards } = useCreditCard();
@@ -24,7 +23,6 @@ const CreditCardList = (props) => {
             <h2>Teste</h2>
           </Container>
           <AddCreditCard />
-          {/* <Container></Container> */}
         </div>
       </div>
     </>

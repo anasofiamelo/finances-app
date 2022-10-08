@@ -90,22 +90,14 @@ const transactionTypes = (state, action, transactions) => {
       };
     })(),
     CHOOSE_MONTH: (() => {
-      if (action.month === "All") {
-        return {
-          ...state,
-          filteredTransactions: transactions.filter(
-            (transaction) =>
-              String(transaction.date.getFullYear()) === state.year
-          ),
-        };
-      }
+      console.log(state.year);
       return {
         ...state,
         month: action.month,
         filteredTransactions: transactions.filter(
           (transaction) =>
-            String(transaction.date.getMonth()) === action.month &&
-            String(transaction.date.getFullYear()) === state.year
+            String(transaction.date.getMonth()) == action.month &&
+            String(transaction.date.getFullYear()) == state.year
         ),
       };
     })(),

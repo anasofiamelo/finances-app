@@ -15,7 +15,7 @@ const CreditCardCard = (props) => {
         </span>
       </div>
       <p>Limit: $ {props.cardLimit.toFixed(2)}</p>
-      <p>Closure date: {moment(props.cardClosureDate).format("MMMM, DD")}</p>
+      <p>Closure day: {props.cardClosureDate}</p>
     </Container>
   );
 };
