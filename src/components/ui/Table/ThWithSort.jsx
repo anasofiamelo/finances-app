@@ -2,18 +2,18 @@ import { useState } from "react";
 import { BsFillCaretUpFill, BsFillCaretDownFill } from "react-icons/bs";
 
 const ThWithSort = (props) => {
-  const { array, sortKey, onChangeArray } = props;
+  const { sortedList, comparableKey, onToggle } = props;
   const [showDecrescent, setShowDecrescent] = useState(false);
 
   const toggleDecrescentHandler = () => {
     const sortCrescent = () =>
-      [...array].sort((a, b) => a[sortKey] - b[sortKey]);
+      [...sortedList].sort((a, b) => a[comparableKey] - b[comparableKey]);
 
     const sortDecrescent = () =>
-      [...array].sort((a, b) => b[sortKey] - a[sortKey]);
+      [...sortedList].sort((a, b) => b[comparableKey] - a[comparableKey]);
 
     setShowDecrescent((prev) => {
-      onChangeArray(prev === true ? sortDecrescent() : sortCrescent());
+      onToggle(prev === true ? sortDecrescent() : sortCrescent());
       return !prev;
     });
   };

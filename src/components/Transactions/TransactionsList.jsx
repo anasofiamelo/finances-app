@@ -42,17 +42,17 @@ const TransactionsList = (props) => {
         <>
           <th>Type</th>
           <ThWithSort
-            array={transactions}
-            sortKey="date"
-            onChangeArray={changeArrayHandler}
+            sortedList={transactions}
+            comparableKey="date"
+            onToggle={changeArrayHandler}
           >
             Date
           </ThWithSort>
           <th>Description</th>
           <ThWithSort
-            array={transactions}
-            sortKey="value"
-            onChangeArray={changeArrayHandler}
+            sortedList={transactions}
+            comparableKey="value"
+            onToggle={changeArrayHandler}
           >
             Value
           </ThWithSort>
