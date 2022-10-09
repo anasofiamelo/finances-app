@@ -1,4 +1,4 @@
-import { BsCashCoin, BsThreeDots, BsBriefcase } from "react-icons/bs";
+import { BsCashCoin, BsThreeDots, BsBriefcaseFill } from "react-icons/bs";
 
 const typeofIncomes = ["Salary", "Benefit", "Others"];
 
@@ -10,7 +10,7 @@ export const incomesIcons = {
     />
   ),
   Benefit: (
-    <BsBriefcase
+    <BsBriefcaseFill
       className="type_icons"
       style={{ backgroundColor: "#8c2f39" }}
     />

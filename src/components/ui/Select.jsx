@@ -9,7 +9,7 @@ const Select = (props) => {
       <div className="row">
         {props.selectIcon && <span>{props.selectIcon}</span>}
         <select
-          style={{ ...props.style }}
+          style={{ ...props.style, width: "100%" }}
           value={props.value}
           onChange={props.onChange}
           id={props.id}

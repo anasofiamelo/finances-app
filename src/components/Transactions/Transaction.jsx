@@ -1,10 +1,9 @@
-import { useState, useReducer, useEffect } from "react";
+import { useReducer, useEffect } from "react";
 import { useTransactions } from "../../context/finances.context";
 import {
   Container,
   TransactionsList,
   TransactionHeader,
-  InputLabel,
 } from "../../components";
 import moment from "moment";
 import transactionTypes from "../../hooks/transactionTypes";
@@ -67,7 +66,18 @@ const Transaction = (props) => {
         <TransactionsList transactions={selectedBalance.filteredTransactions} />
       </div>
 
-      <h3>Total $ {totalBalanceTransactions}</h3>
+      <h3>
+        Total{" "}
+        <span
+          style={{
+            color: `${
+              totalBalanceTransactions > 0 ? "var(--green)" : "var(--red)"
+            }`,
+          }}
+        >
+          $ {totalBalanceTransactions}
+        </span>
+      </h3>
     </Container>
   );
 };

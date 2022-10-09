@@ -54,7 +54,14 @@ const TransactionHeader = (props) => {
           value={descriptionFilter}
           onChange={changeDescriptionFilterHandler}
         />
-        {/* <Select label="Filter by type" /> */}
+        {/* <Select
+          label="Filter by type"
+          options={
+            <>
+              <option> teste</option>
+            </>
+          }
+        /> */}
       </div>
     </>
   );

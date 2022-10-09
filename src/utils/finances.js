@@ -44,14 +44,14 @@ const finances = [
   {
     type: "Supermarket",
     description: "Telefrango",
-    date: new Date("10/01/2022"),
+    date: new Date("10/04/2022"),
     value: -258.24,
     payment: "Cash",
   },
   {
     type: "Maintenance",
     description: "Carro",
-    date: new Date("10/01/2022"),
+    date: new Date("10/08/2022"),
     value: -258.24,
     payment: "Cash",
   },
