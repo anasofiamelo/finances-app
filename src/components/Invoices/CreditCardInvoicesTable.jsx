@@ -4,16 +4,24 @@ import { formatParcels } from "../../utils";
 
 const CreditCardInvoicesTable = (props) => {
   const mappedFatura = props.invoices.map((invoice) => {
-    const { purchasedItem, purchaseValue, purchasedIn, timesPurchased } =
-      invoice;
+    let { purchasedItem, purchaseValue, purchasedIn, timesPurchased } = invoice;
+
+    purchaseValue = purchaseValue.toFixed(2);
+
     const oneInstallment = (purchaseValue / timesPurchased).toFixed(2);
+    const formattedPurchasedInDate = moment(purchasedIn).format("DD/MM/YYYY");
+
     return (
       <tr key={purchasedItem}>
         <td>{purchasedItem}</td>
-        <td>{moment(purchasedIn).format("DD/MM/YYYY")}</td>
-        <td>$ {oneInstallment}</td>
+        <td>{formattedPurchasedInDate}</td>
+        <td style={{ fontWeight: "500", color: "var(--green)" }}>
+          $ {oneInstallment}
+        </td>
         <td>{formatParcels(invoice, props.creditCard)}</td>
-        <td>$ {purchaseValue.toFixed(2)}</td>
+        <td style={{ fontWeight: "500", color: "var(--green)" }}>
+          $ {purchaseValue}
+        </td>
       </tr>
     );
   });

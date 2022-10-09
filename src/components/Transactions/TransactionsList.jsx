@@ -1,46 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import moment from "moment";
-import { BsFillCaretUpFill, BsFillCaretDownFill } from "react-icons/bs";
-import { Table } from "../../components";
+import { Table, ThWithSort } from "../../components";
 import { incomesIcons, expensesIcons } from "../../utils";
-import { useEffect } from "react";
 
 const TransactionsList = (props) => {
   const { transactions } = props;
 
-  const [showDecrescentDate, setShowDecrescentDate] = useState(false);
-  const [showDecrescentValue, setShowDecrescentValue] = useState(false);
   const [sortedTransactions, setSortedTransactions] = useState(transactions);
 
-  const toggleDecrescentDateHandler = () =>
-    setShowDecrescentDate((prev) => !prev);
-
-  const toggleDecrescentValueHandler = () =>
-    setShowDecrescentValue((prev) => !prev);
-
   useEffect(() => {
-    const sortCrescentDate = () =>
-      transactions.sort((a, b) => a.date.getTime() - b.date.getTime());
-
-    const sortDecrescentDate = () =>
-      transactions.sort((a, b) => b.date.getTime() - a.date.getTime());
-
-    setSortedTransactions(
-      showDecrescentDate ? sortDecrescentDate() : sortCrescentDate()
-    );
-  }, [showDecrescentDate, transactions]);
-
-  useEffect(() => {
-    const sortCrescentValue = () =>
-      transactions.sort((a, b) => a.value - b.value);
-
-    const sortDecrescentValue = () =>
-      transactions.sort((a, b) => b.value - a.value);
-
-    setSortedTransactions(
-      showDecrescentValue ? sortDecrescentValue() : sortCrescentValue()
-    );
-  }, [showDecrescentValue, transactions]);
+    setSortedTransactions(transactions);
+  }, [transactions]);
 
   const mappedTransactions = sortedTransactions.map((transaction) => {
     let { value, date, payment, description, type } = transaction;
@@ -52,7 +22,7 @@ const TransactionsList = (props) => {
     const isIncome = value > 0;
 
     return (
-      <tr>
+      <tr key={Math.random(1)}>
         <td>{isIncome ? incomesIcons[type] : expensesIcons[type]}</td>
         <td>{formattedDate}</td>
         <td>{description}</td>
@@ -62,36 +32,30 @@ const TransactionsList = (props) => {
     );
   });
 
+  const changeArrayHandler = (transactions) => {
+    setSortedTransactions(transactions);
+  };
+
   return (
     <Table
       thead={
         <>
           <th>Type</th>
-          <th
-            onClick={toggleDecrescentDateHandler}
-            className="space-between row"
-            style={{ cursor: "pointer" }}
+          <ThWithSort
+            array={transactions}
+            sortKey="date"
+            onChangeArray={changeArrayHandler}
           >
             Date
-            {showDecrescentDate ? (
-              <BsFillCaretDownFill />
-            ) : (
-              <BsFillCaretUpFill />
-            )}
-          </th>
+          </ThWithSort>
           <th>Description</th>
-          <th
-            onClick={toggleDecrescentValueHandler}
-            className="space-between row"
-            style={{ cursor: "pointer" }}
+          <ThWithSort
+            array={transactions}
+            sortKey="value"
+            onChangeArray={changeArrayHandler}
           >
             Value
-            {showDecrescentValue ? (
-              <BsFillCaretUpFill />
-            ) : (
-              <BsFillCaretDownFill />
-            )}
-          </th>
+          </ThWithSort>
           <th>Payment</th>
         </>
       }

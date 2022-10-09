@@ -25,6 +25,7 @@ import AddGoal from "./Goals/AddGoal";
 import Navbar from "./layout/Navbar";
 import Modal from "./layout/Modal";
 import Table from "./ui/Table";
+import ThWithSort from "./ui/Table/ThWithSort";
 import Container from "./layout/Container";
 
 import Input from "./ui/Input";
@@ -57,6 +58,7 @@ export {
   Container,
   Navbar,
   Table,
+  ThWithSort,
   Select,
   Button,
   Input,

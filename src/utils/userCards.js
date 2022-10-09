@@ -1,12 +1,12 @@
 const userCards = [
   {
     cardLimit: 200.0,
-    cardClosureDate: 28,
+    cardClosureDate: 24,
     cardDueDate: 4,
     cardName: "Nubank",
     invoices: [
       {
-        purchasedIn: new Date("01/21/2022"),
+        purchasedIn: new Date("01/28/2022"),
         timesPurchased: 24,
         purchasedItem: "Bag",
         purchaseValue: 5000,
@@ -19,7 +19,7 @@ const userCards = [
         purchaseValue: 1000,
       },
       {
-        purchasedIn: new Date("01/21/2022"),
+        purchasedIn: new Date("01/28/2022"),
         timesPurchased: 6,
         purchasedItem: "Mega Hair",
         purchaseValue: 800,

@@ -103,6 +103,7 @@ const transactionTypes = (state, action, transactions) => {
           filteredTransactions: monthTransactions(state.month),
         };
       }
+
       return {
         ...state,
         filteredTransactions: transactions.filter((transaction) =>

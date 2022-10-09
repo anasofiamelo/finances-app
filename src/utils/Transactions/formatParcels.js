@@ -1,25 +1,43 @@
 import moment from "moment";
+
 const formatParcels = (invoice, creditCard) => {
+  const { cardClosureDate } = creditCard;
   const { timesPurchased, purchasedIn } = invoice;
-  const today = moment().date();
   const dayPurchased = moment(purchasedIn).date();
 
-  const chargedIn =
-    creditCard.cardClosureDate > dayPurchased
-      ? moment(purchasedIn).add(1, "months")
-      : moment(purchasedIn);
+  const chargedIn = () => {
+    const closureDayBiggerThanPurchaseDay = cardClosureDate > dayPurchased;
+    const purchaseDayBiggerThanClosureDay = cardClosureDate < dayPurchased;
+    const purchaseDayHasTwoDigits = dayPurchased.toString().length === 2;
+    const purchaseDayHasOneDigit = dayPurchased.toString().length === 1;
 
-  // const thisMonth =
-  //   today > foundCreditCard.cardDueDay ? moment() : moment().add(1, "months");
+    if (closureDayBiggerThanPurchaseDay && purchaseDayHasTwoDigits) {
+      return moment(purchasedIn);
+    }
+    if (closureDayBiggerThanPurchaseDay && purchaseDayHasOneDigit) {
+      return moment(purchasedIn).add(1, "months");
+    }
 
-  //_______________________________________________________________________________;
-  //SEMPRE AGORA/COMPRA ; OUTUBRO/AGOSTO; COMPREI: DEZEMBRO AGORA: MARÇO 2 - 11 = -9
-  // if(numero < 0) 12 + numero = result
-  //_______________________________________________________________________________;
+    if (purchaseDayBiggerThanClosureDay) {
+      return moment(purchasedIn).add(1, "months");
+    }
+  };
 
-  const endsIn = moment(chargedIn).add(timesPurchased, "months").format("MMM");
+  const endsIn = moment(chargedIn())
+    .add(timesPurchased, "months")
+    .format("MMM");
 
-  return `${timesPurchased}x (${chargedIn.format("MMM")}/${endsIn})`;
+  const formattedChargeMonth = chargedIn().format("MMM");
+
+  return `${timesPurchased}x (${formattedChargeMonth}/${endsIn})`;
 };
 
 export default formatParcels;
+
+// const thisMonth =
+//   today > foundCreditCard.cardDueDay ? moment() : moment().add(1, "months");
+
+//_______________________________________________________________________________;
+//SEMPRE AGORA/COMPRA ; OUTUBRO/AGOSTO; COMPREI: DEZEMBRO AGORA: MARÇO 2 - 11 = -9
+// if(numero < 0) 12 + numero = result
+//_______________________________________________________________________________;

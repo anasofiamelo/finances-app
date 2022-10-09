@@ -141,7 +141,7 @@ a {
 
 .credit-card_page_grid {
   gap: 1rem;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2.2fr 0.8fr;
   min-height: 0;
 }
 
