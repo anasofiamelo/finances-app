@@ -18,7 +18,7 @@ const Navbar = (props) => {
   ));
 
   return (
-    <nav>
+    <nav className="space-between">
       <ul className="navbar_links">{mappedNavlinks}</ul>
 
       <ul className="navbar_buttons">

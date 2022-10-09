@@ -1,6 +1,6 @@
-import { Transaction, Container } from "../components";
+import { Transaction, TransactionValueCard } from "../components";
 import { useTransactions } from "../context/finances.context";
-import { BsReception3, BsArrowUpRight, BsArrowDownLeft } from "react-icons/bs";
+import { BsReception3, BsGraphDown, BsGraphUp } from "react-icons/bs";
 
 const Balance = () => {
   const { transactions, totalBalance, totalIncomes, totalExpenses } =
@@ -9,60 +9,46 @@ const Balance = () => {
   return (
     <>
       <div className="balance_grid">
-        <Container>
-          <div className="column">
-            <h3 className="subtitle space-between">
-              Current balance
-              <span>
-                <BsReception3
-                  style={{
-                    borderBottom: "1px solid var(--blue)",
-                    color: "var(--blue)",
-                  }}
-                />
-              </span>
-            </h3>
-            <h2 className="subtitle">$ {totalBalance}</h2>
-          </div>
-        </Container>
+        <TransactionValueCard
+          valueType="Current balance"
+          value={totalBalance}
+          icon={
+            <BsReception3
+              style={{
+                borderBottom: "1px solid var(--blue)",
+                color: "var(--blue)",
+              }}
+            />
+          }
+        />
 
-        <Container>
-          <div className="column">
-            <h3 className="subtitle space-between">
-              Incomes
-              <span>
-                <BsArrowUpRight
-                  style={{
-                    borderBottom: "1px solid var(--green)",
-                    color: "var(--green)",
-                  }}
-                />
-              </span>
-            </h3>
-            <h2 className="subtitle">$ {totalIncomes}</h2>
-          </div>
-        </Container>
+        <TransactionValueCard
+          valueType="Incomes"
+          value={totalIncomes}
+          icon={
+            <BsGraphUp
+              style={{
+                color: "var(--green)",
+              }}
+            />
+          }
+        />
 
-        <Container>
-          <div className="column">
-            <h3 className="subtitle space-between">
-              Expenses
-              <span>
-                <BsArrowDownLeft
-                  style={{
-                    borderBottom: "1px solid var(--red)",
-                    color: "var(--red)",
-                  }}
-                />
-              </span>
-            </h3>
-            <h2 className="subtitle">$ {totalExpenses}</h2>
-          </div>
-        </Container>
+        <TransactionValueCard
+          valueType="Expenses"
+          value={totalExpenses}
+          icon={
+            <BsGraphDown
+              style={{
+                color: "var(--red)",
+              }}
+            />
+          }
+        />
       </div>
 
       <Transaction
-        balanceType="Balance"
+        balanceType="Your recent activities"
         transactions={transactions}
         balanceThead={["Category", "Description", "Value", "Date"]}
       />

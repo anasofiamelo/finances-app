@@ -1,5 +1,5 @@
-import typeofExpenses from "./Transactions/typeofExpenses";
-import typeofIncomes from "./Transactions/typeofIncomes";
+import typeofExpenses, { expensesIcons } from "./Transactions/typeofExpenses";
+import typeofIncomes, { incomesIcons } from "./Transactions/typeofIncomes";
 import formatParcels from "./Transactions/formatParcels";
 import monthNames, { monthOptions } from "./Date/months";
 import years, { yearOptions } from "./Date/years";
@@ -15,5 +15,7 @@ export {
   userCards,
   typeofExpenses,
   typeofIncomes,
+  incomesIcons,
+  expensesIcons,
   formatParcels,
 };

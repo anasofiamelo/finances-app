@@ -1,18 +1,26 @@
-import {
-  BsHouse,
-  BsShieldPlus,
-  BsTools,
-  BsPhone,
-  BsFillBagFill,
-  BsShop,
-} from "react-icons/bs";
+import { BsCashCoin, BsThreeDots, BsBriefcase } from "react-icons/bs";
 
-const typeofIncomes = [
-  { value: "Salary", label: <BsHouse /> },
-  { value: "Commission", label: <BsShieldPlus /> },
-  { value: "Investment", label: <BsTools /> },
-  { value: "Gift", label: <BsPhone /> },
-  { value: "Work Benefit", label: <BsFillBagFill /> },
-];
+const typeofIncomes = ["Salary", "Benefit", "Others"];
+
+export const incomesIcons = {
+  Salary: (
+    <BsCashCoin
+      className="type_icons"
+      style={{ backgroundColor: "var(--green)" }}
+    />
+  ),
+  Benefit: (
+    <BsBriefcase
+      className="type_icons"
+      style={{ backgroundColor: "#8c2f39" }}
+    />
+  ),
+  Others: (
+    <BsThreeDots
+      className="type_icons"
+      style={{ color: "var(--dark-black)" }}
+    />
+  ),
+};
 
 export default typeofIncomes;

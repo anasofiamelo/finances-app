@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Modal, InputLabel, Select } from "../components";
-import { useTransactions } from "../context/finances.context";
+import { Modal, InputLabel, Select } from "../../components";
+import { useTransactions } from "../../context/finances.context";
 import {
   BsFillCalculatorFill,
   BsJournalText,
@@ -49,20 +49,17 @@ const AddTransaction = (props) => {
     };
 
     if (!transactionValue) return;
-
     addTransactionHandler(transaction);
     props.onClose();
   };
 
   const mappedTransactionCategories = props.transactionCategories.map(
-    ({ value }) => (
+    (value) => (
       <option key={value} value={value}>
         {value}
       </option>
     )
   );
-
-  console.log(transactionCategory);
 
   return (
     <Modal onClose={props.onClose}>

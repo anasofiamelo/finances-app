@@ -1,17 +1,17 @@
 import moment from "moment";
 const currentYear = moment().year();
-// const currentMonth = moment().month();
 
 const transactionTypes = (state, action, transactions) => {
+  const monthTransactions = (month) =>
+    transactions.filter(
+      (transaction) => String(transaction.date.getMonth()) == month
+    );
+
   const ACTION_TYPES = {
     TRANSACTIONS_UPDATE: (() => {
       return {
         ...state,
-        filteredTransactions: transactions.filter(
-          (transaction) =>
-            transaction.date.getFullYear() === state.year &&
-            transaction.date.getMonth() === state.month
-        ),
+        filteredTransactions: monthTransactions(state.month),
       };
     })(),
     ADD_INCOMES: (() => {
@@ -90,14 +90,23 @@ const transactionTypes = (state, action, transactions) => {
       };
     })(),
     CHOOSE_MONTH: (() => {
-      console.log(state.year);
       return {
         ...state,
         month: action.month,
-        filteredTransactions: transactions.filter(
-          (transaction) =>
-            String(transaction.date.getMonth()) == action.month &&
-            String(transaction.date.getFullYear()) == state.year
+        filteredTransactions: monthTransactions(action.month),
+      };
+    })(),
+    FILTER_DESCRIPTION: (() => {
+      if (action.filterInput === "") {
+        return {
+          ...state,
+          filteredTransactions: monthTransactions(state.month),
+        };
+      }
+      return {
+        ...state,
+        filteredTransactions: transactions.filter((transaction) =>
+          transaction.description.includes(action.filterInput)
         ),
       };
     })(),

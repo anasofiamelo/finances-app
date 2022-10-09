@@ -46,13 +46,11 @@ input {
 .column,
 .row,
 .form-group,
-nav,
 ul,
 .space-between {
   display: flex;
 }
 
-nav,
 .space-between {
   justify-content: space-between;
 }
@@ -89,7 +87,6 @@ ul,
 .input-icon,
 .subtitle {
   color: var(--grey);
-  font-size: 1.2rem;
 }
 
 .subtitle,
@@ -112,10 +109,6 @@ body {
   border-radius: 1rem;
   box-shadow: 2px 2px 5px var(--light-grey);
   margin: 1rem 0;
-}
-
-h3 {
-  font-size: 3rem;
 }
 
 ul {
@@ -173,6 +166,7 @@ a {
 
 .input-icon {
   opacity: 0.6;
+  font-size: 1.2rem;
 }
 
 .button-icon {
@@ -181,24 +175,24 @@ a {
 
 .subtitle {
   width: 100%;
+  color: var(--dark-black);
 }
-
-h2.subtitle {
-  font-size: 1.8rem;
-  color: var(--dark);
-}
-
 .card_subtitle {
   border-bottom: 2px solid var(--blue);
   width: fit-content;
   margin-bottom: 1rem;
 }
-
 .label {
   color: var(--light-grey);
   font-size: 0.85rem;
 }
-
 .credit-card_invoices_title {
   color: var(--blue);
+}
+.type_icons {
+  font-size: 1.7rem;
+  color: var(--white);
+  border-radius: 50%;
+  padding: 0.2rem;
+  margin-top: 0.3rem;
 }

@@ -13,6 +13,7 @@ const InputLabel = (props) => {
             width: "100%",
             margin: "0",
             ...props.style,
+            ...props.inputStyle,
           }}
           id={props.id}
           type={props.type || "text"}

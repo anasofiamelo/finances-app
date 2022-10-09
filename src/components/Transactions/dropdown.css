@@ -1,6 +1,9 @@
+.dropdown-container,
+.dropdown-item {
+  width: 100%;
+}
 .dropdown-container {
   position: absolute;
-  width: 100%;
   margin: 0;
   animation: teste 0.2s linear;
   background-color: var(--white);
@@ -8,22 +11,18 @@
   box-shadow: 1px 1px 3px var(--grey);
   border-radius: 0.4rem;
 }
-
 .dropdown-item {
   transition: all 0.2s;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 0.4rem;
-  width: 100%;
   font-size: 1rem;
   cursor: pointer;
 }
-
 .dropdown-item:hover {
   background-color: var(--light-grey);
 }
-
 @keyframes teste {
   0% {
     top: -20%;
