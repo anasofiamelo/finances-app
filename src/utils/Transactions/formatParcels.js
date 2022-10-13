@@ -24,7 +24,7 @@ const formatParcels = (invoice, creditCard) => {
   };
 
   const endsIn = moment(chargedIn())
-    .add(timesPurchased, "months")
+    .add(timesPurchased - 1, "months")
     .format("MMM");
 
   const formattedChargeMonth = chargedIn().format("MMM");

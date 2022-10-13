@@ -1,5 +1,5 @@
 {
-  "name": "react-portfolio-figma",
+  "name": "bills-tracker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,7 +15,6 @@
     "react-select": "^5.4.0",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://anasofiamelo.github.io/me",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
@@ -41,8 +40,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^4.0.0"
   }
 }

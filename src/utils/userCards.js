@@ -46,5 +46,37 @@ const userCards = [
       },
     ],
   },
+  {
+    cardLimit: 5000,
+    cardClosureDate: 4,
+    cardDueDay: 12,
+    cardName: "Nubank Nicholas",
+    invoices: [
+      {
+        purchasedIn: new Date("07/01/2022"),
+        timesPurchased: 3,
+        purchasedItem: "Escrivaninha",
+        purchaseValue: 215,
+      },
+      {
+        purchasedIn: new Date("07/01/2022"),
+        timesPurchased: 3,
+        purchasedItem: "Liquidificador",
+        purchaseValue: 76.38,
+      },
+      {
+        purchasedIn: new Date("07/01/2022"),
+        timesPurchased: 7,
+        purchasedItem: "Comoda",
+        purchaseValue: 398.65,
+      },
+      {
+        purchasedIn: new Date("08/01/2022"),
+        timesPurchased: 8,
+        purchasedItem: "Oculos Sofia",
+        purchaseValue: 750,
+      },
+    ],
+  },
 ];
 export default userCards;

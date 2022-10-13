@@ -23,7 +23,7 @@ function App() {
       />
       <div onClick={hideAddTransactionHandler}>
         <Routes>
-          <Route path="/transactions" element={<Balance />} />
+          <Route path="/" element={<Balance />} />
           <Route path="/credit-card" element={<CreditCardPage />} />
           <Route
             path="/credit-card/:creditCard"
