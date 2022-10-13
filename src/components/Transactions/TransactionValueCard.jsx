@@ -5,7 +5,7 @@ const TransactionValueCard = (props) => {
     <Container>
       <div className="column">
         <h2 className="subtitle space-between">
-          {props.valueType}
+          {props.title}
           <span>{props.icon}</span>
         </h2>
         <h2 className="subtitle">$ {props.value}</h2>

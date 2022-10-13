@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Balance, Navbar, Goals, CreditCardInvoices } from "./components";
-import { CreditCardPage } from "./pages";
+import { CreditCardPage, Budget } from "./pages";
 
 function App() {
   const [showAddTransaction, setShowAddTransaction] = useState(false);
@@ -29,7 +29,8 @@ function App() {
             path="/credit-card/:creditCard"
             element={<CreditCardInvoices />}
           />
-          <Route path="/metas" element={<Goals />} />
+          <Route path="/goals" element={<Goals />} />
+          <Route path="/budget" element={<Budget />} />
         </Routes>
       </div>
     </>

@@ -1,4 +1,4 @@
-import { Transaction, TransactionValueCard } from "../components";
+import { Transaction, TransactionValueCard, Reports } from "../components";
 import { useTransactions } from "../context/finances.context";
 import { BsReception3, BsGraphDown, BsGraphUp } from "react-icons/bs";
 
@@ -6,44 +6,40 @@ const Balance = () => {
   const { transactions, totalBalance, totalIncomes, totalExpenses } =
     useTransactions();
 
+  const customStyle = (color) => {
+    return { color: `var(--${color})` };
+  };
+
+  const balanceIcon = (
+    <BsReception3
+      style={{
+        borderBottom: "1px solid var(--blue)",
+        ...customStyle("blue"),
+      }}
+    />
+  );
+  const incomesIcon = <BsGraphUp style={customStyle("green")} />;
+  const expensesIcon = <BsGraphDown style={customStyle("red")} />;
+
   return (
     <>
       <div className="balance_grid">
         <TransactionValueCard
-          valueType="Current balance"
+          title="Current balance"
           value={totalBalance}
-          icon={
-            <BsReception3
-              style={{
-                borderBottom: "1px solid var(--blue)",
-                color: "var(--blue)",
-              }}
-            />
-          }
+          icon={balanceIcon}
         />
 
         <TransactionValueCard
-          valueType="Incomes"
+          title="Incomes"
           value={totalIncomes}
-          icon={
-            <BsGraphUp
-              style={{
-                color: "var(--green)",
-              }}
-            />
-          }
+          icon={incomesIcon}
         />
 
         <TransactionValueCard
-          valueType="Expenses"
+          title="Expenses"
           value={totalExpenses}
-          icon={
-            <BsGraphDown
-              style={{
-                color: "var(--red)",
-              }}
-            />
-          }
+          icon={expensesIcon}
         />
       </div>
 
@@ -52,6 +48,8 @@ const Balance = () => {
         transactions={transactions}
         balanceThead={["Category", "Description", "Value", "Date"]}
       />
+
+      <Reports transactions={transactions} />
     </>
   );
 };

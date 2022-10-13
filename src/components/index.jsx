@@ -10,6 +10,7 @@ import AddTransactionDropdown from "./Transactions/AddTransactionDropdown";
 import AddTransaction from "./Transactions/AddTransaction";
 
 import Balance from "./Balance";
+import Reports from "./Reports";
 
 import CreditCardList from "./Invoices/CreditCardList";
 import CreditCardInvoices from "./Invoices/CreditCardInvoices";
@@ -39,6 +40,7 @@ export {
   Expenses,
   AddExpense,
   Balance,
+  Reports,
   Transaction,
   TransactionsList,
   TransactionHeader,

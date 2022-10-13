@@ -6,8 +6,8 @@ import { FiPlusCircle } from "react-icons/fi";
 const navlinks = [
   { title: "Transactions", link: "/transactions" },
   { title: "Credit Card", link: "/credit-card" },
-  { title: "Metas", link: "/metas" },
-  { title: "Orçamento", link: "/orcamento" },
+  { title: "Goals", link: "/goals" },
+  { title: "Budget", link: "/budget" },
 ];
 
 const Navbar = (props) => {
