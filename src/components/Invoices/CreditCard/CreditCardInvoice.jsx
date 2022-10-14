@@ -3,9 +3,11 @@ import moment from "moment";
 
 const CreditCardInvoice = (props) => {
   const { invoice } = props;
-  const { item, boughtIn, timesPurchased, value } = invoice;
+  const { boughtIn, chargeDate, endDate } = invoice;
 
   const formattedInvoiceDate = moment(boughtIn).format("MMMM, YYYY");
+  const formattedChargeDate = chargeDate.format("MMMM, YYYY");
+  const formattedEndDate = endDate.format("MMMM, YYYY");
 
   return (
     <>
@@ -13,7 +15,8 @@ const CreditCardInvoice = (props) => {
         <div style={{ width: "100%" }}>
           <h2 className="subtitle">{invoice.item}</h2>
           <p>Bought in: {formattedInvoiceDate}</p>
-          <p>Bought in: {formattedInvoiceDate}</p>
+          <p>Charged in: {formattedChargeDate}</p>
+          <p>Ends in: {formattedEndDate}</p>
         </div>
       </Modal>
     </>

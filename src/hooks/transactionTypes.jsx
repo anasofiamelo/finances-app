@@ -107,7 +107,9 @@ const transactionTypes = (state, action, transactions) => {
       return {
         ...state,
         filteredTransactions: transactions.filter((transaction) =>
-          transaction.description.includes(action.filterInput)
+          transaction.description
+            .toLowerCase()
+            .includes(action.filterInput?.toLowerCase())
         ),
       };
     })(),
