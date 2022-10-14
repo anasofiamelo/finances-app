@@ -18,7 +18,10 @@ import CreditCardCard from "./Invoices/CreditCardCard";
 import AddCreditCard from "./Invoices/AddCreditCard";
 import AddCreditCardPurchase from "./Invoices/AddCreditCardPurchase";
 import CreditCardInvoiceModal from "./Invoices/CreditCardInvoiceModal";
-import CreditCardInvoicesTable from "./Invoices/CreditCardInvoicesTable";
+import CreditCardInvoicesTable from "./Invoices/CreditCardInvoicesList";
+import CreditCardDetails from "./Invoices/CreditCard/CreditCardDetails";
+import CreditCardInvoice from "./Invoices/CreditCard/CreditCardInvoice";
+import CreditCardLimit from "./Invoices/CreditCard/Limit/CreditCardLimit";
 
 import Goals from "./Goals/Goals";
 import AddGoal from "./Goals/AddGoal";
@@ -52,6 +55,9 @@ export {
   CreditCardCard,
   AddCreditCard,
   AddCreditCardPurchase,
+  CreditCardLimit,
+  CreditCardInvoice,
+  CreditCardDetails,
   CreditCardInvoicesTable,
   CreditCardInvoiceModal,
   Goals,

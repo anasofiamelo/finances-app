@@ -7,6 +7,7 @@ import { CreditCardContextProvider } from "./context/credit_card.context";
 import "./index.css";
 import "./table.css";
 import "./buttons.css";
+import "./components/Invoices/CreditCard/credit_card.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

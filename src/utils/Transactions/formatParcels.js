@@ -1,35 +1,45 @@
 import moment from "moment";
 
-const formatParcels = (invoice, creditCard) => {
+export const calcDateOfCharge = (creditCard, invoice) => {
   const { cardClosureDate } = creditCard;
-  const { timesPurchased, purchasedIn } = invoice;
-  const dayPurchased = moment(purchasedIn).date();
+  const { boughtIn } = invoice;
+  const dayPurchased = moment(boughtIn).date();
 
-  const chargedIn = () => {
-    const closureDayBiggerThanPurchaseDay = cardClosureDate > dayPurchased;
-    const purchaseDayBiggerThanClosureDay = cardClosureDate < dayPurchased;
-    const purchaseDayHasTwoDigits = dayPurchased.toString().length === 2;
-    const purchaseDayHasOneDigit = dayPurchased.toString().length === 1;
+  const closureDayBiggerThanPurchaseDay = cardClosureDate > dayPurchased;
+  const purchaseDayBiggerThanClosureDay = cardClosureDate < dayPurchased;
+  const purchaseDayHasTwoDigits = dayPurchased.toString().length === 2;
+  const purchaseDayHasOneDigit = dayPurchased.toString().length === 1;
 
-    if (closureDayBiggerThanPurchaseDay && purchaseDayHasTwoDigits) {
-      return moment(purchasedIn);
-    }
-    if (closureDayBiggerThanPurchaseDay && purchaseDayHasOneDigit) {
-      return moment(purchasedIn).add(1, "months");
-    }
+  if (closureDayBiggerThanPurchaseDay && purchaseDayHasTwoDigits) {
+    return moment(boughtIn);
+  }
 
-    if (purchaseDayBiggerThanClosureDay) {
-      return moment(purchasedIn).add(1, "months");
-    }
-  };
+  if (closureDayBiggerThanPurchaseDay && purchaseDayHasOneDigit) {
+    return moment(boughtIn).add(1, "months");
+  }
 
-  const endsIn = moment(chargedIn())
-    .add(timesPurchased - 1, "months")
-    .format("MMM");
+  if (purchaseDayBiggerThanClosureDay) {
+    return moment(boughtIn).add(1, "months");
+  }
+};
 
-  const formattedChargeMonth = chargedIn().format("MMM");
+export const calcDateOfEnd = (invoice, chargedIn) => {
+  const { timesPurchased } = invoice;
 
-  return `${timesPurchased}x (${formattedChargeMonth}/${endsIn})`;
+  return moment(chargedIn).add(timesPurchased - 1, "months");
+};
+
+const formatParcels = (invoice, creditCard) => {
+  const { timesPurchased } = invoice;
+
+  const chargedIn = calcDateOfCharge(creditCard, invoice);
+
+  const endsIn = calcDateOfEnd(invoice, chargedIn);
+
+  const formattedChargeMonth = chargedIn.format("MMM");
+  const formattedEndMonth = endsIn.format("MMM");
+
+  return `${timesPurchased}x (${formattedChargeMonth}/${formattedEndMonth})`;
 };
 
 export default formatParcels;

@@ -1,5 +1,4 @@
 import { Container } from "../../components";
-import moment from "moment";
 import { BsCreditCard } from "react-icons/bs";
 
 const CreditCardCard = (props) => {
