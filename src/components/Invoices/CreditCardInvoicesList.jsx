@@ -10,22 +10,26 @@ import moment from "moment";
 
 const CreditCardInvoicesTable = (props) => {
   const { creditCard } = props;
-  const invoices = formatInvoices(creditCard);
 
-  const [sortedInvoices, setSortedInvoices] = useState(invoices);
+  const formattedInvoices = formatInvoices(creditCard);
+
+  const [sortedInvoices, setSortedInvoices] = useState(formattedInvoices);
   const [detailedInvoice, setDetailedInvoice] = useState(null);
 
   const showDetailedInvoiceHandler = (event) => {
     const itemName = event.target.parentElement.firstChild.innerText;
-    const invoice = invoices.find((invoice) => invoice.item === itemName);
+    const invoice = formattedInvoices.find(
+      (invoice) => invoice.item === itemName
+    );
     setDetailedInvoice(invoice);
   };
 
   const hideDetailedInvoiceHandler = () => setDetailedInvoice(null);
 
   useEffect(() => {
-    setSortedInvoices(invoices);
-  }, [invoices]);
+    const updatedInvoices = formatInvoices(creditCard);
+    setSortedInvoices(updatedInvoices);
+  }, [creditCard]);
 
   const mappedFatura = sortedInvoices.map((invoice) => {
     const { item, value, boughtIn, parcelValue } = invoice;
@@ -45,8 +49,8 @@ const CreditCardInvoicesTable = (props) => {
     );
   });
 
-  const changeInvoicesHandler = (invoices) => {
-    setSortedInvoices(invoices);
+  const changeInvoicesHandler = (formattedInvoices) => {
+    setSortedInvoices(formattedInvoices);
   };
 
   return (
@@ -57,7 +61,7 @@ const CreditCardInvoicesTable = (props) => {
             <th>Item</th>
             <ThWithSort
               comparableKey="boughtIn"
-              sortedList={invoices}
+              sortedList={formattedInvoices}
               onToggle={changeInvoicesHandler}
             >
               Date
@@ -66,7 +70,7 @@ const CreditCardInvoicesTable = (props) => {
             <th>Parcels</th>
             <ThWithSort
               comparableKey="value"
-              sortedList={invoices}
+              sortedList={formattedInvoices}
               onToggle={changeInvoicesHandler}
             >
               Value
