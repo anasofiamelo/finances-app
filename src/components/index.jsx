@@ -16,7 +16,7 @@ import CreditCardList from "./Invoices/CreditCardList";
 import CreditCardInvoices from "./Invoices/CreditCardInvoices";
 import CreditCardCard from "./Invoices/CreditCardCard";
 import AddCreditCard from "./Invoices/AddCreditCard";
-import AddCreditCardPurchase from "./Invoices/AddCreditCardPurchase";
+import AddCreditCardPurchaseModal from "./Invoices/AddCreditCardPurchaseModal";
 import CreditCardInvoiceModal from "./Invoices/CreditCardInvoiceModal";
 import CreditCardInvoicesTable from "./Invoices/CreditCardInvoicesList";
 import CreditCardDetails from "./Invoices/CreditCard/CreditCardDetails";
@@ -54,7 +54,7 @@ export {
   CreditCardList,
   CreditCardCard,
   AddCreditCard,
-  AddCreditCardPurchase,
+  AddCreditCardPurchaseModal,
   CreditCardLimit,
   CreditCardInvoice,
   CreditCardDetails,

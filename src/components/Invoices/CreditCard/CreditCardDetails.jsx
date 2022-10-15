@@ -26,7 +26,7 @@ const CreditCardDetails = (props) => {
         </div>
       </Container>
 
-      <CreditCardLimit creditCard={creditCard}/>
+      <CreditCardLimit creditCard={creditCard} />
     </>
   );
 };

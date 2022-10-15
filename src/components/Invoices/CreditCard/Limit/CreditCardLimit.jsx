@@ -2,21 +2,28 @@ import { useState } from "react";
 import {
   Container,
   Button,
-  AddCreditCardPurchase,
+  AddCreditCardPurchaseModal,
 } from "../../../../components";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 
 const CreditCardLimit = (props) => {
   const { creditCard } = props;
+  const { invoices } = creditCard;
 
-  const [showAddCreditCardPurchase, setShowAddCreditCardPurchase] =
-    useState(false);
+  const usedLimit = invoices.reduce(
+    (prev, current) => prev + current.missingValue,
+    0
+  );
+
+  const availableLimit = creditCard.cardLimit - usedLimit;
+
+  const [showAddPurchaseModal, setShowAddPurchaseModal] = useState(false);
 
   const showAddCreditCardPurchaseHandler = () => {
-    setShowAddCreditCardPurchase(true);
+    setShowAddPurchaseModal(true);
   };
   const hideAddCreditCardPurchaseHandler = () => {
-    setShowAddCreditCardPurchase(false);
+    setShowAddPurchaseModal(false);
   };
 
   return (
@@ -24,13 +31,13 @@ const CreditCardLimit = (props) => {
       <Container>
         <h2 className="subtitle space-between">
           <span>Used limit</span>
-          <span style={{ color: "var(--red)" }}>$ {Number(30).toFixed(2)}</span>
+          <span style={{ color: "var(--red)" }}>$ {usedLimit.toFixed(2)}</span>
         </h2>
 
         <h3 className="subtitle space-between">
           <span>Available limit</span>
           <span style={{ color: "var(--green)" }}>
-            $ {Number(170).toFixed(2)}
+            $ {availableLimit.toFixed(2)}
           </span>
         </h3>
 
@@ -41,8 +48,8 @@ const CreditCardLimit = (props) => {
             onClick={showAddCreditCardPurchaseHandler}
           />
 
-          {showAddCreditCardPurchase && (
-            <AddCreditCardPurchase
+          {showAddPurchaseModal && (
+            <AddCreditCardPurchaseModal
               onClose={hideAddCreditCardPurchaseHandler}
               {...creditCard}
             />

@@ -5,52 +5,46 @@ import {
   ThWithSort,
   CreditCardInvoice,
 } from "../../components";
-import { formatParcels, formatInvoices } from "../../utils";
 import moment from "moment";
 
 const CreditCardInvoicesTable = (props) => {
   const { creditCard } = props;
+  const { invoices } = creditCard;
 
-  const formattedInvoices = formatInvoices(creditCard);
-
-  const [sortedInvoices, setSortedInvoices] = useState(formattedInvoices);
+  const [sortedInvoices, setSortedInvoices] = useState(invoices);
   const [detailedInvoice, setDetailedInvoice] = useState(null);
 
   const showDetailedInvoiceHandler = (event) => {
-    const itemName = event.target.parentElement.firstChild.innerText;
-    const invoice = formattedInvoices.find(
-      (invoice) => invoice.item === itemName
-    );
+    const itemName = event.target.parentElement.id;
+    const invoice = invoices.find((invoice) => invoice.item.includes(itemName));
     setDetailedInvoice(invoice);
   };
 
+  useEffect(() => {
+    setSortedInvoices(invoices);
+  }, [invoices]);
+
   const hideDetailedInvoiceHandler = () => setDetailedInvoice(null);
 
-  useEffect(() => {
-    const updatedInvoices = formatInvoices(creditCard);
-    setSortedInvoices(updatedInvoices);
-  }, [creditCard]);
-
   const mappedFatura = sortedInvoices.map((invoice) => {
-    const { item, value, boughtIn, parcelValue } = invoice;
+    const { item, boughtIn, parcelValue, paidFromTotal } = invoice;
 
     const formattedDate = moment(boughtIn).format("DD/MM/YYYY");
-    const parcel = formatParcels(invoice, creditCard);
     const valueStyle = { fontWeight: "500", color: "var(--green)" };
 
     return (
-      <tr onClick={showDetailedInvoiceHandler} key={item}>
-        <td>{item}</td>
+      <tr onClick={showDetailedInvoiceHandler} key={item} id={item}>
         <td>{formattedDate}</td>
+        <td>
+          {item} ({paidFromTotal})
+        </td>
         <td style={valueStyle}>$ {parcelValue}</td>
-        <td>{parcel}</td>
-        <td style={valueStyle}>$ {value.toFixed(2)}</td>
       </tr>
     );
   });
 
-  const changeInvoicesHandler = (formattedInvoices) => {
-    setSortedInvoices(formattedInvoices);
+  const changeInvoicesHandler = (invoices) => {
+    setSortedInvoices(invoices);
   };
 
   return (
@@ -58,23 +52,15 @@ const CreditCardInvoicesTable = (props) => {
       <Table
         thead={
           <>
-            <th>Item</th>
             <ThWithSort
               comparableKey="boughtIn"
-              sortedList={formattedInvoices}
+              sortedList={invoices}
               onToggle={changeInvoicesHandler}
             >
               Date
             </ThWithSort>
-            <th>Value/Month</th>
-            <th>Parcels</th>
-            <ThWithSort
-              comparableKey="value"
-              sortedList={formattedInvoices}
-              onToggle={changeInvoicesHandler}
-            >
-              Value
-            </ThWithSort>
+            <th>Description</th>
+            <th>Value</th>
           </>
         }
       >

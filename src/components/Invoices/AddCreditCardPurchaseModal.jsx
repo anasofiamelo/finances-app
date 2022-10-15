@@ -1,26 +1,20 @@
 import { useState } from "react";
 import { BsCreditCard, BsFillPlusCircleFill } from "react-icons/bs";
-import { InputLabel, Button, Modal } from "../../components";
+import { InputLabel, Button, Modal } from "..";
 import { useCreditCard } from "../../context/credit_card.context";
 
-const AddCreditCardPurchase = (props) => {
+const AddCreditCardPurchaseModal = (props) => {
   const context = useCreditCard();
 
   const [value, setValue] = useState(0);
   const [item, setItem] = useState();
   const [times, setTimes] = useState();
+  const [date, setDate] = useState();
 
-  const changeValueHandler = (e) => {
-    setValue(e.target.value);
-  };
-
-  const changeItemHandler = (e) => {
-    setItem(e.target.value);
-  };
-
-  const changeTimesHandler = (e) => {
-    setTimes(e.target.value);
-  };
+  const changeValueHandler = (e) => setValue(e.target.value);
+  const changeItemHandler = (e) => setItem(e.target.value);
+  const changeTimesHandler = (e) => setTimes(e.target.value);
+  const changeDateHandler = (e) => setDate(e.target.value);
 
   const submitNewPurchaseHandler = (e) => {
     e.preventDefault();
@@ -67,8 +61,8 @@ const AddCreditCardPurchase = (props) => {
         />
 
         <InputLabel
-          // value={item}
-          // onChange={changeItemHandler}
+          value={date}
+          onChange={changeDateHandler}
           label="When"
           type="date"
         />
@@ -92,4 +86,4 @@ const AddCreditCardPurchase = (props) => {
   );
 };
 
-export default AddCreditCardPurchase;
+export default AddCreditCardPurchaseModal;

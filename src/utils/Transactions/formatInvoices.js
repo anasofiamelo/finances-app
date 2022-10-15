@@ -1,3 +1,4 @@
+import moment from "moment";
 import { calcDateOfCharge, calcDateOfEnd } from "./formatParcels";
 
 const formatInvoices = (creditCard) => {
@@ -6,7 +7,20 @@ const formatInvoices = (creditCard) => {
     const parcelValue = (value / timesPurchased).toFixed(2);
     const chargeDate = calcDateOfCharge(creditCard, invoice);
     const endDate = calcDateOfEnd(invoice, chargeDate);
-    return { ...invoice, chargeDate, endDate, parcelValue };
+
+    const currentMonth = moment().month();
+    const paidParcels = currentMonth - chargeDate.month();
+    const missingValue = (timesPurchased - paidParcels) * parcelValue;
+    const paidFromTotal = `${paidParcels}/${timesPurchased}`;
+
+    return {
+      ...invoice,
+      chargeDate,
+      endDate,
+      parcelValue,
+      paidFromTotal,
+      missingValue,
+    };
   });
 };
 

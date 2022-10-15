@@ -4,27 +4,7 @@ const userCards = [
     cardClosureDate: 24,
     cardDueDate: 4,
     cardName: "Nubank",
-    invoices: [
-      {
-        boughtIn: new Date("01/28/2022"),
-        timesPurchased: 24,
-        item: "Bag",
-        value: 5000,
-        paid: "",
-      },
-      {
-        boughtIn: new Date("01/21/2022"),
-        timesPurchased: 10,
-        item: "PC",
-        value: 1000,
-      },
-      {
-        boughtIn: new Date("01/28/2022"),
-        timesPurchased: 6,
-        item: "Mega Hair",
-        value: 800,
-      },
-    ],
+    invoices: [],
   },
   {
     cardLimit: 24000.0,

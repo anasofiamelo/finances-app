@@ -5,6 +5,7 @@ const CreditCardContext = createContext({});
 
 export const CreditCardContextProvider = (props) => {
   const [cards, setCards] = useState(userCards);
+  console.log(cards);
 
   function addCardHandler(card) {
     setCards((prev) => [...prev, card]);
@@ -13,10 +14,13 @@ export const CreditCardContextProvider = (props) => {
   function addInvoiceToCreditCard(cardName, invoice) {
     let cardInvoices = getCardInvoices(cardName);
     cardInvoices = [...cardInvoices, invoice];
-    setCards((prev) => {
-      prev.find((card) => card.cardName === cardName)["invoices"] =
-        cardInvoices;
-      return prev;
+    setCards((cards) => {
+      return cards.map((card) => {
+        if (card.cardName === cardName) {
+          return { ...card, invoices: cardInvoices };
+        }
+        return card;
+      });
     });
   }
 

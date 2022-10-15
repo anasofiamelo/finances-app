@@ -51,3 +51,12 @@ export default formatParcels;
 //SEMPRE AGORA/COMPRA ; OUTUBRO/AGOSTO; COMPREI: DEZEMBRO AGORA: MARÇO 2 - 11 = -9
 // if(numero < 0) 12 + numero = result
 //_______________________________________________________________________________;
+
+//SEMPRE AGORA/COMPRA ; MARÇO/DEZEMBRO; AGORA: MARÇO COMPREI: DEZEMBRO  2 - 11 = -9
+// if(numero < 0) 12 + numero = result
+//_______________________________________________________________________________;
+
+//_______________________________________________________________________________;
+//SEMPRE AGORA/TERMINA ; MARÇO/SETEMBRO; COMPREI: DEZEMBRO AGORA: MARÇO! 2 - 11 = -9
+// if(numero < 0) 12 + numero = result
+//_______________________________________________________________________________;
