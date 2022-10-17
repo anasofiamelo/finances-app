@@ -2,7 +2,7 @@ const userCards = [
   {
     cardLimit: 200.0,
     cardClosureDate: 24,
-    cardDueDate: 4,
+    cardDueDay: 4,
     cardName: "Nubank",
     invoices: [],
   },

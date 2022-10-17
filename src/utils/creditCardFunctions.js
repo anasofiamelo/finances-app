@@ -1,5 +1,30 @@
 import moment from "moment";
 
+const creditCard = "";
+
+export const formatInvoices = (creditCard) => {
+  return creditCard.invoices.map((invoice) => {
+    const { value, timesPurchased } = invoice;
+    const parcelValue = (value / timesPurchased).toFixed(2);
+    const chargeDate = calcDateOfCharge(creditCard, invoice);
+    const endDate = calcDateOfEnd(invoice, chargeDate);
+
+    const currentMonth = moment().month();
+    const paidParcels = currentMonth - chargeDate.month();
+    const missingValue = (timesPurchased - paidParcels) * parcelValue;
+    const paidFromTotal = `${paidParcels}/${timesPurchased}`;
+
+    return {
+      ...invoice,
+      chargeDate,
+      endDate,
+      parcelValue,
+      paidFromTotal,
+      missingValue,
+    };
+  });
+};
+
 export const calcDateOfCharge = (creditCard, invoice) => {
   const { cardClosureDate } = creditCard;
   const { boughtIn } = invoice;
@@ -29,7 +54,7 @@ export const calcDateOfEnd = (invoice, chargedIn) => {
   return moment(chargedIn).add(timesPurchased - 1, "months");
 };
 
-const formatParcels = (invoice, creditCard) => {
+export const formatParcels = (invoice, creditCard) => {
   const { timesPurchased } = invoice;
 
   const chargedIn = calcDateOfCharge(creditCard, invoice);
@@ -42,21 +67,4 @@ const formatParcels = (invoice, creditCard) => {
   return `${timesPurchased}x (${formattedChargeMonth}/${formattedEndMonth})`;
 };
 
-export default formatParcels;
-
-// const thisMonth =
-//   today > foundCreditCard.cardDueDay ? moment() : moment().add(1, "months");
-
-//_______________________________________________________________________________;
-//SEMPRE AGORA/COMPRA ; OUTUBRO/AGOSTO; COMPREI: DEZEMBRO AGORA: MARÇO 2 - 11 = -9
-// if(numero < 0) 12 + numero = result
-//_______________________________________________________________________________;
-
-//SEMPRE AGORA/COMPRA ; MARÇO/DEZEMBRO; AGORA: MARÇO COMPREI: DEZEMBRO  2 - 11 = -9
-// if(numero < 0) 12 + numero = result
-//_______________________________________________________________________________;
-
-//_______________________________________________________________________________;
-//SEMPRE AGORA/TERMINA ; MARÇO/SETEMBRO; COMPREI: DEZEMBRO AGORA: MARÇO! 2 - 11 = -9
-// if(numero < 0) 12 + numero = result
-//_______________________________________________________________________________;
+export default creditCard;
