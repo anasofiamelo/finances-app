@@ -1,13 +1,8 @@
 import { useState, useEffect } from "react";
-import {
-  Container,
-  Table,
-  ThWithSort,
-  CreditCardInvoice,
-} from "../../components";
+import { Container, Table, ThWithSort, CreditCardInvoice } from "../..";
 import moment from "moment";
 
-const CreditCardInvoicesTable = (props) => {
+const InvoicesList = (props) => {
   const { creditCard } = props;
   const { invoices } = creditCard;
 
@@ -76,4 +71,4 @@ const CreditCardInvoicesTable = (props) => {
   );
 };
 
-export default CreditCardInvoicesTable;
+export default InvoicesList;

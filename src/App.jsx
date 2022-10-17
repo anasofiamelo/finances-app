@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Balance, Navbar, Goals, CreditCardInvoices } from "./components";
+import { Balance, Navbar, Goals, Invoices } from "./components";
 import { CreditCardPage, Budget } from "./pages";
 
 function App() {
@@ -25,10 +25,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Balance />} />
           <Route path="/credit-card" element={<CreditCardPage />} />
-          <Route
-            path="/credit-card/:creditCard"
-            element={<CreditCardInvoices />}
-          />
+          <Route path="/credit-card/:creditCard" element={<Invoices />} />
           <Route path="/goals" element={<Goals />} />
           <Route path="/budget" element={<Budget />} />
         </Routes>

@@ -1,7 +1,7 @@
-import { Modal } from "../../../components";
+import { Modal } from "../..";
 import moment from "moment";
 
-const CreditCardInvoice = (props) => {
+const Invoice = (props) => {
   const { invoice } = props;
   const { boughtIn, chargeDate, endDate } = invoice;
 
@@ -23,4 +23,4 @@ const CreditCardInvoice = (props) => {
   );
 };
 
-export default CreditCardInvoice;
+export default Invoice;

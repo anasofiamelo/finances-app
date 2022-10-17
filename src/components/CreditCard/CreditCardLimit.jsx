@@ -1,9 +1,5 @@
 import { useState } from "react";
-import {
-  Container,
-  Button,
-  AddCreditCardPurchaseModal,
-} from "../../../../components";
+import { Container, Button, AddInvoiceModal } from "../../components";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 
 const CreditCardLimit = (props) => {
@@ -49,7 +45,7 @@ const CreditCardLimit = (props) => {
           />
 
           {showAddPurchaseModal && (
-            <AddCreditCardPurchaseModal
+            <AddInvoiceModal
               onClose={hideAddCreditCardPurchaseHandler}
               {...creditCard}
             />

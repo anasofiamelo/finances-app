@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useCreditCard } from "../../context/credit_card.context";
-import { CreditCardInvoicesTable, CreditCardDetails } from "../../components";
-import { formatInvoices } from "../../utils";
+import { useCreditCard } from "../../../context/credit_card.context";
+import { InvoicesList, CreditCardDetails } from "../../../components";
+import { formatInvoices } from "../../../utils";
 
-const CreditCardInvoices = () => {
+const Invoices = () => {
   const { creditCard } = useParams();
   const { cards } = useCreditCard();
   const [updatedCards, setUpdatedCards] = useState(cards);
@@ -14,7 +14,6 @@ const CreditCardInvoices = () => {
   );
 
   const formattedInvoices = formatInvoices(foundCreditCard);
-  console.log("formattedInvoices from invoices", formattedInvoices);
 
   useEffect(() => {
     setUpdatedCards(cards);
@@ -25,11 +24,11 @@ const CreditCardInvoices = () => {
       <CreditCardDetails
         creditCard={{ ...foundCreditCard, invoices: formattedInvoices }}
       />
-      <CreditCardInvoicesTable
+      <InvoicesList
         creditCard={{ ...foundCreditCard, invoices: formattedInvoices }}
       />
     </div>
   );
 };
 
-export default CreditCardInvoices;
+export default Invoices;

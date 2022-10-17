@@ -12,16 +12,16 @@ import AddTransaction from "./Transactions/AddTransaction";
 import Balance from "./Balance";
 import Reports from "./Reports";
 
-import CreditCardList from "./Invoices/CreditCardList";
-import CreditCardInvoices from "./Invoices/CreditCardInvoices";
-import CreditCardCard from "./Invoices/CreditCardCard";
-import AddCreditCard from "./Invoices/AddCreditCard";
-import AddCreditCardPurchaseModal from "./Invoices/AddCreditCardPurchaseModal";
-import CreditCardInvoiceModal from "./Invoices/CreditCardInvoiceModal";
-import CreditCardInvoicesTable from "./Invoices/CreditCardInvoicesList";
-import CreditCardDetails from "./Invoices/CreditCard/CreditCardDetails";
-import CreditCardInvoice from "./Invoices/CreditCard/CreditCardInvoice";
-import CreditCardLimit from "./Invoices/CreditCard/Limit/CreditCardLimit";
+import CreditCardList from "./CreditCard/CreditCardList";
+import CreditCardCard from "./CreditCard/CreditCardCard";
+import AddCreditCard from "./CreditCard/AddCreditCard";
+import CreditCardDetails from "./CreditCard/CreditCardDetails";
+import CreditCardInvoice from "./CreditCard/Invoices/Invoice";
+import CreditCardLimit from "./CreditCard/CreditCardLimit";
+
+import Invoices from "./CreditCard/Invoices/Invoices";
+import InvoicesList from "./CreditCard/Invoices/InvoicesList";
+import AddInvoiceModal from "./CreditCard/Invoices/AddInvoiceModal";
 
 import Goals from "./Goals/Goals";
 import AddGoal from "./Goals/AddGoal";
@@ -44,22 +44,25 @@ export {
   AddExpense,
   Balance,
   Reports,
+  //transactions
   Transaction,
   TransactionsList,
   TransactionHeader,
   TransactionValueCard,
   AddTransaction,
   AddTransactionDropdown,
-  CreditCardInvoices,
+  //invoices
+  Invoices,
+  InvoicesList,
+  AddInvoiceModal,
+  //credit card
   CreditCardList,
   CreditCardCard,
   AddCreditCard,
-  AddCreditCardPurchaseModal,
   CreditCardLimit,
   CreditCardInvoice,
   CreditCardDetails,
-  CreditCardInvoicesTable,
-  CreditCardInvoiceModal,
+  //else
   Goals,
   AddGoal,
   Modal,

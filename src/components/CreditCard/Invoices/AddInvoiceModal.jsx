@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { BsCreditCard, BsFillPlusCircleFill } from "react-icons/bs";
-import { InputLabel, Button, Modal } from "..";
-import { useCreditCard } from "../../context/credit_card.context";
+import { InputLabel, Button, Modal } from "../..";
+import { useCreditCard } from "../../../context/credit_card.context";
 
-const AddCreditCardPurchaseModal = (props) => {
+const AddInvoiceModal = (props) => {
   const context = useCreditCard();
 
   const [value, setValue] = useState(0);
@@ -21,7 +21,7 @@ const AddCreditCardPurchaseModal = (props) => {
     const newPurchase = {
       boughtIn: new Date(),
       timesPurchased: Number(times),
-      item: item,
+      item,
       value: Number(value),
     };
 
@@ -86,4 +86,4 @@ const AddCreditCardPurchaseModal = (props) => {
   );
 };
 
-export default AddCreditCardPurchaseModal;
+export default AddInvoiceModal;

@@ -1,4 +1,4 @@
-import { Container, CreditCardLimit } from "../../../components";
+import { Container, CreditCardLimit } from "../../components";
 import { BsCreditCard } from "react-icons/bs";
 
 const CreditCardDetails = (props) => {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "../../components";
+import { Button } from "..";
 import { FiPlusCircle } from "react-icons/fi";
 import AddCreditCardModal from "./AddCreditCardModal";
 
