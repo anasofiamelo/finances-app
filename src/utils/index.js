@@ -7,6 +7,7 @@ import formatParcels, {
 } from "./Transactions/formatParcels";
 import monthNames, { monthOptions } from "./Date/months";
 import years, { yearOptions } from "./Date/years";
+import current from "./Date/currentDate";
 import finances from "./finances";
 import userCards from "./userCards";
 import budget from "./budget";
@@ -16,6 +17,7 @@ export {
   monthOptions,
   years,
   yearOptions,
+  current,
   finances,
   userCards,
   budget,

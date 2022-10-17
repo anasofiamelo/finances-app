@@ -1,9 +1,16 @@
 import { Container, CreditCardLimit } from "../../components";
 import { BsCreditCard } from "react-icons/bs";
+import { current } from "../../utils";
 
 const CreditCardDetails = (props) => {
   const { creditCard } = props;
-  const { cardName, cardLimit } = creditCard;
+  const { cardName, cardLimit, cardDueDay } = creditCard;
+  const { day, month, fullMonth } = current;
+
+  const passedDueDate = day > cardDueDay;
+  const dueDate = passedDueDate
+    ? `${cardDueDay}/${month + 1}`
+    : `${cardDueDay}/${month}`;
 
   return (
     <>
@@ -24,6 +31,9 @@ const CreditCardDetails = (props) => {
             Limit of <b>${cardLimit.toFixed(2)}</b>
           </h3>
         </div>
+
+        <p>Invoices of {fullMonth}</p>
+        <p>Overdues in: {dueDate}</p>
       </Container>
 
       <CreditCardLimit creditCard={creditCard} />
