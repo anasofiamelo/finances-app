@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { BsCreditCard, BsFillPlusCircleFill } from "react-icons/bs";
-import { InputLabel, Button, Modal } from "../..";
+import { InputLabel, AddContainer } from "../..";
 import { useCreditCard } from "../../../context/credit_card.context";
 
 const AddInvoiceModal = (props) => {
@@ -32,57 +31,41 @@ const AddInvoiceModal = (props) => {
   };
 
   return (
-    <Modal onClose={props.onClose}>
-      <form style={{ width: "100%" }} onSubmit={submitNewPurchaseHandler}>
-        <div className="row space-between">
-          <h2 className="subtitle">Add new purchase to {props.cardName}</h2>
+    <AddContainer
+      onSubmitAddForm={submitNewPurchaseHandler}
+      onClose={props.onClose}
+      title="New Credit Card Invoice"
+    >
+      <InputLabel
+        value={value}
+        onChange={changeValueHandler}
+        label="Value"
+        type="number"
+        placeholder="0.00"
+      />
 
-          <span>
-            <BsCreditCard
-              className="button-icon"
-              style={{ color: "var(--blue)" }}
-            />
-          </span>
-        </div>
+      <InputLabel
+        value={item}
+        onChange={changeItemHandler}
+        label="Item"
+        placeholder="Bag"
+      />
 
-        <InputLabel
-          value={value}
-          onChange={changeValueHandler}
-          label="Value"
-          type="number"
-          placeholder="0.00"
-        />
+      <InputLabel
+        value={date}
+        onChange={changeDateHandler}
+        label="When"
+        type="date"
+      />
 
-        <InputLabel
-          value={item}
-          onChange={changeItemHandler}
-          label="Item"
-          placeholder="Bag"
-        />
-
-        <InputLabel
-          value={date}
-          onChange={changeDateHandler}
-          label="When"
-          type="date"
-        />
-
-        <InputLabel
-          value={times}
-          onChange={changeTimesHandler}
-          label="Times"
-          type="number"
-          placeholder="2"
-        />
-
-        <Button
-          style={{ float: "right" }}
-          buttonText="Add purchase"
-          buttonIcon={<BsFillPlusCircleFill />}
-          type="submit"
-        />
-      </form>
-    </Modal>
+      <InputLabel
+        value={times}
+        onChange={changeTimesHandler}
+        label="Times"
+        type="number"
+        placeholder="2"
+      />
+    </AddContainer>
   );
 };
 

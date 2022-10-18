@@ -29,11 +29,12 @@ const Navbar = (props) => {
         >
           <Button
             onClick={props.onToggleAddTransaction}
-            buttonText="Add Transaction"
             buttonIcon={
               <FiPlusCircle style={{ fontSize: "2rem", margin: "0" }} />
             }
-          />
+          >
+            New Transaction
+          </Button>
           {props.showAddTransaction && <AddTransactionDropdown />}
         </li>
       </ul>

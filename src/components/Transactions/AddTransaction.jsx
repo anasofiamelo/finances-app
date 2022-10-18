@@ -67,7 +67,7 @@ const AddTransaction = (props) => {
         onSubmit={submitAddTransactionFormHandler}
         style={{ width: "100%" }}
       >
-        <h1>Add {props.transactionType}</h1>
+        <h1>New {props.transactionType}</h1>
         <InputLabel
           label="Value"
           inputIcon={<BsFillCalculatorFill className="input-icon" />}

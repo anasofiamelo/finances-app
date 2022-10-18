@@ -11,6 +11,7 @@ import AddTransaction from "./Transactions/AddTransaction";
 
 import Balance from "./Balance";
 import Reports from "./Reports";
+import AddContainer from "./AddContainer";
 
 import CreditCardList from "./CreditCard/CreditCardList";
 import CreditCardCard from "./CreditCard/CreditCardCard";
@@ -44,6 +45,7 @@ export {
   AddExpense,
   Balance,
   Reports,
+  AddContainer,
   //transactions
   Transaction,
   TransactionsList,

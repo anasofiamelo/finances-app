@@ -7,7 +7,9 @@ const Button = (props) => {
         type={props.type || "button"}
       >
         {props.buttonIcon}
-        <span style={{ marginLeft: "1rem" }}>{props.buttonText}</span>
+        <span style={{ marginLeft: props.buttonIcon ? "1rem" : "0" }}>
+          {props.children}
+        </span>
       </button>
     </div>
   );
