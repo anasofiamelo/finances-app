@@ -22,6 +22,8 @@ const InputLabel = (props) => {
           placeholder={props.placeholder || props.label}
           onChange={props.onChange}
           checked={props.checked}
+          min={props.min}
+          max={props.max}
         />
       </div>
     </div>

@@ -10,29 +10,25 @@ const AddCreditCardModal = (props) => {
   const [closureDate, setClosureDate] = useState();
   const [dueDate, setDueDate] = useState();
 
-  const changeLimitValueHandler = (e) => {
-    setLimit(Number(e.target.value));
-  };
-  const changeNameValueHandler = (e) => {
-    setName(e.target.value);
-  };
-  const changeClosureDateValueHandler = (e) => {
-    setClosureDate(e.target.value);
-  };
-  const changeDueDateValueHandler = (e) => {
-    setDueDate(e.target.value);
-  };
+  const changeLimitValueHandler = (e) => setLimit(Number(e.target.value));
+  const changeNameValueHandler = (e) => setName(e.target.value);
+  const changeClosureDateValueHandler = (e) => setClosureDate(e.target.value);
+  const changeDueDateValueHandler = (e) => setDueDate(e.target.value);
 
   const submitNewCardFormHandler = (e) => {
     e.preventDefault();
+
     if (limit <= 0) return;
-    creditCardContext.addCardHandler({
+
+    const newCard = {
       cardLimit: limit,
       cardName: name,
       cardClosureDate: closureDate,
       cardDueDate: dueDate,
       invoices: [],
-    });
+    };
+
+    creditCardContext.addCardHandler(newCard);
     props.onClose();
   };
 
@@ -43,7 +39,7 @@ const AddCreditCardModal = (props) => {
 
         <InputLabel
           onChange={changeLimitValueHandler}
-          value={limit.toFixed(2)}
+          value={limit}
           placeholder="0.00"
           label="Limit"
           type="number"
@@ -61,14 +57,20 @@ const AddCreditCardModal = (props) => {
           onChange={changeClosureDateValueHandler}
           value={closureDate}
           label="Closure Date"
-          type="date"
+          placeholder="Day 27"
+          type="number"
+          min="1"
+          max="31"
         />
 
         <InputLabel
           onChange={changeDueDateValueHandler}
           value={dueDate}
           label="Due Date"
-          type="date"
+          placeholder="Day 04"
+          type="number"
+          min="1"
+          max="31"
         />
 
         <button type="submit" style={{ float: "right" }}>
