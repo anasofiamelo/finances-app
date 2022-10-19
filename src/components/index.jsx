@@ -15,6 +15,7 @@ import AddContainer from "./AddContainer";
 
 import CreditCardList from "./CreditCard/CreditCardList";
 import CreditCardCard from "./CreditCard/CreditCardCard";
+import BestCreditCardAvailable from "./CreditCard/BestCreditCardAvailable";
 import AddCreditCardModal from "./CreditCard/AddCreditCardModal";
 import CreditCardDetails from "./CreditCard/CreditCardDetails";
 import CreditCardInvoice from "./CreditCard/Invoices/Invoice";
@@ -60,6 +61,7 @@ export {
   //credit card
   CreditCardList,
   CreditCardCard,
+  BestCreditCardAvailable,
   AddCreditCardModal,
   CreditCardLimit,
   CreditCardInvoice,

@@ -2,17 +2,16 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useCreditCard } from "../../context/credit_card.context";
 import { FiPlusCircle } from "react-icons/fi";
-
 import {
   CreditCardCard,
-  Container,
   Button,
   AddCreditCardModal,
+  BestCreditCardAvailable,
 } from "../../components";
 
 const CreditCardList = (props) => {
   const { cards } = useCreditCard();
-
+  console.log(cards);
   const [showAddCreditCardModal, setShowAddCreditCardModal] = useState(false);
   const showAddCreditCardModalHandler = () => setShowAddCreditCardModal(true);
   const hideAddCreditCardModalHandler = () => setShowAddCreditCardModal(false);
@@ -26,15 +25,14 @@ const CreditCardList = (props) => {
       <CreditCardCard {...card} />
     </NavLink>
   ));
+
   return (
     <>
       <div className="credit-card_page_grid">
         <div className="credit-card_grid">{mappedCreditCards}</div>
 
         <div>
-          <Container>
-            <h2>Teste</h2>
-          </Container>
+          <BestCreditCardAvailable></BestCreditCardAvailable>
           <Button
             buttonIcon={<FiPlusCircle style={{ fontSize: "2rem" }} />}
             onClick={showAddCreditCardModalHandler}

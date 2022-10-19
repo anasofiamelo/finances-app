@@ -1,11 +1,11 @@
 import { useContext, createContext, useState } from "react";
-import { userCards } from "../utils";
+import { userCards, formatCardsInvoices } from "../utils";
 
 const CreditCardContext = createContext({});
 
 export const CreditCardContextProvider = (props) => {
-  const [cards, setCards] = useState(userCards);
-  console.log(cards);
+  const formattedCards = formatCardsInvoices(userCards);
+  const [cards, setCards] = useState(formattedCards);
 
   function addCardHandler(card) {
     setCards((prev) => [...prev, card]);
@@ -29,8 +29,8 @@ export const CreditCardContextProvider = (props) => {
   }
 
   function getCardInvoices(cardName) {
-    const teste = getCard(cardName);
-    return teste.invoices;
+    const card = getCard(cardName);
+    return card.invoices;
   }
 
   return (

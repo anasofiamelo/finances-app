@@ -25,6 +25,12 @@ export const formatInvoices = (creditCard) => {
   });
 };
 
+export const formatCardsInvoices = (creditCards) => {
+  return creditCards.map((creditCard) => {
+    return { ...creditCard, invoices: formatInvoices(creditCard) };
+  });
+};
+
 export const calcDateOfCharge = (creditCard, invoice) => {
   const { cardClosureDate } = creditCard;
   const { boughtIn } = invoice;

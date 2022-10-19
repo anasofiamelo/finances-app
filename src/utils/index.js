@@ -8,6 +8,7 @@ import userCards from "./userCards";
 import budget from "./budget";
 import {
   formatInvoices,
+  formatCardsInvoices,
   calcDateOfCharge,
   calcDateOfEnd,
   formatParcels,
@@ -30,4 +31,5 @@ export {
   calcDateOfCharge,
   calcDateOfEnd,
   formatInvoices,
+  formatCardsInvoices,
 };
