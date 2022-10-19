@@ -1,15 +1,15 @@
 const Select = (props) => {
   return (
-    <div style={{ ...props.style }} className="form-group column">
+    <div className="form-group column">
       {props.label && (
         <label className="label" htmlFor={props.id}>
           {props.label}
         </label>
       )}
-      <div className="row">
+      <div className="row" style={{ width: "100%" }}>
         {props.selectIcon && <span>{props.selectIcon}</span>}
         <select
-          style={{ ...props.style, width: "100%" }}
+          style={{ width: "100%" }}
           value={props.value}
           onChange={props.onChange}
           id={props.id}

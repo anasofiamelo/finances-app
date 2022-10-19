@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { InputLabel, AddContainer } from "../..";
+import { InputLabel, AddContainer, Select } from "../..";
 import { useCreditCard } from "../../../context/credit_card.context";
 
 const AddInvoiceModal = (props) => {
@@ -9,14 +9,17 @@ const AddInvoiceModal = (props) => {
   const [item, setItem] = useState();
   const [times, setTimes] = useState();
   const [date, setDate] = useState();
+  const [creditCard, setCreditCard] = useState();
 
   const changeValueHandler = (e) => setValue(e.target.value);
   const changeItemHandler = (e) => setItem(e.target.value);
   const changeTimesHandler = (e) => setTimes(e.target.value);
   const changeDateHandler = (e) => setDate(e.target.value);
+  const changeCreditCardHandler = (e) => setCreditCard(e.target.value);
 
   const submitNewPurchaseHandler = (e) => {
     e.preventDefault();
+
     const newPurchase = {
       boughtIn: new Date(),
       timesPurchased: Number(times),
@@ -26,9 +29,13 @@ const AddInvoiceModal = (props) => {
 
     if (!value) return;
 
-    context.addInvoiceToCreditCard(props.cardName, newPurchase);
+    context.addInvoiceToCreditCard(creditCard, newPurchase);
     props.onClose();
   };
+
+  const mappedCreditCards = context.cards.map((card) => (
+    <option>{card.cardName}</option>
+  ));
 
   return (
     <AddContainer
@@ -36,6 +43,13 @@ const AddInvoiceModal = (props) => {
       onClose={props.onClose}
       title="New Credit Card Invoice"
     >
+      <Select
+        label="Card"
+        value={creditCard}
+        onChange={changeCreditCardHandler}
+        options={mappedCreditCards}
+      />
+
       <InputLabel
         value={value}
         onChange={changeValueHandler}
@@ -48,7 +62,7 @@ const AddInvoiceModal = (props) => {
         value={item}
         onChange={changeItemHandler}
         label="Item"
-        placeholder="Bag"
+        placeholder="Bag..."
       />
 
       <InputLabel
