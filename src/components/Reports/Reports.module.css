@@ -1,0 +1,40 @@
+.chart-bar__container {
+  display: flex;
+  height: 15rem;
+  gap: 1rem;
+}
+
+.chart-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 5rem;
+}
+
+.chart-bar__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  height: 100%;
+  width: 20px;
+  background-color: var(--ghost-white);
+  border: 1px solid var(--black);
+  border-radius: 25px;
+}
+
+.chart-bar__fill {
+  width: 100%;
+}
+
+.chart-bar__label {
+  font-weight: bold;
+  font-size: 0.6rem;
+  text-align: center;
+}
+
+.chart-bar__percentage {
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-align: center;
+}

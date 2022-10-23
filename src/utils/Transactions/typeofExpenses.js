@@ -16,35 +16,50 @@ const typeofExpenses = [
   "Food",
 ];
 
+export const expensesColors = {
+  House: "#5e60ce",
+  Insurance: "#62b6cb",
+  Maintenance: "#555b6e",
+  Shop: "#fb6f92",
+  Supermarket: "#ca7f63",
+  Food: "#240046",
+};
+
 export const expensesIcons = {
   House: (
     <BsFillHouseFill
       className="type_icons"
-      style={{ backgroundColor: "#5e60ce" }}
+      style={{ backgroundColor: expensesColors["House"] }}
     />
   ),
   Insurance: (
     <FaUserShield
       className="type_icons"
-      style={{ backgroundColor: "#62b6cb" }}
+      style={{ backgroundColor: expensesColors["Insurance"] }}
     />
   ),
   Maintenance: (
-    <BsTools className="type_icons" style={{ backgroundColor: "#555b6e" }} />
+    <BsTools
+      className="type_icons"
+      style={{ backgroundColor: expensesColors["Maintenance"] }}
+    />
   ),
   Shop: (
     <BsFillBagFill
       className="type_icons"
-      style={{ backgroundColor: "#fb6f92" }}
+      style={{ backgroundColor: expensesColors["Shop"] }}
     />
   ),
   Supermarket: (
-    <BsCart4 className="type_icons" style={{ backgroundColor: "#ca7f63" }} />
+    <BsCart4
+      className="type_icons"
+      style={{ backgroundColor: expensesColors["Supermarket"] }}
+    />
   ),
   Food: (
     <IoFastFoodOutline
       className="type_icons"
-      style={{ backgroundColor: "#240046" }}
+      style={{ backgroundColor: expensesColors["Food"] }}
     />
   ),
 };

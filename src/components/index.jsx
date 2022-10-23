@@ -9,8 +9,9 @@ import TransactionValueCard from "./Transactions/TransactionValueCard";
 import AddTransactionDropdown from "./Transactions/AddTransactionDropdown";
 import AddTransaction from "./Transactions/AddTransaction";
 
+import Reports from "./Reports/Reports";
+
 import Balance from "./Balance";
-import Reports from "./Reports";
 import AddContainer from "./AddContainer";
 
 import CreditCardList from "./CreditCard/CreditCardList";

@@ -1,4 +1,7 @@
-import typeofExpenses, { expensesIcons } from "./Transactions/typeofExpenses";
+import typeofExpenses, {
+  expensesIcons,
+  expensesColors,
+} from "./Transactions/typeofExpenses";
 import typeofIncomes, { incomesIcons } from "./Transactions/typeofIncomes";
 import monthNames, { monthOptions } from "./Date/months";
 import years, { yearOptions } from "./Date/years";
@@ -27,6 +30,7 @@ export {
   typeofIncomes,
   incomesIcons,
   expensesIcons,
+  expensesColors,
   formatParcels,
   calcDateOfCharge,
   calcDateOfEnd,
