@@ -25,9 +25,14 @@ export const formatInvoices = (creditCard) => {
   });
 };
 
+export const calcUsedLimit = (invoices) =>
+  invoices.reduce((prev, current) => prev + current.missingValue, 0).toFixed(2);
+
 export const formatCardsInvoices = (creditCards) => {
   return creditCards.map((creditCard) => {
-    return { ...creditCard, invoices: formatInvoices(creditCard) };
+    const invoices = formatInvoices(creditCard);
+    const usedLimit = calcUsedLimit(invoices);
+    return { ...creditCard, invoices, usedLimit };
   });
 };
 

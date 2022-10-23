@@ -11,7 +11,7 @@ import {
 
 const CreditCardList = (props) => {
   const { cards } = useCreditCard();
-  console.log(cards);
+
   const [showAddCreditCardModal, setShowAddCreditCardModal] = useState(false);
   const showAddCreditCardModalHandler = () => setShowAddCreditCardModal(true);
   const hideAddCreditCardModalHandler = () => setShowAddCreditCardModal(false);
@@ -32,7 +32,8 @@ const CreditCardList = (props) => {
         <div className="credit-card_grid">{mappedCreditCards}</div>
 
         <div>
-          <BestCreditCardAvailable></BestCreditCardAvailable>
+          <BestCreditCardAvailable cards={cards}></BestCreditCardAvailable>
+
           <Button
             buttonIcon={<FiPlusCircle style={{ fontSize: "2rem" }} />}
             onClick={showAddCreditCardModalHandler}
