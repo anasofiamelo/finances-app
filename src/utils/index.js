@@ -3,6 +3,7 @@ import typeofExpenses, {
   expensesColors,
 } from "./Transactions/typeofExpenses";
 import typeofIncomes, { incomesIcons } from "./Transactions/typeofIncomes";
+import calcExpensesPerMonth from "./Transactions/expensesPerMonth"; // calcExpensesPerMonthPercentage,
 import monthNames, { monthOptions } from "./Date/months";
 import years, { yearOptions } from "./Date/years";
 import current from "./Date/currentDate";
@@ -28,6 +29,8 @@ export {
   budget,
   typeofExpenses,
   typeofIncomes,
+  calcExpensesPerMonth,
+  // calcExpensesPerMonthPercentage,
   incomesIcons,
   expensesIcons,
   expensesColors,

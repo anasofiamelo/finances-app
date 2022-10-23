@@ -6,7 +6,7 @@ const ChartBar = (props) => {
 
   return (
     <div className={classes["chart-bar"]}>
-      <div key={type} className={classes["chart-bar__inner"]}>
+      <div className={classes["chart-bar__inner"]}>
         <div
           className={classes["chart-bar__fill"]}
           style={{

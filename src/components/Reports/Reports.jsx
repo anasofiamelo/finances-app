@@ -1,23 +1,17 @@
 import { Container, Button } from "..";
 import useTransactionsPercentage from "../../hooks/useTransactionsPercentage";
-import ChartBar from "./Chart/ChartBar";
 import Chart from "./Chart/Chart";
+import MonthChart from "./Chart/MonthChart";
 
 const Reports = (props) => {
   const { transactions } = props;
 
   const expenses = transactions.filter((transac) => transac.value < 0);
-  const expensesTypePercentages = useTransactionsPercentage(expenses);
+  const percentagesOfExpenses = useTransactionsPercentage(expenses);
 
-  const mappedPercentagesOnGraphic = expensesTypePercentages.map(
-    (transaction) => {
-      return <ChartBar {...transaction} />;
-    }
-  );
-
-  const highestPercentage = expensesTypePercentages
-    .sort((a, b) => a.percentage - b.percentage)
-    .pop().type;
+  // const highestPercentage = percentagesOfExpenses
+  // .sort((a, b) => a.percentage - b.percentage)
+  // .pop().type;
 
   return (
     <Container>
@@ -25,12 +19,19 @@ const Reports = (props) => {
         <h1 className="subtitle">Reports</h1>
         <Button> Add report</Button>
       </div>
-      <h4>Most spend with: {highestPercentage}</h4>
+      {/* <h4>Most spend with: {highestPercentage}</h4> */}
+
       <div style={{ width: "50%" }}>
-        <h2 style={{ marginBottom: "1rem" }} className="subtitle">
-          Graphics
-        </h2>
-        <Chart>{mappedPercentagesOnGraphic}</Chart>
+        <h3 style={{ marginBottom: "1rem" }} className="subtitle">
+          Expenses Graphic
+        </h3>
+
+        <Chart expenses={percentagesOfExpenses} />
+      </div>
+
+      <div>
+        <h3 className="subtitle">Teste</h3>
+        <MonthChart expenses={expenses} />
       </div>
     </Container>
   );
