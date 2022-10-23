@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Container, Table, ThWithSort, CreditCardInvoice } from "../..";
+import { current } from "../../../utils";
 import moment from "moment";
 
 const InvoicesList = (props) => {
   const { creditCard } = props;
   const { invoices } = creditCard;
+  const { fullMonth } = current;
 
   const [sortedInvoices, setSortedInvoices] = useState(invoices);
   const [detailedInvoice, setDetailedInvoice] = useState(null);
@@ -23,7 +25,6 @@ const InvoicesList = (props) => {
 
   const mappedFatura = sortedInvoices.map((invoice) => {
     const { item, boughtIn, parcelValue, paidFromTotal } = invoice;
-
     const formattedDate = moment(boughtIn).format("DD/MM/YYYY");
     const valueStyle = { fontWeight: "500", color: "var(--green)" };
 
@@ -44,6 +45,10 @@ const InvoicesList = (props) => {
 
   return (
     <Container>
+      <h2 className="subtitle" style={{ marginBottom: "1rem" }}>
+        Invoices of {fullMonth}
+      </h2>
+
       <Table
         thead={
           <>
@@ -61,6 +66,7 @@ const InvoicesList = (props) => {
       >
         {mappedFatura}
       </Table>
+
       {detailedInvoice && (
         <CreditCardInvoice
           onClose={hideDetailedInvoiceHandler}

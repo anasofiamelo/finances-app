@@ -31,9 +31,8 @@ const CreditCardDetails = (props) => {
           </h3>
         </div>
         <div className="credit-card-details_description-container">
-          <h3 className="subtitle">Invoices of {fullMonth}</h3>
-          <p>Overdues in: {overduesIn}</p>
           <p>Closes in: {closesIn}</p>
+          <p>Overdues in: {overduesIn}</p>
         </div>
       </Container>
 

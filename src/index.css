@@ -164,6 +164,10 @@ a {
   margin: 0;
 }
 
+.form-group label {
+  margin-left: 0.3rem;
+}
+
 .input-icon {
   opacity: 0.6;
   font-size: 1.2rem;
