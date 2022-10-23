@@ -16,7 +16,6 @@ const ChartBar = (props) => {
         ></div>
       </div>
       <div className={classes["chart-bar__percentage"]}>{`${percentage}%`}</div>
-      <div className={classes["chart-bar__label"]}>{type}</div>
       <div className={classes["chart-bar__icon"]}>{expensesIcons[type]}</div>
     </div>
   );
