@@ -8,7 +8,7 @@ const AddTransaction = (props) => {
 
   const [transactionDescription, setTransactionDescription] = useState();
   const [transactionCategory, setTransactionCategory] = useState(
-    props.transactionCategories[0].value
+    props.transactionCategories[0]
   );
   const [transactionValue, setTransactionValue] = useState();
   const [transactionDate, setTransactionDate] = useState();
