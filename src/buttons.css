@@ -1,6 +1,6 @@
 button,
 .button_animated-container {
-  background-color: var(--blue);
+  background-color: var(--purple);
   color: var(--white);
   display: flex;
   align-items: center;

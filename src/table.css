@@ -2,7 +2,7 @@ table {
   font-size: 1.2rem;
   width: 100%;
   border-collapse: collapse;
-  --table-color: var(--blue);
+  --table-color: var(--purple);
 }
 thead th:first-child,
 tbody td:first-child {

@@ -12,8 +12,8 @@ const Dashboard = (props) => {
   const balanceIcon = (
     <BsReception3
       style={{
-        borderBottom: "1px solid var(--blue)",
-        ...customStyle("blue"),
+        borderBottom: "1px solid var(--purple)",
+        ...customStyle("purple"),
       }}
     />
   );

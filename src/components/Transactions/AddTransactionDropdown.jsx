@@ -44,7 +44,7 @@ const AddTransactionDropdown = () => {
         onClick={openCreditCardInvoiceModalHandler}
         className="dropdown-item"
       >
-        <BsCreditCard style={{ color: "var(--blue)" }} />
+        <BsCreditCard style={{ color: "var(--purple)" }} />
         Card Invoice
       </div>
 

@@ -4,7 +4,7 @@ const TransactionValueCard = (props) => {
   return (
     <Container>
       <div className="column">
-        <h2 className="subtitle space-between">
+        <h2 style={{ width: "100%" }} className="subtitle space-between">
           {props.title}
           <span>{props.icon}</span>
         </h2>

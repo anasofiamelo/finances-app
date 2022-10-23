@@ -19,8 +19,10 @@ html {
   --white: #fbfbff;
   --ghost-white: #f8f7ff;
   --light-grey: #ced3dc;
-  --purple: #9381ff;
-  --blue: #275dad;
+  /* --purple: #9381ff; */
+  --purple: #5e60ce;
+  /* --blue: #5e60ce; */
+  --light-blue: #62b6cb;
   --red: #bc4749;
   --green: #6a994e;
 
@@ -181,7 +183,7 @@ a {
   color: var(--dark-black);
 }
 .card_subtitle {
-  border-bottom: 2px solid var(--blue);
+  border-bottom: 2px solid var(--purple);
   width: fit-content;
   margin-bottom: 1rem;
 }
@@ -190,7 +192,7 @@ a {
   font-size: 0.85rem;
 }
 .credit-card_invoices_title {
-  color: var(--blue);
+  color: var(--purple);
 }
 .type_icons {
   font-size: 1.7rem;

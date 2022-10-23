@@ -17,7 +17,7 @@ const typeofExpenses = [
 ];
 
 export const expensesColors = {
-  House: "#5e60ce",
+  House: "#9381ff",
   Insurance: "#62b6cb",
   Maintenance: "#555b6e",
   Shop: "#fb6f92",

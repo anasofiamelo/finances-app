@@ -31,7 +31,7 @@ const TransactionHeader = (props) => {
         ></button>
         <Select
           style={{
-            backgroundColor: "var(--blue)",
+            backgroundColor: "var(--purple)",
             color: "var(--white)",
             borderRadius: "0.4rem",
           }}

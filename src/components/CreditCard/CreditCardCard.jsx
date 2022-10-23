@@ -8,7 +8,7 @@ const CreditCardCard = (props) => {
         <h3 className="subtitle card_subtitle">{props.cardName}</h3>
         <span>
           <BsCreditCard
-            style={{ color: "var(--blue)" }}
+            style={{ color: "var(--purple)" }}
             className="button-icon"
           />
         </span>
