@@ -1,19 +1,9 @@
-import { useState } from "react";
-import { Container, Button, AddInvoiceModal } from "../../components";
-import { BsFillPlusCircleFill } from "react-icons/bs";
+import { Container } from "../../components";
 
 const CreditCardLimit = (props) => {
   const { creditCard } = props;
   const { cardLimit, usedLimit } = creditCard;
   const availableLimit = (cardLimit - usedLimit).toFixed(2);
-  const [showAddPurchaseModal, setShowAddPurchaseModal] = useState(false);
-
-  const showAddCreditCardPurchaseHandler = () => {
-    setShowAddPurchaseModal(true);
-  };
-  const hideAddCreditCardPurchaseHandler = () => {
-    setShowAddPurchaseModal(false);
-  };
 
   return (
     <>
@@ -28,20 +18,7 @@ const CreditCardLimit = (props) => {
           <span style={{ color: "var(--green)" }}>$ {availableLimit}</span>
         </h3>
 
-        <div style={{ marginTop: "1rem", float: "right" }}>
-          <Button
-            buttonIcon={<BsFillPlusCircleFill />}
-            buttonText="New purchase"
-            onClick={showAddCreditCardPurchaseHandler}
-          />
-
-          {showAddPurchaseModal && (
-            <AddInvoiceModal
-              onClose={hideAddCreditCardPurchaseHandler}
-              {...creditCard}
-            />
-          )}
-        </div>
+        <div style={{ marginTop: "1rem", float: "right" }}></div>
       </Container>
     </>
   );

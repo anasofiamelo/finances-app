@@ -1,4 +1,3 @@
-import { expensesIcons } from "../../utils";
 import { Container, Button } from "..";
 import useTransactionsPercentage from "../../hooks/useTransactionsPercentage";
 import ChartBar from "./Chart/ChartBar";
@@ -28,8 +27,9 @@ const Reports = (props) => {
       </div>
       <h4>Most spend with: {highestPercentage}</h4>
       <div style={{ width: "50%" }}>
-        <h2 className="subtitle">Graphics</h2>
-
+        <h2 style={{ marginBottom: "1rem" }} className="subtitle">
+          Graphics
+        </h2>
         <Chart>{mappedPercentagesOnGraphic}</Chart>
       </div>
     </Container>

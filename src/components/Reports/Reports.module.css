@@ -25,6 +25,7 @@
 
 .chart-bar__fill {
   width: 100%;
+  border-top: 1px solid var(--black);
 }
 
 .chart-bar__label {

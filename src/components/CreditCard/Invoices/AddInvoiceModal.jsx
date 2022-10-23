@@ -8,7 +8,9 @@ const AddInvoiceModal = (props) => {
   const [item, setItem] = useState();
   const [times, setTimes] = useState();
   const [date, setDate] = useState();
-  const [creditCard, setCreditCard] = useState();
+  const [creditCard, setCreditCard] = useState(
+    props.cardName ? props.cardName : undefined
+  );
 
   const changeValueHandler = (e) => setValue(e.target.value);
   const changeItemHandler = (e) => setItem(e.target.value);

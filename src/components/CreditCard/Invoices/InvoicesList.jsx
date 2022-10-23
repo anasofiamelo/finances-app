@@ -1,7 +1,15 @@
 import { useState, useEffect } from "react";
-import { Container, Table, ThWithSort, CreditCardInvoice } from "../..";
+import {
+  Container,
+  Table,
+  ThWithSort,
+  CreditCardInvoice,
+  Button,
+  AddInvoiceModal,
+} from "../..";
 import { current } from "../../../utils";
 import moment from "moment";
+import { BsFillPlusCircleFill } from "react-icons/bs";
 
 const InvoicesList = (props) => {
   const { creditCard } = props;
@@ -10,6 +18,14 @@ const InvoicesList = (props) => {
 
   const [sortedInvoices, setSortedInvoices] = useState(invoices);
   const [detailedInvoice, setDetailedInvoice] = useState(null);
+  const [showAddPurchaseModal, setShowAddPurchaseModal] = useState(false);
+
+  const showAddCreditCardPurchaseHandler = () => {
+    setShowAddPurchaseModal(true);
+  };
+  const hideAddCreditCardPurchaseHandler = () => {
+    setShowAddPurchaseModal(false);
+  };
 
   const showDetailedInvoiceHandler = (event) => {
     const itemName = event.target.parentElement.id;
@@ -45,10 +61,24 @@ const InvoicesList = (props) => {
 
   return (
     <Container>
-      <h2 className="subtitle" style={{ marginBottom: "1rem" }}>
-        Invoices of {fullMonth}
-      </h2>
+      <div className="space-between">
+        <h2 className="subtitle" style={{ marginBottom: "1rem" }}>
+          Invoices of {fullMonth}
+        </h2>
+        <Button
+          buttonIcon={<BsFillPlusCircleFill />}
+          onClick={showAddCreditCardPurchaseHandler}
+        >
+          New invoice
+        </Button>
+      </div>
 
+      {showAddPurchaseModal && (
+        <AddInvoiceModal
+          onClose={hideAddCreditCardPurchaseHandler}
+          {...creditCard}
+        />
+      )}
       <Table
         thead={
           <>
