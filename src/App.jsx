@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Balance, Navbar, Goals, Invoices } from "./components";
-import { CreditCardPage, Budget } from "./pages";
+import { Navbar, Goals, Invoices } from "./components";
+import { CreditCardPage, Budget, Transactions, Dashboard } from "./pages";
 
 function App() {
   const [showAddTransaction, setShowAddTransaction] = useState(false);
@@ -23,7 +23,8 @@ function App() {
       />
       <div onClick={hideAddTransactionHandler}>
         <Routes>
-          <Route path="/" element={<Balance />} />
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/transactions" element={<Transactions />} />
           <Route path="/credit-card" element={<CreditCardPage />} />
           <Route path="/credit-card/:creditCard" element={<Invoices />} />
           <Route path="/goals" element={<Goals />} />

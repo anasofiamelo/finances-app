@@ -4,7 +4,8 @@ import { Button, AddTransactionDropdown } from "../../components";
 import { FiPlusCircle } from "react-icons/fi";
 
 const navlinks = [
-  { title: "Transactions", link: "/" },
+  { title: "Dashboard", link: "/" },
+  { title: "Transactions", link: "/transactions" },
   { title: "Credit Card", link: "/credit-card" },
   { title: "Goals", link: "/goals" },
   { title: "Budget", link: "/budget" },
