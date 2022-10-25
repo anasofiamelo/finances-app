@@ -26,18 +26,21 @@ const Dashboard = (props) => {
       <div className="balance_grid">
         <TransactionValueCard
           title="Current balance"
+          goto="/transactions"
           value={totalBalance}
           icon={balanceIcon}
         />
 
         <TransactionValueCard
           title="Incomes"
+          goto="/incomes"
           value={totalIncomes}
           icon={incomesIcon}
         />
 
         <TransactionValueCard
           title="Expenses"
+          goto="/expenses"
           value={totalExpenses}
           icon={expensesIcon}
         />

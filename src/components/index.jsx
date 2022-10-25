@@ -1,7 +1,3 @@
-import Incomes from "./Transactions/Incomes/Incomes";
-import AddIncome from "./Transactions/Incomes/AddIncome";
-import Expenses from "./Transactions/Expenses/Expenses";
-import AddExpense from "./Transactions/Expenses/AddExpense";
 import Transactions from "./Transactions/Transactions";
 import TransactionsList from "./Transactions/TransactionsList";
 import TransactionHeader from "./Transactions/TransactionHeader";
@@ -40,10 +36,6 @@ import Select from "./ui/Select";
 import Button from "./ui/Button";
 
 export {
-  Incomes,
-  AddIncome,
-  Expenses,
-  AddExpense,
   AddContainer,
   Reports,
   //transactions
