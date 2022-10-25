@@ -1,9 +1,10 @@
-import { Reports, TransactionValueCard, Transactions } from "../components";
-import { useTransactions } from "../context/finances.context";
+import { TransactionValueCard, Transactions } from "..";
+import { useTransactions } from "../../context/finances.context";
+
 import { BsReception3, BsGraphDown, BsGraphUp } from "react-icons/bs";
 
-const Dashboard = () => {
-  const { transactions, totalBalance, totalIncomes, totalExpenses } =
+const Activities = (props) => {
+  const { incomes, expenses, totalBalance, totalIncomes, totalExpenses } =
     useTransactions();
 
   const customStyle = (color) => {
@@ -23,7 +24,7 @@ const Dashboard = () => {
   const expensesIcon = <BsGraphDown style={customStyle("red")} />;
 
   return (
-    <div>
+    <>
       <div className="balance_grid">
         <TransactionValueCard
           title="Current balance"
@@ -46,10 +47,12 @@ const Dashboard = () => {
           icon={expensesIcon}
         />
       </div>
-      <Transactions title="Your recent activities" />
-      <Reports transactions={transactions} />
-    </div>
+      <Transactions
+        title={props.title}
+        transactions={props.title === "Incomes" ? incomes : expenses}
+      />
+    </>
   );
 };
 
-export default Dashboard;
+export default Activities;

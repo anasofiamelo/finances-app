@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Navbar, Goals, Invoices } from "./components";
-import { CreditCardPage, Budget, Transactions, Dashboard } from "./pages";
+import { Navbar, Goals, Invoices, Activities } from "./components";
+import { CreditCardPage, Budget, Dashboard } from "./pages";
 import { useTransactions } from "./context/finances.context";
 
 function App() {
-  const { incomes, expenses } = useTransactions();
+  const { incomes, expenses, transactions } = useTransactions();
   const [showAddTransaction, setShowAddTransaction] = useState(false);
 
   const showAddTransactionHandler = () => {
@@ -32,15 +32,17 @@ function App() {
           <Route path="/budget" element={<Budget />} />
           <Route
             path="/transactions"
-            element={<Transactions title="Your activities" />}
+            element={
+              <Activities title="Your activities" transactions={transactions} />
+            }
           />
           <Route
             path="/incomes"
-            element={<Transactions title="Incomes" transactions={incomes} />}
+            element={<Activities title="Incomes" transactions={incomes} />}
           />
           <Route
             path="/expenses"
-            element={<Transactions title="Expenses" transactions={expenses} />}
+            element={<Activities title="Expenses" transactions={expenses} />}
           />
         </Routes>
       </div>
