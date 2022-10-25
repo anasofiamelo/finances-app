@@ -1,7 +1,6 @@
 import CreditCardPage from "./CreditCard";
 import Budget from "./Budget";
 import Dashboard from "./Dashboard";
-import Transactions from "./Transactions";
-import Transaction from "../components/Transactions/Transaction";
+import Transactions from "../components/Transactions/Transactions";
 
-export { CreditCardPage, Transaction, Budget, Transactions, Dashboard };
+export { CreditCardPage, Transactions, Budget, Dashboard };

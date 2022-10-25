@@ -1,13 +1,13 @@
 import MonthChart from "./Chart/MonthChart";
-
+import { Container } from "../../components";
 const ExpensesPerMonthGraphic = (props) => {
   return (
-    <div>
-      <h3 style={{ marginBottom: "1rem" }} className="subtitle">
-        Expenses Per Month Graphic
-      </h3>
+    <Container>
+      <h2 style={{ marginBottom: "1rem" }} className="subtitle">
+        Expenses Per Month
+      </h2>
       <MonthChart expenses={props.expenses} />
-    </div>
+    </Container>
   );
 };
 

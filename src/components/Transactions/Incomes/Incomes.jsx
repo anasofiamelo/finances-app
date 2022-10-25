@@ -1,4 +1,4 @@
-import { Transaction } from "../../";
+import { Transactions } from "../../";
 import { useTransactions } from "../../../context/finances.context";
 
 const Incomes = () => {
@@ -7,7 +7,7 @@ const Incomes = () => {
 
   return (
     <>
-      <Transaction
+      <Transactions
         balanceThead={["Type", "Description", "Value", "Date"]}
         transactions={incomes}
         balanceType="Incomes"

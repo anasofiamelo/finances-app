@@ -2,7 +2,7 @@ import Incomes from "./Transactions/Incomes/Incomes";
 import AddIncome from "./Transactions/Incomes/AddIncome";
 import Expenses from "./Transactions/Expenses/Expenses";
 import AddExpense from "./Transactions/Expenses/AddExpense";
-import Transaction from "./Transactions/Transaction";
+import Transactions from "./Transactions/Transactions";
 import TransactionsList from "./Transactions/TransactionsList";
 import TransactionHeader from "./Transactions/TransactionHeader";
 import TransactionValueCard from "./Transactions/TransactionValueCard";
@@ -11,7 +11,6 @@ import AddTransaction from "./Transactions/AddTransaction";
 
 import Reports from "./Reports/Reports";
 
-import Balance from "./Balance";
 import AddContainer from "./AddContainer";
 
 import CreditCardList from "./CreditCard/CreditCardList";
@@ -45,11 +44,10 @@ export {
   AddIncome,
   Expenses,
   AddExpense,
-  Balance,
   AddContainer,
   Reports,
   //transactions
-  Transaction,
+  Transactions,
   TransactionsList,
   TransactionHeader,
   TransactionValueCard,

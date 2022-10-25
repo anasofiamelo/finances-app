@@ -1,4 +1,4 @@
-import { Reports, TransactionValueCard } from "../components";
+import { Reports, TransactionValueCard, Transactions } from "../components";
 import { useTransactions } from "../context/finances.context";
 import { BsReception3, BsGraphDown, BsGraphUp } from "react-icons/bs";
 const Dashboard = (props) => {
@@ -42,6 +42,11 @@ const Dashboard = (props) => {
           icon={expensesIcon}
         />
       </div>
+      <Transactions
+        balanceType="Your recent activities"
+        transactions={transactions}
+        balanceThead={["Category", "Description", "Value", "Date"]}
+      />
       <Reports transactions={transactions} />
     </div>
   );

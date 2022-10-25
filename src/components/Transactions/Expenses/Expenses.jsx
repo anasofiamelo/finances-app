@@ -1,4 +1,4 @@
-import { Transaction } from "../../";
+import { Transactions } from "../../";
 import { useTransactions } from "../../../context/finances.context";
 
 const Expenses = (props) => {
@@ -6,7 +6,7 @@ const Expenses = (props) => {
   const expenses = transactions.filter((finance) => finance.value < 0);
   return (
     <>
-      <Transaction
+      <Transactions
         balanceThead={["Type", "Description", "Value", "Date"]}
         transactions={expenses}
         balanceType="Expenses"

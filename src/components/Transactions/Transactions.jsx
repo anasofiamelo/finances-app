@@ -1,14 +1,10 @@
 import { useReducer, useEffect } from "react";
 import { useTransactions } from "../../context/finances.context";
-import {
-  Container,
-  TransactionsList,
-  TransactionHeader,
-} from "../../components";
+import { Container, TransactionsList, TransactionHeader } from "..";
 import moment from "moment";
 import transactionTypes from "../../hooks/transactionTypes";
 
-const Transaction = (props) => {
+const Transactions = (props) => {
   const context = useTransactions();
 
   const transactions = !!props.transactions
@@ -82,4 +78,4 @@ const Transaction = (props) => {
   );
 };
 
-export default Transaction;
+export default Transactions;
