@@ -54,7 +54,7 @@ const Transactions = (props) => {
       <TransactionHeader
         onChangeSelectedMonth={changeSelectedMonthHandler}
         onChangeDescriptionFilter={changeDescriptionFilterHandler}
-        title={props.balanceType}
+        title={props.title}
       />
 
       <div>

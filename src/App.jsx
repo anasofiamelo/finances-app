@@ -4,10 +4,10 @@ import { Navbar, Goals, Invoices } from "./components";
 import { CreditCardPage, Budget, Transactions, Dashboard } from "./pages";
 
 function App() {
-  const [showAddTransaction, setShowAddTransaction] = useState(false);
-
-  const toggleAddTransactionHandler = () => {
-    setShowAddTransaction((prev) => !prev);
+  const [showAddTransaction, setShowAddTransaction] = useState(true);
+  console.log("showAddTransaction", showAddTransaction);
+  const showAddTransactionHandler = () => {
+    setShowAddTransaction(true);
   };
 
   const hideAddTransactionHandler = () => {
@@ -18,13 +18,16 @@ function App() {
     <>
       <Navbar
         showAddTransaction={showAddTransaction}
-        onToggleAddTransaction={toggleAddTransactionHandler}
+        onShowAddTransaction={showAddTransactionHandler}
         onHideAddTransaction={hideAddTransactionHandler}
       />
-      <div onClick={hideAddTransactionHandler}>
+      <div onClick={hideAddTransactionHandler} className="App">
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/transactions" element={<Transactions />} />
+          <Route
+            path="/transactions"
+            element={<Transactions title="Your activities" />}
+          />
           <Route path="/credit-card" element={<CreditCardPage />} />
           <Route path="/credit-card/:creditCard" element={<Invoices />} />
           <Route path="/goals" element={<Goals />} />

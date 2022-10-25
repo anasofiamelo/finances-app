@@ -42,11 +42,7 @@ const Dashboard = (props) => {
           icon={expensesIcon}
         />
       </div>
-      <Transactions
-        balanceType="Your recent activities"
-        transactions={transactions}
-        balanceThead={["Category", "Description", "Value", "Date"]}
-      />
+      <Transactions title="Your recent activities" />
       <Reports transactions={transactions} />
     </div>
   );

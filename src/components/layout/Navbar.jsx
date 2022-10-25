@@ -19,27 +19,20 @@ const Navbar = (props) => {
   ));
 
   return (
-    <nav className="space-between">
-      <ul className="navbar_links">{mappedNavlinks}</ul>
-
-      <ul className="navbar_buttons">
-        <li
-          style={{
-            position: "relative",
-          }}
+    <div className="navbar_container space-between row">
+      <nav style={{ width: "100%" }} onClick={props.onHideAddTransaction}>
+        <ul className="navbar_links">{mappedNavlinks}</ul>
+      </nav>
+      <div style={{ position: "relative" }}>
+        <Button
+          onClick={props.onShowAddTransaction}
+          buttonIcon={<FiPlusCircle className="button-icon" />}
         >
-          <Button
-            onClick={props.onToggleAddTransaction}
-            buttonIcon={
-              <FiPlusCircle style={{ fontSize: "2rem", margin: "0" }} />
-            }
-          >
-            New Transaction
-          </Button>
-          {props.showAddTransaction && <AddTransactionDropdown />}
-        </li>
-      </ul>
-    </nav>
+          New Transaction
+        </Button>
+        {props.showAddTransaction && <AddTransactionDropdown />}
+      </div>
+    </div>
   );
 };
 

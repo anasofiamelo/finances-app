@@ -102,6 +102,10 @@ body {
   font-family: var(--poppins);
   font-size: var(--normal-font-size);
   background-color: var(--background);
+}
+
+.App,
+.navbar_container {
   padding: 1rem 15%;
 }
 
