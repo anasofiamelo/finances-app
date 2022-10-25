@@ -86,7 +86,9 @@ const AddTransaction = (props) => {
         inputIcon={<BsJournalText className="input-icon" />}
         value={transactionDescription}
         onChange={changeTransactionDescriptionHandler}
-        placeholder="Car wash"
+        placeholder={
+          props.transactionType === "Expense" ? "Groceries" : "Salary of July"
+        }
       />
 
       <InputLabel

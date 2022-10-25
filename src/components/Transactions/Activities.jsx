@@ -4,8 +4,7 @@ import { useTransactions } from "../../context/finances.context";
 import { BsReception3, BsGraphDown, BsGraphUp } from "react-icons/bs";
 
 const Activities = (props) => {
-  const { incomes, expenses, totalBalance, totalIncomes, totalExpenses } =
-    useTransactions();
+  const { totalBalance, totalIncomes, totalExpenses } = useTransactions();
 
   const customStyle = (color) => {
     return { color: `var(--${color})` };
@@ -47,10 +46,7 @@ const Activities = (props) => {
           icon={expensesIcon}
         />
       </div>
-      <Transactions
-        title={props.title}
-        transactions={props.title === "Incomes" ? incomes : expenses}
-      />
+      <Transactions title={props.title} transactions={props.transactions} />
     </>
   );
 };
