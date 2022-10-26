@@ -2,27 +2,29 @@ import { useState, useEffect } from "react";
 import moment from "moment";
 import { Table, ThWithSort } from "../../components";
 import { incomesIcons, expensesIcons } from "../../utils";
+import useSort from "../../hooks/useSort";
 
 const TransactionsList = (props) => {
   const { transactions } = props;
 
-  const [sortedTransactions, setSortedTransactions] = useState(transactions);
+  const sortedTransac = useSort(transactions, "date");
+  const [sortedTransactions, setSortedTransactions] = useState(sortedTransac);
 
   useEffect(() => {
-    setSortedTransactions(transactions);
-  }, [transactions]);
+    setSortedTransactions(sortedTransac);
+  }, [sortedTransac]);
 
-  const mappedTransactions = sortedTransactions.map((transaction) => {
+  const mappedTransactions = sortedTransactions.map((transaction, index) => {
     let { value, date, payment, description, type } = transaction;
 
     value = value.toFixed(2);
 
-    const valueColor = value > 0 ? "var(--green)" : "var(--red)";
-    const formattedDate = moment(date).format("DD/MM/YYYY");
     const isIncome = value > 0;
+    const valueColor = isIncome ? "var(--green)" : "var(--red)";
+    const formattedDate = moment(date).format("DD/MM/YYYY");
 
     return (
-      <tr key={Math.random(1)}>
+      <tr key={index}>
         <td>{isIncome ? incomesIcons[type] : expensesIcons[type]}</td>
         <td>{formattedDate}</td>
         <td>{description}</td>
@@ -32,7 +34,7 @@ const TransactionsList = (props) => {
     );
   });
 
-  const changeArrayHandler = (transactions) => {
+  const toggleSortedTransactionsHandler = (transactions) => {
     setSortedTransactions(transactions);
   };
 
@@ -44,7 +46,7 @@ const TransactionsList = (props) => {
           <ThWithSort
             sortedList={transactions}
             comparableKey="date"
-            onToggle={changeArrayHandler}
+            onToggle={toggleSortedTransactionsHandler}
           >
             Date
           </ThWithSort>
@@ -52,7 +54,7 @@ const TransactionsList = (props) => {
           <ThWithSort
             sortedList={transactions}
             comparableKey="value"
-            onToggle={changeArrayHandler}
+            onToggle={toggleSortedTransactionsHandler}
           >
             Value
           </ThWithSort>
