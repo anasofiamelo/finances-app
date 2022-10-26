@@ -15,7 +15,7 @@ export const expensesPerMonth = [
 
 const calcExpensesPerMonth = (expenses) => {
   for (const expense of expenses) {
-    const expenseMonth = expense.date.getMonth();
+    const expenseMonth = expense.date.month();
     expensesPerMonth[expenseMonth].value -= expense.value;
   }
   return expensesPerMonth;

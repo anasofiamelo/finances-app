@@ -6,6 +6,7 @@ import {
   CreditCardInvoice,
   Button,
   AddInvoiceModal,
+  MonthSwitch,
 } from "../..";
 import { current } from "../../../utils";
 import moment from "moment";
@@ -71,6 +72,10 @@ const InvoicesList = (props) => {
         >
           New invoice
         </Button>
+      </div>
+
+      <div className="row" style={{ justifyContent: "center" }}>
+        <MonthSwitch />
       </div>
 
       {showAddPurchaseModal && (
