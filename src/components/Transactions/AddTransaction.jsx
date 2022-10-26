@@ -2,6 +2,7 @@ import { useState } from "react";
 import { InputLabel, Select, AddContainer } from "../../components";
 import { useTransactions } from "../../context/finances.context";
 import { BsFillCalculatorFill, BsJournalText } from "react-icons/bs";
+import moment from "moment";
 
 const AddTransaction = (props) => {
   const { addTransactionHandler } = useTransactions();
@@ -12,7 +13,7 @@ const AddTransaction = (props) => {
   );
   const [transactionValue, setTransactionValue] = useState();
   const [transactionDate, setTransactionDate] = useState();
-
+  console.log("transactionDate", transactionDate);
   const changeTransactionValueHandler = (event) => {
     setTransactionValue(event.target.value);
   };
@@ -41,7 +42,7 @@ const AddTransaction = (props) => {
       payment: "Cash",
       value,
       description: transactionDescription,
-      date: new Date(transactionDate),
+      date: moment(transactionDate),
     };
 
     if (!transactionValue) return;

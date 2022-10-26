@@ -1,8 +1,8 @@
 import { useReducer, useEffect } from "react";
 import { useTransactions } from "../../context/finances.context";
 import { Container, TransactionsList, TransactionHeader } from "..";
-import moment from "moment";
 import transactionTypes from "../../hooks/transactionTypes";
+import moment from "moment";
 
 const Transactions = (props) => {
   const context = useTransactions();
@@ -19,8 +19,8 @@ const Transactions = (props) => {
     month: currentMonth,
     filteredTransactions: transactions.filter(
       (transaction) =>
-        transaction.date.getFullYear() === currentYear &&
-        transaction.date.getMonth() === currentMonth
+        transaction.date.year() === currentYear &&
+        transaction.date.month() === currentMonth
     ),
   };
 

@@ -4,7 +4,7 @@ const currentYear = moment().year();
 const transactionTypes = (state, action, transactions) => {
   const monthTransactions = (month) =>
     transactions.filter(
-      (transaction) => String(transaction.date.getMonth()) == month
+      (transaction) => String(transaction.date.month()) == month
     );
 
   const ACTION_TYPES = {
@@ -21,8 +21,8 @@ const transactionTypes = (state, action, transactions) => {
           ...transactions.filter((transaction) => {
             return (
               transaction.value > 0 &&
-              transaction.date.getFullYear() === state.year &&
-              transaction.date.getMonth() === state.month
+              transaction.date.year() === state.year &&
+              transaction.date.month() === state.month
             );
           }),
           ...state.filteredTransactions,
@@ -37,8 +37,8 @@ const transactionTypes = (state, action, transactions) => {
           ...transactions.filter((transaction) => {
             return (
               transaction.value < 0 &&
-              transaction.date.getFullYear() === state.year &&
-              transaction.date.getMonth() === state.month
+              transaction.date.year() === state.year &&
+              transaction.date.month() === state.month
             );
           }),
         ],
@@ -65,8 +65,8 @@ const transactionTypes = (state, action, transactions) => {
         ...state,
         filteredTransactions: transactions.filter(
           (transaction) =>
-            transaction.date.getMonth() === moment().month() &&
-            transaction.date.getFullYear() === moment().year()
+            transaction.date.month() === moment().month() &&
+            transaction.date.year() === moment().year()
         ),
       };
     })(),
@@ -76,7 +76,7 @@ const transactionTypes = (state, action, transactions) => {
           ...state,
           year: currentYear.toString(),
           filteredTransactions: transactions.filter(
-            (transaction) => transaction.date.getFullYear() === currentYear
+            (transaction) => transaction.date.year() === currentYear
           ),
         };
       }
@@ -84,8 +84,7 @@ const transactionTypes = (state, action, transactions) => {
         ...state,
         year: action.year,
         filteredTransactions: transactions.filter(
-          (transaction) =>
-            String(transaction.date.getFullYear()) === action.year
+          (transaction) => String(transaction.date.year()) === action.year
         ),
       };
     })(),
