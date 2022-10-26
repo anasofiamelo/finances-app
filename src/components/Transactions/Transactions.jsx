@@ -3,7 +3,6 @@ import { useTransactions } from "../../context/finances.context";
 import { Container, TransactionsList, TransactionHeader } from "..";
 import moment from "moment";
 import transactionTypes from "../../hooks/transactionTypes";
-import Teste from "../Teste";
 
 const Transactions = (props) => {
   const context = useTransactions();
@@ -42,13 +41,13 @@ const Transactions = (props) => {
     dispatchSelectState({ type: "FILTER_DESCRIPTION", filterInput: value });
   };
 
-  const totalBalanceTransactions = selectedBalance.filteredTransactions
-    .reduce((prev, current) => prev + current.value, 0)
-    .toFixed(2);
-
   useEffect(() => {
     return dispatchSelectState({ type: "TRANSACTIONS_UPDATE" });
   }, [transactions]);
+
+  const totalBalanceTransactions = selectedBalance.filteredTransactions
+    .reduce((prev, current) => prev + current.value, 0)
+    .toFixed(2);
 
   return (
     <Container style={{ minWidth: "500px" }}>
@@ -58,12 +57,7 @@ const Transactions = (props) => {
         title={props.title}
       />
 
-      <Teste onChangeSelectedMonth={changeSelectedMonthHandler} />
-
-      <div>
-        <div className="balance-header"></div>
-        <TransactionsList transactions={selectedBalance.filteredTransactions} />
-      </div>
+      <TransactionsList transactions={selectedBalance.filteredTransactions} />
 
       <h3>
         Total{" "}

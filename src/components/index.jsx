@@ -6,6 +6,7 @@ import TransactionValueCard from "./Transactions/TransactionValueCard";
 import AddTransactionDropdown from "./Transactions/AddTransactionDropdown";
 import AddTransaction from "./Transactions/AddTransaction";
 
+import MonthSwitch from "./Transactions/MonthSwitch";
 import Reports from "./Reports/Reports";
 
 import AddContainer from "./AddContainer";
@@ -46,6 +47,7 @@ export {
   TransactionHeader,
   TransactionValueCard,
   AddTransaction,
+  MonthSwitch,
   AddTransactionDropdown,
   //invoices
   Invoices,

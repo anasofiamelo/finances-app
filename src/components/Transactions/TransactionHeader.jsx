@@ -1,17 +1,9 @@
 import { useState } from "react";
-import { Select, InputLabel } from "../../components";
-import { monthOptions } from "../../utils";
-import moment from "moment";
-import { BsFillCalendarMonthFill } from "react-icons/bs";
+import { InputLabel, MonthSwitch } from "../../components";
 
 const TransactionHeader = (props) => {
-  const [selectedMonth, setSelectedMonth] = useState(moment().month());
   const [descriptionFilter, setDescriptionFilter] = useState();
 
-  const changeSelectedMonthHandler = (e) => {
-    setSelectedMonth(e.target.value);
-    props.onChangeSelectedMonth(e.target.value);
-  };
   const changeDescriptionFilterHandler = (e) => {
     setDescriptionFilter(e.target.value);
     props.onChangeDescriptionFilter(e.target.value);
@@ -19,34 +11,13 @@ const TransactionHeader = (props) => {
 
   return (
     <>
-      <div className="balance-header">
-        <h1 className="subtitle">{props.title}</h1>
-        <button
-          style={{
-            borderRadius: "1rem",
-            background: "none",
-            color: "var(--black)",
-          }}
-          onClick={props.onShowBalanceTable}
-        ></button>
-        <Select
-          style={{
-            backgroundColor: "var(--purple)",
-            color: "var(--white)",
-            borderRadius: "0.4rem",
-          }}
-          selectIcon={
-            <BsFillCalendarMonthFill
-              className="button-icon"
-              style={{ marginLeft: "1rem" }}
-            />
-          }
-          onChange={changeSelectedMonthHandler}
-          value={selectedMonth}
-          options={monthOptions}
-        />
+      <h1 className="subtitle">{props.title}</h1>
+
+      <div className="row" style={{ justifyContent: "center" }}>
+        <MonthSwitch onChangeSelectedMonth={props.onChangeSelectedMonth} />
       </div>
-      <div className="row" style={{ width: "fit-content" }}>
+
+      <div className="row">
         <InputLabel
           inputStyle={{ backgroundColor: "var(--white)", fontSize: "0.9rem" }}
           label="Filter by description"
@@ -54,14 +25,6 @@ const TransactionHeader = (props) => {
           value={descriptionFilter}
           onChange={changeDescriptionFilterHandler}
         />
-        {/* <Select
-          label="Filter by type"
-          options={
-            <>
-              <option> teste</option>
-            </>
-          }
-        /> */}
       </div>
     </>
   );
