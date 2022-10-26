@@ -2,7 +2,7 @@ import moment from "moment";
 
 const current = {
   day: moment().date(),
-  month: moment().month() + 1,
+  month: moment().month(),
   year: moment().year(),
   spelledMonth: moment().format("MMM"),
   fullMonth: moment().format("MMMM"),

@@ -28,7 +28,7 @@ html {
 
   /* fonts */
   --raleway: "Raleway";
-  --poppins: "Poppins";
+  --poppins: "Poppins", sans-serif;
   --nothing-you-could-do: "Nothing You Could Do";
 
   /* named colors */

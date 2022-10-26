@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { Navbar, Goals, Invoices, Activities } from "./components";
 import { CreditCardPage, Budget, Dashboard } from "./pages";
 import { useTransactions } from "./context/finances.context";
-
+import Teste from "./components/Teste";
 function App() {
   const { incomes, expenses, transactions } = useTransactions();
   const [showAddTransaction, setShowAddTransaction] = useState(false);
@@ -26,6 +26,7 @@ function App() {
       <div onClick={hideAddTransactionHandler} className="App">
         <Routes>
           <Route path="/" element={<Dashboard />} />
+          <Route path="/teste" element={<Teste />} />
           <Route path="/credit-card" element={<CreditCardPage />} />
           <Route path="/credit-card/:creditCard" element={<Invoices />} />
           <Route path="/goals" element={<Goals />} />

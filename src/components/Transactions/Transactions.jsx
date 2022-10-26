@@ -3,6 +3,7 @@ import { useTransactions } from "../../context/finances.context";
 import { Container, TransactionsList, TransactionHeader } from "..";
 import moment from "moment";
 import transactionTypes from "../../hooks/transactionTypes";
+import Teste from "../Teste";
 
 const Transactions = (props) => {
   const context = useTransactions();
@@ -56,6 +57,8 @@ const Transactions = (props) => {
         onChangeDescriptionFilter={changeDescriptionFilterHandler}
         title={props.title}
       />
+
+      <Teste onChangeSelectedMonth={changeSelectedMonthHandler} />
 
       <div>
         <div className="balance-header"></div>
