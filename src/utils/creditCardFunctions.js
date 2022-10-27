@@ -2,17 +2,20 @@ import moment from "moment";
 
 const creditCard = "";
 
-export const formatInvoices = (creditCard) => {
+export const formatInvoices = (creditCard, month = moment().month()) => {
   return creditCard.invoices.map((invoice) => {
     const { value, timesPurchased } = invoice;
     const parcelValue = (value / timesPurchased).toFixed(2);
     const chargeDate = calcDateOfCharge(creditCard, invoice);
     const endDate = calcDateOfEnd(invoice, chargeDate);
 
-    const currentMonth = moment().month();
-    const paidParcels = currentMonth - chargeDate.month();
+    const paidParcels = month - chargeDate.month();
     const missingValue = (timesPurchased - paidParcels) * parcelValue;
     const paidFromTotal = `${paidParcels}/${timesPurchased}`;
+
+    if (paidParcels < 0 || paidParcels > timesPurchased) {
+      return {};
+    }
 
     return {
       ...invoice,

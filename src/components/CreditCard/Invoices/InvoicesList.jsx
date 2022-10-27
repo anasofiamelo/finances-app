@@ -8,7 +8,7 @@ import {
   AddInvoiceModal,
   MonthSwitch,
 } from "../..";
-import { current } from "../../../utils";
+import { current, formatInvoices } from "../../../utils";
 import moment from "moment";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 
@@ -20,6 +20,7 @@ const InvoicesList = (props) => {
   const [sortedInvoices, setSortedInvoices] = useState(invoices);
   const [detailedInvoice, setDetailedInvoice] = useState(null);
   const [showAddPurchaseModal, setShowAddPurchaseModal] = useState(false);
+  const [selectedMonth, setSelectedMonth] = useState(current.month);
 
   const showAddCreditCardPurchaseHandler = () => {
     setShowAddPurchaseModal(true);
@@ -35,15 +36,18 @@ const InvoicesList = (props) => {
   };
 
   useEffect(() => {
-    setSortedInvoices(invoices);
-  }, [invoices]);
+    const formattedInvoices = formatInvoices(creditCard, selectedMonth).filter(
+      (invoice) => Object.keys(invoice).length > 0
+    );
+    setSortedInvoices(formattedInvoices);
+  }, [invoices, selectedMonth, creditCard]);
 
   const hideDetailedInvoiceHandler = () => setDetailedInvoice(null);
 
   const mappedFatura = sortedInvoices.map((invoice) => {
     const { item, boughtIn, parcelValue, paidFromTotal } = invoice;
     const formattedDate = moment(boughtIn).format("DD/MM/YYYY");
-    const valueStyle = { fontWeight: "500", color: "var(--green)" };
+    const valueStyle = { fontWeight: "500", color: "var(--red)" };
 
     return (
       <tr onClick={showDetailedInvoiceHandler} key={item} id={item}>
@@ -60,6 +64,15 @@ const InvoicesList = (props) => {
     setSortedInvoices(invoices);
   };
 
+  const changeSelectedMonthHandler = (value) => {
+    setSelectedMonth(value);
+  };
+
+  const total = sortedInvoices.reduce(
+    (prev, current) => prev + +current.parcelValue,
+    0
+  );
+
   return (
     <Container>
       <div className="space-between">
@@ -75,7 +88,7 @@ const InvoicesList = (props) => {
       </div>
 
       <div className="row" style={{ justifyContent: "center" }}>
-        <MonthSwitch />
+        <MonthSwitch onChangeSelectedMonth={changeSelectedMonthHandler} />
       </div>
 
       {showAddPurchaseModal && (
@@ -108,6 +121,10 @@ const InvoicesList = (props) => {
           invoice={detailedInvoice}
         />
       )}
+      <h3>
+        {" "}
+        Total <span style={{ color: "var(--red)" }}>$ {total.toFixed(2)}</span>
+      </h3>
     </Container>
   );
 };

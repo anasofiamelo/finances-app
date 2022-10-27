@@ -4,7 +4,7 @@ const currentYear = moment().year();
 const transactionTypes = (state, action, transactions) => {
   const monthTransactions = (month) =>
     transactions.filter(
-      (transaction) => String(transaction.date.month()) == month
+      (transaction) => String(transaction.date.month()) === String(month)
     );
 
   const ACTION_TYPES = {
