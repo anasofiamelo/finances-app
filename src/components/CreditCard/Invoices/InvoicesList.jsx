@@ -9,7 +9,7 @@ import {
   MonthSwitch,
 } from "../..";
 import { current, formatInvoices } from "../../../utils";
-import moment, { months } from "moment";
+import moment from "moment";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 
 const InvoicesList = (props) => {

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { InputLabel, AddContainer, Select } from "../..";
 import { useCreditCard } from "../../../context/credit_card.context";
+import moment from "moment";
 const AddInvoiceModal = (props) => {
   const context = useCreditCard();
 
@@ -22,7 +23,7 @@ const AddInvoiceModal = (props) => {
     e.preventDefault();
 
     const newPurchase = {
-      boughtIn: new Date(),
+      boughtIn: moment(date),
       timesPurchased: Number(times),
       item,
       value: Number(value),
