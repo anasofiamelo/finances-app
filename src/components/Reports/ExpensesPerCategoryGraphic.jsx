@@ -8,8 +8,12 @@ const ExpensesPerCategoryGraphic = (props) => {
     .sort((a, b) => a.percentage - b.percentage)
     .pop().type;
 
-  const mappedExpensesIcons = props.expenses.map((expense) => (
-    <div style={{ marginBottom: ".4rem" }} className="row space-between">
+  const mappedExpensesIcons = props.expenses.map((expense, index) => (
+    <div
+      key={index}
+      style={{ marginBottom: ".4rem" }}
+      className="row space-between"
+    >
       <p
         style={{
           fontWeight:
