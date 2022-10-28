@@ -60,6 +60,7 @@ const manageSelectedDate = (state, action) => {
 };
 
 const MonthSwitch = (props) => {
+  const { onChangeSelectedMonth } = props;
   const { month, year } = current;
   const initialDate = { month, year, displayedMonth: month };
   const monthsArr = months();
@@ -79,8 +80,8 @@ const MonthSwitch = (props) => {
   };
 
   useEffect(() => {
-    props.onChangeSelectedMonth(selectedDate);
-  }, [selectedDate, props]);
+    onChangeSelectedMonth(selectedDate);
+  }, [selectedDate, onChangeSelectedMonth]);
 
   const styleObj = {
     fontSize: "1.4rem",

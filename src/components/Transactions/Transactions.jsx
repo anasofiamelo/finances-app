@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useCallback } from "react";
 import { useTransactions } from "../../context/finances.context";
 import { Container, TransactionsList, TransactionHeader } from "..";
 import transactionTypes from "../../hooks/transactionTypes";
@@ -13,7 +13,6 @@ const Transactions = (props) => {
 
   const currentYear = moment().year();
   const currentMonth = moment().month();
-
   const initialManageBalancesState = {
     year: currentYear,
     month: currentMonth,
@@ -33,9 +32,9 @@ const Transactions = (props) => {
     initialManageBalancesState
   );
 
-  const changeSelectedMonthHandler = (value) => {
-    dispatchSelectState({ type: "CHOOSE_MONTH", month: value });
-  };
+  const changeSelectedMonthHandler = useCallback((value) => {
+    dispatchSelectState({ type: "CHOOSE_MONTH", month: value.month });
+  }, []);
 
   const changeDescriptionFilterHandler = (value) => {
     dispatchSelectState({ type: "FILTER_DESCRIPTION", filterInput: value });
