@@ -1,19 +1,22 @@
-import moment from "moment";
+import moment, { months } from "moment";
 
 const creditCard = "";
 
-export const formatInvoices = (creditCard, month = moment().month()) => {
+export const formatInvoices = (
+  creditCard,
+  selectedDate = { month: moment().month() }
+) => {
   return creditCard.invoices.map((invoice) => {
     const { value, timesPurchased } = invoice;
     const parcelValue = (value / timesPurchased).toFixed(2);
     const chargeDate = calcDateOfCharge(creditCard, invoice);
     const endDate = calcDateOfEnd(invoice, chargeDate);
 
-    const paidParcels = month - chargeDate.month();
+    const paidParcels = selectedDate.month - chargeDate.month();
     const missingValue = (timesPurchased - paidParcels) * parcelValue;
     const paidFromTotal = `${paidParcels}/${timesPurchased}`;
 
-    if (paidParcels < 0 || paidParcels > timesPurchased) {
+    if (paidParcels === 0 || paidParcels < 0 || paidParcels > timesPurchased) {
       return {};
     }
 
@@ -44,22 +47,19 @@ export const calcDateOfCharge = (creditCard, invoice) => {
   const { boughtIn } = invoice;
   const dayPurchased = moment(boughtIn).date();
 
-  const closureDayBiggerThanPurchaseDay = cardClosureDate > dayPurchased;
-  const purchaseDayBiggerThanClosureDay = cardClosureDate < dayPurchased;
-  const purchaseDayHasTwoDigits = dayPurchased.toString().length === 2;
-  const purchaseDayHasOneDigit = dayPurchased.toString().length === 1;
+  const purchasedAfterClosureDay = cardClosureDate < dayPurchased;
+  const purchaseDayHasOneDigit = dayPurchased.toString().length < 2;
+  const closureDayHasOneDigit = cardClosureDate.toString().length < 2;
 
-  if (closureDayBiggerThanPurchaseDay && purchaseDayHasTwoDigits) {
-    return moment(boughtIn);
+  if (
+    closureDayHasOneDigit &&
+    purchaseDayHasOneDigit &&
+    !purchasedAfterClosureDay
+  ) {
+    return moment(boughtIn).subtract(1, "months");
   }
 
-  if (closureDayBiggerThanPurchaseDay && purchaseDayHasOneDigit) {
-    return moment(boughtIn).add(1, "months");
-  }
-
-  if (purchaseDayBiggerThanClosureDay) {
-    return moment(boughtIn).add(1, "months");
-  }
+  return moment(boughtIn);
 };
 
 export const calcDateOfEnd = (invoice, chargedIn) => {

@@ -9,18 +9,18 @@ import {
   MonthSwitch,
 } from "../..";
 import { current, formatInvoices } from "../../../utils";
-import moment from "moment";
+import moment, { months } from "moment";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 
 const InvoicesList = (props) => {
   const { creditCard } = props;
   const { invoices } = creditCard;
-  const { fullMonth } = current;
+  const { fullMonth, month, year } = current;
 
   const [sortedInvoices, setSortedInvoices] = useState(invoices);
   const [detailedInvoice, setDetailedInvoice] = useState(null);
   const [showAddPurchaseModal, setShowAddPurchaseModal] = useState(false);
-  const [selectedMonth, setSelectedMonth] = useState(current.month);
+  const [selectedDate, setSelectedDate] = useState({ month, year });
 
   const showAddCreditCardPurchaseHandler = () => {
     setShowAddPurchaseModal(true);
@@ -36,21 +36,22 @@ const InvoicesList = (props) => {
   };
 
   useEffect(() => {
-    const formattedInvoices = formatInvoices(creditCard, selectedMonth).filter(
+    const formattedInvoices = formatInvoices(creditCard, selectedDate);
+    const filteredFormattedInvoices = formattedInvoices.filter(
       (invoice) => Object.keys(invoice).length > 0
     );
-    setSortedInvoices(formattedInvoices);
-  }, [invoices, selectedMonth, creditCard]);
+    setSortedInvoices(filteredFormattedInvoices);
+  }, [invoices, selectedDate, creditCard]);
 
   const hideDetailedInvoiceHandler = () => setDetailedInvoice(null);
 
-  const mappedFatura = sortedInvoices.map((invoice) => {
+  const mappedFatura = sortedInvoices.map((invoice, index) => {
     const { item, boughtIn, parcelValue, paidFromTotal } = invoice;
     const formattedDate = moment(boughtIn).format("DD/MM/YYYY");
     const valueStyle = { fontWeight: "500", color: "var(--red)" };
 
     return (
-      <tr onClick={showDetailedInvoiceHandler} key={item} id={item}>
+      <tr onClick={showDetailedInvoiceHandler} key={index} id={index}>
         <td>{formattedDate}</td>
         <td>
           {item} ({paidFromTotal})
@@ -64,8 +65,8 @@ const InvoicesList = (props) => {
     setSortedInvoices(invoices);
   };
 
-  const changeSelectedMonthHandler = (value) => {
-    setSelectedMonth(value);
+  const changeSelectedDateHandler = (selectedDate) => {
+    setSelectedDate(selectedDate);
   };
 
   const total = sortedInvoices.reduce(
@@ -88,7 +89,7 @@ const InvoicesList = (props) => {
       </div>
 
       <div className="row" style={{ justifyContent: "center" }}>
-        <MonthSwitch onChangeSelectedMonth={changeSelectedMonthHandler} />
+        <MonthSwitch onChangeSelectedMonth={changeSelectedDateHandler} />
       </div>
 
       {showAddPurchaseModal && (
