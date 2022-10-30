@@ -28,14 +28,15 @@ th {
   font-size: 1.1rem;
 }
 th {
+  font-weight: 500;
+  font-family: var(--raleway);
   font-size: 0.9rem;
   background-color: var(--table-color);
   color: var(--white);
   text-align: left;
 }
 .balance-header,
-.transactions-container,
-.wallet {
+.transactions-container {
   display: flex;
   justify-content: space-between;
 }

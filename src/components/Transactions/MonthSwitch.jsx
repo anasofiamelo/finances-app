@@ -90,6 +90,8 @@ const MonthSwitch = (props) => {
     color: "var(--purple)",
     textTransform: "uppercase",
     fontWeight: "600",
+    display: "flex",
+    justifyContent: "center",
   };
 
   return (
@@ -104,13 +106,12 @@ const MonthSwitch = (props) => {
             fontSize: "1.2rem",
             padding: ".6rem 1.5rem",
             border: "1px solid var(--purple)",
+            minWidth: "160px",
           }}
         >
           <div className="column">
             <span>{monthsArr[selectedDate.displayedMonth]}</span>
-            <span style={{ fontSize: "0.6rem", textAlign: "center" }}>
-              {selectedDate.year}
-            </span>
+            <span style={{ fontSize: "0.6rem" }}>{selectedDate.year}</span>
           </div>
         </button>
         <button onClick={goFowards} style={{ ...styleObj }}>

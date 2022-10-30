@@ -4,10 +4,12 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { TransactionsContextProvider } from "./context/finances.context";
 import { CreditCardContextProvider } from "./context/credit_card.context";
-import "./index.css";
-import "./table.css";
-import "./buttons.css";
-import "./components/CreditCard/credit_card.css";
+import "./styles/index.css";
+import "./styles/default.css";
+import "./styles/tables.css";
+import "./styles/forms.css";
+import "./styles/buttons.css";
+// import "./styles/components/CreditCard/credit_card.css";
 // import "./components/Invoices/CreditCard/credit_card.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

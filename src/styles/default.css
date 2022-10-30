@@ -1,0 +1,22 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+ul {
+  list-style: none;
+}
+input {
+  background-color: none;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+select:focus,
+input:focus {
+  outline: none;
+}
