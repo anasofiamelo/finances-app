@@ -9,6 +9,7 @@ import "./styles/default.css";
 import "./styles/tables.css";
 import "./styles/forms.css";
 import "./styles/buttons.css";
+import "./styles/navbar.css";
 // import "./styles/components/CreditCard/credit_card.css";
 // import "./components/Invoices/CreditCard/credit_card.css";
 
