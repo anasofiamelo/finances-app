@@ -1,4 +1,4 @@
-import { Button } from "..";
+import { Button, Container } from "..";
 import useTransactionsPercentage from "../../hooks/useTransactionsPercentage";
 import ExpensesPerCategoryGraphic from "./ExpensesPerCategoryGraphic";
 import ExpensesPerMonthGraphic from "./ExpensesPerMonthGraphic";
@@ -8,14 +8,14 @@ const Reports = (props) => {
   const expensesPercentages = useTransactionsPercentage(expenses);
 
   return (
-    <div>
+    <Container>
       <div className="row space-between">
         <h1 className="title">Reports</h1>
         <Button> Add report</Button>
       </div>
       <ExpensesPerCategoryGraphic expenses={expensesPercentages} />
       <ExpensesPerMonthGraphic expenses={expenses} />
-    </div>
+    </Container>
   );
 };
 

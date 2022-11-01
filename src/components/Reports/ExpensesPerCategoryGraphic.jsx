@@ -1,4 +1,3 @@
-import { Container } from "../../components";
 import Chart from "./Chart/Chart";
 import { expensesIcons } from "../../utils";
 
@@ -18,7 +17,7 @@ const ExpensesPerCategoryGraphic = (props) => {
         style={{
           fontWeight:
             highestCategoryPercentage === expense.type ? "700" : "300",
-          fontSize: "0.8rem",
+          fontSize: "1.2rem",
           marginRight: "1rem",
         }}
       >
@@ -29,15 +28,15 @@ const ExpensesPerCategoryGraphic = (props) => {
   ));
 
   return (
-    <Container>
-      <h2 style={{ marginBottom: "1rem" }} className="title">
-        Expenses Per Category
+    <>
+      <h2 style={{ marginBottom: "1rem" }} className="subtitle">
+        Expenses per category
       </h2>
       <div className="row space-between">
         <Chart expenses={props.expenses} />
         <div>{mappedExpensesIcons}</div>
       </div>
-    </Container>
+    </>
   );
 };
 
