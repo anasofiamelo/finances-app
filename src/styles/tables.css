@@ -1,5 +1,4 @@
 table {
-  font-size: 1.2rem;
   width: 100%;
   border-collapse: collapse;
   --table-color: var(--purple);
@@ -24,15 +23,16 @@ tbody tr:hover {
 td,
 th {
   padding: 0.5rem 1rem;
-  font-weight: 300;
-  font-size: 1.1rem;
+  font-weight: 400;
+  font-size: 1.6rem;
+  font-family: var(--open-sans);
 }
 th {
   font-weight: 500;
-  font-family: var(--raleway);
-  font-size: 0.9rem;
-  background-color: var(--table-color);
-  color: var(--white);
+  font-family: var(--open-sans);
+  font-size: 1.2rem;
+  background-color: var(--less-lime);
+  color: var(--dark-black);
   text-align: left;
 }
 .balance-header,

@@ -26,9 +26,16 @@ const TransactionsList = (props) => {
     return (
       <tr key={index}>
         <td>{isIncome ? incomesIcons[type] : expensesIcons[type]}</td>
-        <td>{formattedDate}</td>
+        <td className="date">{formattedDate}</td>
         <td>{description}</td>
-        <td style={{ color: valueColor, fontWeight: 500 }}>$ {value}</td>
+        <td
+          style={{
+            color: valueColor,
+            fontWeight: 500,
+          }}
+        >
+          $ {value}
+        </td>
         <td>{payment}</td>
       </tr>
     );
