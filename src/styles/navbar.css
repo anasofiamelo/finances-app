@@ -17,9 +17,7 @@ nav {
   font-family: var(--oswald);
   font-size: 2.5rem;
   font-weight: 100;
-  /* border-radius: 0.3rem; */
   padding: 2.2rem 0;
-  /* margin: 1rem 0; */
 }
 .navlink a {
   color: var(--white);

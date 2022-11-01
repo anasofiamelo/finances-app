@@ -3,6 +3,7 @@ import Activities from "./Transactions/Activities";
 import TransactionsList from "./Transactions/TransactionsList";
 import TransactionHeader from "./Transactions/TransactionHeader";
 import TransactionValueCard from "./Transactions/TransactionValueCard";
+import TransactionValueCards from "./Transactions/TransactionValueCards";
 import AddTransactionDropdown from "./Transactions/AddTransactionDropdown";
 import AddTransaction from "./Transactions/AddTransaction";
 
@@ -46,6 +47,7 @@ export {
   TransactionsList,
   TransactionHeader,
   TransactionValueCard,
+  TransactionValueCards,
   AddTransaction,
   MonthSwitch,
   AddTransactionDropdown,

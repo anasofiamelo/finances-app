@@ -9,14 +9,14 @@ html {
   --white: #fbf5f3;
   --ghost-white: #f8f7ff;
   --light-grey: #ced3dc;
-  /* --purple: #9381ff; */
-  --purple: #5e60ce;
-  /* --blue: #5e60ce; */
+  --purple: #5438dc;
+  --less-purple: rgba(84, 56, 220, 0.65);
   --light-blue: #62b6cb;
   --red: #bc4749;
   --orange-red: #ff5e5b;
   --green: #6a994e;
-  --lime: #9cfc97;
+  --lime: rgb(156, 252, 151);
+  --less-lime: rgba(156, 252, 151, 0.65);
 
   /* fonts */
   --raleway: "Raleway", sans-serif;
@@ -81,12 +81,10 @@ body {
   padding: 0 15%;
 }
 .container {
-  background-color: var(--white);
   padding: 2.8rem 3.4rem;
   border-radius: 15px;
-  box-shadow: 4px 4px 8px var(--light-grey);
+  box-shadow: 3px 3px 4px var(--light-grey);
   margin: 1rem 0;
-  border: 1px solid var(--orange-red);
   font-size: 1.4rem;
 }
 .column {
