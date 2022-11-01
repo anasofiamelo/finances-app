@@ -25,28 +25,30 @@ const Activities = (props) => {
   return (
     <>
       <div className="balance_grid">
-        <TransactionValueCard
-          title="Current balance"
-          goto="/transactions"
-          value={totalBalance}
-          icon={balanceIcon}
-        />
+        <Transactions title={props.title} transactions={props.transactions} />
+        <div className="transaction_cards">
+          <TransactionValueCard
+            title="Current balance"
+            goto="/transactions"
+            value={totalBalance}
+            icon={balanceIcon}
+          />
 
-        <TransactionValueCard
-          title="Incomes"
-          goto="/incomes"
-          value={totalIncomes}
-          icon={incomesIcon}
-        />
+          <TransactionValueCard
+            title="Incomes"
+            goto="/incomes"
+            value={totalIncomes}
+            icon={incomesIcon}
+          />
 
-        <TransactionValueCard
-          title="Expenses"
-          goto="/expenses"
-          value={totalExpenses}
-          icon={expensesIcon}
-        />
+          <TransactionValueCard
+            title="Expenses"
+            goto="/expenses"
+            value={totalExpenses}
+            icon={expensesIcon}
+          />
+        </div>
       </div>
-      <Transactions title={props.title} transactions={props.transactions} />
     </>
   );
 };

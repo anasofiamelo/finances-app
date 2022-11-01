@@ -25,29 +25,31 @@ const Dashboard = () => {
   return (
     <div>
       <div className="balance_grid">
-        <TransactionValueCard
-          title="Current balance"
-          goto="/transactions"
-          value={totalBalance}
-          icon={balanceIcon}
-        />
+        <Transactions title="Your recent activities" />
+        <div className="transaction_cards">
+          <TransactionValueCard
+            title="Current balance"
+            goto="/transactions"
+            value={totalBalance}
+            icon={balanceIcon}
+          />
 
-        <TransactionValueCard
-          title="Incomes"
-          goto="/incomes"
-          value={totalIncomes}
-          icon={incomesIcon}
-        />
+          <TransactionValueCard
+            title="Incomes"
+            goto="/incomes"
+            value={totalIncomes}
+            icon={incomesIcon}
+          />
 
-        <TransactionValueCard
-          title="Expenses"
-          goto="/expenses"
-          value={totalExpenses}
-          icon={expensesIcon}
-        />
+          <TransactionValueCard
+            title="Expenses"
+            goto="/expenses"
+            value={totalExpenses}
+            icon={expensesIcon}
+          />
+        </div>
       </div>
-      <Transactions title="Your recent activities" />
-      <Reports transactions={transactions} />
+      {/* <Reports transactions={transactions} /> */}
     </div>
   );
 };

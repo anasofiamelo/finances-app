@@ -30,7 +30,7 @@ const ExpensesPerCategoryGraphic = (props) => {
 
   return (
     <Container>
-      <h2 style={{ marginBottom: "1rem" }} className="subtitle">
+      <h2 style={{ marginBottom: "1rem" }} className="title">
         Expenses Per Category
       </h2>
       <div className="row space-between">

@@ -10,7 +10,7 @@ const TransactionValueCard = (props) => {
             {props.title}
             <span>{props.icon}</span>
           </h2>
-          <h2 className="subtitle">$ {props.value}</h2>
+          <p className="title_number">$ {props.value}</p>
         </div>
       </Container>
     </Link>

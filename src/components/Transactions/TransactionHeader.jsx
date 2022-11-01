@@ -11,7 +11,7 @@ const TransactionHeader = (props) => {
 
   return (
     <>
-      <h1 className="subtitle">{props.title}</h1>
+      <h1 className="title">{props.title}</h1>
 
       <div className="row" style={{ justifyContent: "center" }}>
         <MonthSwitch onChangeSelectedMonth={props.onChangeSelectedMonth} />

@@ -10,7 +10,7 @@ const Reports = (props) => {
   return (
     <div>
       <div className="row space-between">
-        <h1 className="subtitle">Reports</h1>
+        <h1 className="title">Reports</h1>
         <Button> Add report</Button>
       </div>
       <ExpensesPerCategoryGraphic expenses={expensesPercentages} />

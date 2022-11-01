@@ -1,13 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&family=Poppins:wght@100;200;300;400;500;600&family=Raleway:wght@100;200;300;400;500;600&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&family=Raleway:wght@100;200;300;400;500;600;700&display=swap");
 html {
-  /* font-size: 62.5%; */
+  font-size: 62.5%;
 
   /* colors */
-  --dark-black: #151515;
+  --dark-black: #06070e;
   --black: #373737;
   --grey: #5b616a;
-  --white: #fbfbff;
+  --white: #fbf5f3;
   --ghost-white: #f8f7ff;
   --light-grey: #ced3dc;
   /* --purple: #9381ff; */
@@ -15,13 +14,15 @@ html {
   /* --blue: #5e60ce; */
   --light-blue: #62b6cb;
   --red: #bc4749;
+  --orange-red: #ff5e5b;
   --green: #6a994e;
 
   /* fonts */
-  --raleway: "Raleway";
+  --raleway: "Raleway", sans-serif;
   --poppins: "Poppins", sans-serif;
-  --nycd: "Nothing You Could Do";
-  --data-font: var(--raleway);
+  --open-sans: "Open Sans", sans-serif;
+  --oswald: "Oswald", sans-serif;
+  --data-font: var(--open-sans);
 
   /* named colors */
   /* --background: var(--ghost-white); */
@@ -43,24 +44,28 @@ button {
   border: none;
   cursor: pointer;
   border-radius: 0.4rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
   padding: 0.5rem 0.4rem;
   font-family: var(--poppins);
   background-color: white;
 }
 .credit-card_grid,
-.balance_grid,
 .credit-card_page_grid {
   display: grid;
+}
+.balance_grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 3rem;
 }
 .row {
   align-items: center;
 }
 .input-icon,
-.subtitle {
+.title {
   color: var(--grey);
 }
-.subtitle,
+.title,
 input::placeholder {
   font-weight: 300;
 }
@@ -72,7 +77,7 @@ body {
   background-color: var(--background);
 }
 .App {
-  padding: 1rem 15%;
+  padding: 0 15%;
 }
 .navbar_container {
   position: fixed;
@@ -82,10 +87,12 @@ body {
 }
 .container {
   background-color: var(--white);
-  padding: 2rem 1rem;
-  border-radius: 1rem;
-  box-shadow: 2px 2px 5px var(--light-grey);
+  padding: 2.8rem 3.4rem;
+  border-radius: 15px;
+  box-shadow: 4px 4px 8px var(--light-grey);
   margin: 1rem 0;
+  border: 1px solid var(--orange-red);
+  font-size: 1.4rem;
 }
 .navlink {
   background-color: var(--purple);
@@ -115,17 +122,26 @@ body {
   gap: 1rem;
   grid-template-columns: 1fr 1fr;
 }
-.balance_grid {
-  gap: 3rem;
-  grid-template-columns: 1fr 1fr 1fr;
-}
 .button-icon {
   font-size: 1.5rem;
 }
-.subtitle {
+.title {
   color: var(--dark-black);
+  font-family: var(--oswald);
+  font-size: 3.6rem;
 }
-.card_subtitle {
+.subtitle {
+  font-family: var(--oswald);
+  color: var(--grey);
+  font-weight: 300;
+}
+.title_number {
+  font-size: 3.2rem;
+  font-family: var(--poppins);
+  color: var(--dark-black);
+  font-weight: 300;
+}
+.card_title {
   border-bottom: 2px solid var(--purple);
   width: fit-content;
   margin-bottom: 1rem;

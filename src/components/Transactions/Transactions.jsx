@@ -49,7 +49,7 @@ const Transactions = (props) => {
     .toFixed(2);
 
   return (
-    <Container style={{ minWidth: "500px" }}>
+    <Container>
       <TransactionHeader
         onChangeSelectedMonth={changeSelectedMonthHandler}
         onChangeDescriptionFilter={changeDescriptionFilterHandler}

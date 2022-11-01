@@ -77,7 +77,7 @@ const InvoicesList = (props) => {
   return (
     <Container>
       <div className="space-between">
-        <h2 className="subtitle" style={{ marginBottom: "1rem" }}>
+        <h2 className="title" style={{ marginBottom: "1rem" }}>
           Invoices of {fullMonth}
         </h2>
         <Button

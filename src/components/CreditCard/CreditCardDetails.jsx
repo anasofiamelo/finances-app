@@ -23,10 +23,10 @@ const CreditCardDetails = (props) => {
         <div className="space-between">
           <div className="row">
             <BsCreditCard className="button-icon credit-card-details_icon" />
-            <h2 className="subtitle">{cardName}</h2>
+            <h2 className="title">{cardName}</h2>
           </div>
 
-          <h3 className="subtitle">
+          <h3 className="title">
             Limit of <b>${cardLimit.toFixed(2)}</b>
           </h3>
         </div>

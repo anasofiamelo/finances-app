@@ -5,7 +5,7 @@ const CreditCardCard = (props) => {
   return (
     <Container>
       <div className="row space-between">
-        <h3 className="subtitle card_subtitle">{props.cardName}</h3>
+        <h3 className="title card_title">{props.cardName}</h3>
         <span>
           <BsCreditCard
             style={{ color: "var(--purple)" }}

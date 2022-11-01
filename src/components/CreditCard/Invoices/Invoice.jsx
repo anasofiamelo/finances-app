@@ -13,7 +13,7 @@ const Invoice = (props) => {
     <>
       <Modal onClose={props.onClose}>
         <div style={{ width: "100%" }}>
-          <h2 className="subtitle">{invoice.item}</h2>
+          <h2 className="title">{invoice.item}</h2>
           <p>Bought in: {formattedInvoiceDate}</p>
           <p>Charged in: {formattedChargeDate}</p>
           <p>Ends in: {formattedEndDate}</p>
