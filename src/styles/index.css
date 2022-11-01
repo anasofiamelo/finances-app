@@ -16,6 +16,7 @@ html {
   --red: #bc4749;
   --orange-red: #ff5e5b;
   --green: #6a994e;
+  --lime: #9cfc97;
 
   /* fonts */
   --raleway: "Raleway", sans-serif;
@@ -26,7 +27,6 @@ html {
 
   /* named colors */
   /* --background: var(--ghost-white); */
-  --background: #e5e5e5;
   --text-color: var(--black);
   --title-color: var(--blue);
 }
@@ -47,7 +47,7 @@ button {
   font-size: 1.5rem;
   padding: 0.5rem 0.4rem;
   font-family: var(--poppins);
-  background-color: white;
+  /* background-color: white; */
 }
 .credit-card_grid,
 .credit-card_page_grid {
@@ -74,16 +74,37 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: var(--poppins);
   font-size: var(--normal-font-size);
-  background-color: var(--background);
+  background-color: var(--white);
 }
-.App {
+.App,
+.navbar_container {
   padding: 0 15%;
 }
 .navbar_container {
-  position: fixed;
-  background-color: var(--white);
-  height: 100vh;
-  padding: 4rem 1.5rem;
+  display: flex;
+}
+nav {
+  width: 100%;
+  display: flex;
+  background-color: var(--dark-black);
+  border-radius: 0 0 20px 15px;
+}
+.navbar_links {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+.navlink {
+  font-family: var(--oswald);
+  font-size: 2.5rem;
+  font-weight: 100;
+  /* border-radius: 0.3rem; */
+  padding: 2.2rem 0;
+  /* margin: 1rem 0; */
+}
+.navlink a {
+  color: var(--white);
 }
 .container {
   background-color: var(--white);
@@ -93,16 +114,6 @@ body {
   margin: 1rem 0;
   border: 1px solid var(--orange-red);
   font-size: 1.4rem;
-}
-.navlink {
-  background-color: var(--purple);
-  width: 100%;
-  border-radius: 0.3rem;
-  padding: 0.7rem;
-  margin: 1rem 0;
-}
-.navlink a {
-  color: var(--white);
 }
 .column {
   align-items: flex-start;

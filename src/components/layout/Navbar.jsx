@@ -18,19 +18,17 @@ const Navbar = (props) => {
   ));
 
   return (
-    <div className="navbar_container column">
-      <div style={{ position: "relative" }}>
-        <Button
-          onClick={props.onShowAddTransaction}
-          buttonIcon={<FiPlusCircle className="button-icon" />}
-        >
-          New Transaction
-        </Button>
-        {props.showAddTransaction && <AddTransactionDropdown />}
-      </div>
-      <nav style={{ width: "100%" }} onClick={props.onHideAddTransaction}>
-        <ul className="navbar_links column">{mappedNavlinks}</ul>
+    <div className="navbar_container">
+      <nav onClick={props.onHideAddTransaction}>
+        <ul className="navbar_links">{mappedNavlinks}</ul>
       </nav>
+      {/* <Button
+        onClick={props.onShowAddTransaction}
+        buttonIcon={<FiPlusCircle className="button-icon" />}
+      >
+        New Transaction
+      </Button> */}
+      {props.showAddTransaction && <AddTransactionDropdown />}
     </div>
   );
 };
