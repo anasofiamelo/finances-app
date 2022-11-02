@@ -1,24 +1,11 @@
 import classes from "../Reports.module.css";
 import { expensesIcons, expensesColors } from "../../../utils";
+import { BarController } from "chart.js";
+
 const ChartBar = (props) => {
   const { percentage, type } = props;
-  const heightPercentage = `${Number(percentage).toFixed()}%`;
 
-  return (
-    <div className={classes["chart-bar"]}>
-      <div className={classes["chart-bar__inner"]}>
-        <div
-          className={classes["chart-bar__fill"]}
-          style={{
-            height: heightPercentage,
-            backgroundColor: expensesColors[type],
-          }}
-        ></div>
-      </div>
-      <div className={classes["chart-bar__percentage"]}>{`${percentage}%`}</div>
-      <div className={classes["chart-bar__icon"]}>{expensesIcons[type]}</div>
-    </div>
-  );
+  return <BarController height={400} width={200} />;
 };
 
 export default ChartBar;

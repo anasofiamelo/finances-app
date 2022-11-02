@@ -1,28 +1,31 @@
 .chart-bar__container {
   display: flex;
-  min-height: 20rem;
+  min-height: 10rem;
+  border-left: 1px solid var(--purple);
 }
-
+.teste {
+  display: flex;
+}
 .chart-bar {
+  border-bottom: 1px solid var(--purple);
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
   min-width: 5rem;
 }
 
 .chart-bar__inner {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
   height: 100%;
   width: 20px;
-  border: 1px solid var(--black);
-  border-radius: 5px;
+  bottom: 0;
+  background-color: var(--purple);
+  border-radius: 5px 5px 0 0;
 }
 
 .chart-bar__fill {
-  border-top: 1px solid var(--black);
+  border-radius: 5px;
+  /* border-top: 1px solid var(--black); */
 }
 
 .chart-bar__label {

@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { Container } from "../../components";
 
 const TransactionValueCard = (props) => {
-  console.log("props", props);
   return (
     <Link to={props.goto}>
       <Container backgroundColor={props.backgroundColor || "var(--white)"}>
