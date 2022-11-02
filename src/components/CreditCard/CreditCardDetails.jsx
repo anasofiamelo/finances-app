@@ -22,13 +22,13 @@ const CreditCardDetails = (props) => {
       <Container>
         <div className="space-between">
           <div className="row">
-            <BsCreditCard className="button-icon credit-card-details_icon" />
+            <BsCreditCard className="credit-card-details_icon" />
             <h2 className="title">{cardName}</h2>
           </div>
 
-          <h3 className="title">
+          <h2 className="subtitle">
             Limit of <b>${cardLimit.toFixed(2)}</b>
-          </h3>
+          </h2>
         </div>
         <div className="credit-card-details_description-container">
           <p>Closes in: {closesIn}</p>

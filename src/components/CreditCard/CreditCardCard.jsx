@@ -1,21 +1,19 @@
-import { Container } from "../../components";
 import { BsCreditCard } from "react-icons/bs";
 
 const CreditCardCard = (props) => {
   return (
-    <Container>
-      <div className="row space-between">
-        <h3 className="title card_title">{props.cardName}</h3>
-        <span>
+    <>
+      <div className="row">
+        <span style={{ marginRight: "1rem" }}>
           <BsCreditCard
-            style={{ color: "var(--purple)" }}
-            className="button-icon"
+            style={{ color: "var(--purple)", fontSize: "2.5rem" }}
           />
         </span>
+        <h2 className="card_title">{props.cardName}</h2>
       </div>
       <p>Limit: $ {props.cardLimit.toFixed(2)}</p>
       <p>Closure day: {props.cardClosureDate}</p>
-    </Container>
+    </>
   );
 };
 

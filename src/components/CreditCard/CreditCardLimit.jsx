@@ -8,15 +8,15 @@ const CreditCardLimit = (props) => {
   return (
     <>
       <Container>
-        <h2 className="title space-between">
+        <h2 style={{ fontSize: "2rem" }} className="subtitle space-between">
           <span>Used limit</span>
           <span style={{ color: "var(--red)" }}>$ {creditCard.usedLimit}</span>
         </h2>
 
-        <h3 className="title space-between">
+        <h4 style={{ fontSize: "2rem" }} className="subtitle space-between">
           <span>Available limit</span>
           <span style={{ color: "var(--green)" }}>$ {availableLimit}</span>
-        </h3>
+        </h4>
 
         <div style={{ marginTop: "1rem", float: "right" }}></div>
       </Container>

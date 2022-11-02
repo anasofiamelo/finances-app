@@ -1,24 +1,20 @@
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useCreditCard } from "../../context/credit_card.context";
-import { FiPlusCircle } from "react-icons/fi";
 import {
   CreditCardCard,
-  Button,
-  AddCreditCardModal,
   BestCreditCardAvailable,
+  Container,
 } from "../../components";
 
 const CreditCardList = (props) => {
   const { cards } = useCreditCard();
 
-  const [showAddCreditCardModal, setShowAddCreditCardModal] = useState(false);
-  const showAddCreditCardModalHandler = () => setShowAddCreditCardModal(true);
-  const hideAddCreditCardModalHandler = () => setShowAddCreditCardModal(false);
-
   const mappedCreditCards = cards.map((card) => (
     <NavLink
-      style={{ marginRight: "1rem" }}
+      style={{
+        width: "100%",
+        marginBottom: "4rem",
+      }}
       key={card.cardName}
       to={`/credit-card/${card.cardName}`}
     >
@@ -29,22 +25,9 @@ const CreditCardList = (props) => {
   return (
     <>
       <div className="credit-card_page_grid">
-        <div className="credit-card_grid">{mappedCreditCards}</div>
+        <Container className="column">{mappedCreditCards}</Container>
 
-        <div>
-          <BestCreditCardAvailable cards={cards}></BestCreditCardAvailable>
-
-          <Button
-            buttonIcon={<FiPlusCircle style={{ fontSize: "2rem" }} />}
-            onClick={showAddCreditCardModalHandler}
-          >
-            New Credit Card
-          </Button>
-        </div>
-
-        {showAddCreditCardModal && (
-          <AddCreditCardModal onClose={hideAddCreditCardModalHandler} />
-        )}
+        <BestCreditCardAvailable cards={cards}></BestCreditCardAvailable>
       </div>
     </>
   );

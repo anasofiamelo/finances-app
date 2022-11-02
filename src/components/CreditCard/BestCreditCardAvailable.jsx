@@ -1,10 +1,24 @@
-import { Container } from "../../components";
+import { useState } from "react";
+import { Container, Button, AddCreditCardModal } from "../../components";
+import { FiPlusCircle } from "react-icons/fi";
 
 const BestCreditCardAvailable = (props) => {
+  const [showAddCreditCardModal, setShowAddCreditCardModal] = useState(false);
+  const showAddCreditCardModalHandler = () => setShowAddCreditCardModal(true);
+  const hideAddCreditCardModalHandler = () => setShowAddCreditCardModal(false);
   return (
     <Container>
-      <h3 className="title">Best Card to Buy:</h3>
-      <p>{}</p>
+      <h2 className="subtitle">Best card to buy:</h2>
+      <Button
+        buttonIcon={<FiPlusCircle style={{ fontSize: "2rem" }} />}
+        onClick={showAddCreditCardModalHandler}
+      >
+        New Credit Card
+      </Button>
+
+      {showAddCreditCardModal && (
+        <AddCreditCardModal onClose={hideAddCreditCardModalHandler} />
+      )}
     </Container>
   );
 };
