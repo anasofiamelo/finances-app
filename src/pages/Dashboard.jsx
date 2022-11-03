@@ -1,4 +1,9 @@
-import { Reports, TransactionValueCards, Transactions } from "../components";
+import {
+  Reports,
+  TransactionValueCards,
+  // Transactions,
+  LatestActivities,
+} from "../components";
 import { useTransactions } from "../context/finances.context";
 
 const Dashboard = () => {
@@ -7,7 +12,8 @@ const Dashboard = () => {
   return (
     <div>
       <div className="balance_grid">
-        <Transactions title="Your recent activities" />
+        <LatestActivities />
+        {/* <Transactions title="Your recent activities" /> */}
         <div className="transaction_cards">
           <TransactionValueCards />
         </div>

@@ -6,7 +6,7 @@ import {
   useCallback,
 } from "react";
 import { finances } from "../utils";
-
+import useSort from "../hooks/useSort";
 function sumValues(array) {
   return array.reduce((prev, current) => prev + current.value, 0);
 }
@@ -14,7 +14,8 @@ function sumValues(array) {
 const TransactionsContext = createContext({});
 
 export const TransactionsContextProvider = (props) => {
-  const [transactions, setTransactions] = useState(finances);
+  const sortedTransactions = useSort(finances, "date", true);
+  const [transactions, setTransactions] = useState(sortedTransactions);
   const [totalBalance, setTotalBalance] = useState();
   const [totalIncomes, setTotalIncomes] = useState();
   const [totalExpenses, setTotalExpenses] = useState();

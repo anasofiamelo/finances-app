@@ -1,5 +1,6 @@
 import Transactions from "./Transactions/Transactions";
 import Activities from "./Transactions/Activities";
+import LatestActivities from "./Transactions/LatestActivities";
 import TransactionsList from "./Transactions/TransactionsList";
 import TransactionHeader from "./Transactions/TransactionHeader";
 import TransactionValueCard from "./Transactions/TransactionValueCard";
@@ -43,6 +44,7 @@ export {
   Reports,
   //transactions
   Transactions,
+  LatestActivities,
   Activities,
   TransactionsList,
   TransactionHeader,
