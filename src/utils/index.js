@@ -9,7 +9,7 @@ import years, { yearOptions } from "./Date/years";
 import current from "./Date/currentDate";
 import finances from "./finances";
 import userCards from "./userCards";
-import budget from "./budget";
+import budget, { totalBudget } from "./budget";
 import {
   formatInvoices,
   formatCardsInvoices,
@@ -27,6 +27,7 @@ export {
   finances,
   userCards,
   budget,
+  totalBudget,
   typeofExpenses,
   typeofIncomes,
   calcExpensesPerMonth,
