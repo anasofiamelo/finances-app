@@ -4,6 +4,7 @@ import {
   BsFillBagFill,
   BsCart4,
 } from "react-icons/bs";
+import { Icon } from "@iconify/react";
 import { IoFastFoodOutline } from "react-icons/io5";
 import { FaUserShield } from "react-icons/fa";
 
@@ -27,39 +28,45 @@ export const expensesColors = {
 
 export const expensesIcons = {
   House: (
-    <BsFillHouseFill
+    <Icon
       className="type_icons"
-      style={{ backgroundColor: expensesColors["House"] }}
+      style={{ color: expensesColors["House"] }}
+      icon="clarity:house-line"
     />
   ),
   Insurance: (
-    <FaUserShield
+    <Icon
       className="type_icons"
-      style={{ backgroundColor: expensesColors["Insurance"] }}
+      style={{ color: expensesColors["Insurance"] }}
+      icon="icon-park-outline:protect"
     />
   ),
   Maintenance: (
-    <BsTools
+    <Icon
       className="type_icons"
-      style={{ backgroundColor: expensesColors["Maintenance"] }}
+      style={{ color: expensesColors["Maintenance"] }}
+      icon="heroicons:wrench-screwdriver"
     />
   ),
   Shop: (
-    <BsFillBagFill
+    <Icon
       className="type_icons"
-      style={{ backgroundColor: expensesColors["Shop"] }}
+      style={{ color: expensesColors["Shop"] }}
+      icon="icon-park-outline:weixin-market"
     />
   ),
   Supermarket: (
-    <BsCart4
+    <Icon
       className="type_icons"
-      style={{ backgroundColor: expensesColors["Supermarket"] }}
+      style={{ color: expensesColors["Supermarket"] }}
+      icon="ps:cart-supermarket"
     />
   ),
   Food: (
-    <IoFastFoodOutline
+    <Icon
       className="type_icons"
-      style={{ backgroundColor: expensesColors["Food"] }}
+      style={{ color: expensesColors["Food"] }}
+      icon="ion:fast-food-outline"
     />
   ),
 };
