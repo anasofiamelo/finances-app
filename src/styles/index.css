@@ -47,7 +47,6 @@ button {
   font-size: 1.5rem;
   padding: 0.5rem 0.4rem;
   font-family: var(--poppins);
-  /* background-color: white; */
 }
 .credit-card_grid,
 .credit-card_page_grid {
@@ -72,7 +71,7 @@ input::placeholder {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: var(--poppins);
+  font-family: var(--open-sans);
   font-size: var(--normal-font-size);
   background-color: var(--white);
 }
@@ -119,12 +118,11 @@ body {
   font-weight: 300;
 }
 .title_number {
-  font-size: 3.2rem;
-  font-family: var(--poppins);
-  color: var(--dark-black);
-  font-weight: 300;
+  font-size: 3rem;
+  font-family: var(--open-sans);
+  font-weight: 400;
 }
-.date {
+.date-item {
   font-family: var(--poppins);
   font-size: 1.5rem;
   font-weight: 300;
@@ -145,48 +143,47 @@ body {
   font-size: 3rem;
 }
 .credit-card-details_description-container {
-  /* height: 75%; */
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
 }
-
 .credit-card-details_icon {
   margin-right: 1rem;
   color: var(--purple);
   font-size: 3rem;
 }
-
 a {
   color: var(--black);
 }
-
 .activity_row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: var(--open-sans);
-  font-size: 2rem;
-  font-weight: 300;
-  position: relative;
-  margin: 2rem 0;
+  margin: 0.8rem 0;
+  padding: 0rem 0rem 0.8rem 0;
+  border-bottom: 1px solid var(--light-grey);
 }
 .activity_row > * {
   min-width: 18rem;
 }
+.activity-row_description-item {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
 .activity-row_date-item {
-  font-size: 1.7rem;
+  font-size: 1.4rem;
+  font-weight: 400;
   color: var(--grey);
 }
 .activity-row_value-item {
-  font-weight: 500;
+  font-size: 1.8rem;
+  font-weight: 600;
   text-align: end;
-  font-family: var(--poppins);
 }
 .activity-row_icon-item {
-  min-width: 1rem;
+  min-width: 1vw;
 }
 .latest-activities_all-button {
+  margin-top: 1.1rem;
   font-family: var(--raleway);
   border-bottom: 1px solid var(--black);
   font-size: 1.6rem;

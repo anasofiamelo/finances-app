@@ -22,11 +22,12 @@ const TransactionsList = (props) => {
     const isIncome = value > 0;
     const valueColor = isIncome ? "var(--green)" : "var(--red)";
     const formattedDate = moment(date).format("DD/MM/YYYY");
+    const icon = isIncome ? incomesIcons[type] : expensesIcons[type];
 
     return (
       <tr key={index}>
-        <td>{isIncome ? incomesIcons[type] : expensesIcons[type]}</td>
-        <td className="date">{formattedDate}</td>
+        <td>{icon}</td>
+        <td className="date-item">{formattedDate}</td>
         <td>{description}</td>
         <td
           style={{

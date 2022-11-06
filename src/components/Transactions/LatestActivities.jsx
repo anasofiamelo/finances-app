@@ -19,7 +19,7 @@ const LatestActivities = () => {
     return (
       <div className="activity_row">
         <p className="activity-row_icon-item">{icon}</p>
-        <p>{description}</p>
+        <p className="activity-row_description-item">{description}</p>
         <p className="activity-row_date-item">{date.format("DD, MMMM")}</p>
         <p
           className="activity-row_value-item"
@@ -38,7 +38,6 @@ const LatestActivities = () => {
       <h2 className="title">Latest activities</h2>
       {mappedTransactions}
       <NavLink to="/transactions" className="latest-activities_all-button">
-        {" "}
         View all
       </NavLink>
     </Container>
