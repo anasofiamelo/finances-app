@@ -17,6 +17,7 @@ import {
   calcDateOfEnd,
   formatParcels,
 } from "./creditCardFunctions";
+import { formatValue, formatMomentDate, formatDate } from "./formatter";
 
 export {
   monthNames,
@@ -40,4 +41,7 @@ export {
   calcDateOfEnd,
   formatInvoices,
   formatCardsInvoices,
+  formatValue,
+  formatMomentDate,
+  formatDate,
 };

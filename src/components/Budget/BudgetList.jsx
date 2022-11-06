@@ -1,18 +1,23 @@
 import { useState } from "react";
 import { Container, Table } from "../../components";
 import { budget, totalBudget } from "../../utils";
+import { formatValue } from "../../utils";
+
 const BudgetList = (props) => {
   const [year, setYear] = useState(2022);
+  // const changeYearHandler = (e) => setYear(e.target.value);
 
-  const changeYearHandler = (e) => setYear(e.target.value);
-
-  const mappedBudget = budget.map((opt) => (
-    <tr>
-      <td>{opt.category}</td>
-      <td>$ {opt.value.toFixed(2)}</td>
-      <td>$ {(opt.value * 12).toFixed(2)}</td>
-    </tr>
-  ));
+  const mappedBudget = budget.map((opt) => {
+    const monthValue = formatValue(opt.value);
+    const yearValue = formatValue(opt.value * 12);
+    return (
+      <tr>
+        <td>{opt.category}</td>
+        <td>{monthValue}</td>
+        <td>{yearValue}</td>
+      </tr>
+    );
+  });
 
   return (
     <Container>

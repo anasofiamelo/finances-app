@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import moment from "moment";
 import { Table, ThWithSort } from "../../components";
-import { incomesIcons, expensesIcons } from "../../utils";
+import {
+  incomesIcons,
+  expensesIcons,
+  formatValue,
+  formatMomentDate,
+} from "../../utils";
 import useSort from "../../hooks/useSort";
 
 const TransactionsList = (props) => {
@@ -15,28 +20,17 @@ const TransactionsList = (props) => {
   }, [sortedTransac]);
 
   const mappedTransactions = sortedTransactions.map((transaction, index) => {
-    let { value, date, payment, description, type } = transaction;
-
-    value = value.toFixed(2);
-
-    const isIncome = value > 0;
-    const valueColor = isIncome ? "var(--green)" : "var(--red)";
-    const formattedDate = moment(date).format("DD/MM/YYYY");
-    const icon = isIncome ? incomesIcons[type] : expensesIcons[type];
+    const { value, date, payment, description, type } = transaction;
+    const transacValue = formatValue(value);
+    const formattedDate = formatMomentDate(date);
+    const icon = value > 0 ? incomesIcons[type] : expensesIcons[type];
 
     return (
       <tr key={index}>
         <td>{icon}</td>
         <td className="date-item">{formattedDate}</td>
         <td>{description}</td>
-        <td
-          style={{
-            color: valueColor,
-            fontWeight: 500,
-          }}
-        >
-          $ {value}
-        </td>
+        <td>{transacValue}</td>
         <td>{payment}</td>
       </tr>
     );
