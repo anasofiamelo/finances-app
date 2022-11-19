@@ -20,8 +20,7 @@ const BudgetList = (props) => {
   });
 
   return (
-    <Container>
-      <h2 className="title">Budget</h2>
+    <>
       <Table
         thead={
           <>
@@ -36,7 +35,7 @@ const BudgetList = (props) => {
       <h3 className="subtitle">
         {year} preview: $ {totalBudget(year)}
       </h3>
-    </Container>
+    </>
   );
 };
 

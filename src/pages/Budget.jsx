@@ -1,15 +1,22 @@
 import { useState } from "react";
-import { Button, Container, Select } from "../components";
-import { FiPlusCircle } from "react-icons/fi";
-import { budget, yearOptions } from "../utils";
-import moment from "moment";
-import BudgetList from "../components/Budget/BudgetList";
+import { Container, Button, BudgetList, ConfigureBudget } from "../components";
 
 const Budget = (props) => {
+  const [showConfigureModal, setShowConfigureModal] = useState(false);
+  const openConfigureModalHandler = () => setShowConfigureModal(true);
+  const hideConfigureModalHandler = () => setShowConfigureModal(false);
+
   return (
-    <>
+    <Container>
+      <div className="budget_header space-between">
+        <h2 className="title">Budget</h2>
+        <Button onClick={openConfigureModalHandler}>Configure budget</Button>
+      </div>
       <BudgetList />
-    </>
+      {showConfigureModal && (
+        <ConfigureBudget onClose={hideConfigureModalHandler} />
+      )}
+    </Container>
   );
 };
 

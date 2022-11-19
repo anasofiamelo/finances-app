@@ -39,6 +39,9 @@ import InputLabel from "./ui/InputLabel";
 import Select from "./ui/Select";
 import Button from "./ui/Button";
 
+import BudgetList from "./Budget/BudgetList";
+import ConfigureBudget from "./Budget/ConfigureBudget";
+
 export {
   AddContainer,
   Reports,
@@ -77,4 +80,7 @@ export {
   Button,
   Input,
   InputLabel,
+  //budget
+  BudgetList,
+  ConfigureBudget,
 };
