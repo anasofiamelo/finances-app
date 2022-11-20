@@ -44,6 +44,7 @@ const AddInvoiceModal = (props) => {
       onSubmitAddForm={submitNewPurchaseHandler}
       onClose={props.onClose}
       title="New Credit Card Invoice"
+      submitButtonText="Add purchase"
     >
       <Select
         label="Card"
