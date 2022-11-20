@@ -1,41 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&family=Raleway:wght@100;200;300;400;500;600;700&display=swap");
-html {
-  font-size: 62.5%;
-
-  /* colors */
-  --dark-black: #06070e;
-  --black: #373737;
-  --grey: #5b616a;
-  --white: #fbf5f3;
-  --ghost-white: #f8f7ff;
-  --light-grey: #ced3dc;
-  --purple: #5438dc;
-  --less-purple: rgba(84, 56, 220, 0.65);
-  --light-blue: #62b6cb;
-  --red: #bc4749;
-  --orange-red: #ff5e5b;
-  --green: #6a994e;
-  --lime: rgb(156, 252, 151);
-  --less-lime: rgba(156, 252, 151, 0.65);
-
-  /* fonts */
-  --raleway: "Raleway", sans-serif;
-  --poppins: "Poppins", sans-serif;
-  --open-sans: "Open Sans", sans-serif;
-  --oswald: "Oswald", sans-serif;
-  --data-font: var(--open-sans);
-
-  /* named colors */
-  /* --background: var(--ghost-white); */
-  --text-color: var(--black);
-  --title-color: var(--blue);
-}
 .column,
-.row,
-.space-between {
+.row {
   display: flex;
 }
 .space-between {
+  display: flex;
   justify-content: space-between;
 }
 select,
@@ -49,11 +17,11 @@ button {
   font-family: var(--poppins);
 }
 .credit-card_grid,
-.credit-card_page_grid {
+.credit-card_page_grid,
+.balance_grid {
   display: grid;
 }
 .balance_grid {
-  display: grid;
   grid-template-columns: 3fr 1fr;
   gap: 3rem;
 }
@@ -62,17 +30,7 @@ button {
 }
 .title {
   color: var(--grey);
-}
-.title,
-input::placeholder {
   font-weight: 300;
-}
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: var(--open-sans);
-  font-size: var(--normal-font-size);
-  background-color: var(--white);
 }
 .App,
 .navbar_container {
@@ -102,9 +60,6 @@ body {
 .credit-card_grid {
   gap: 1rem;
   grid-template-columns: 1fr 1fr;
-}
-.button-icon {
-  font-size: 1.5rem;
 }
 .title {
   color: var(--dark-black);
@@ -149,9 +104,6 @@ body {
   margin-right: 1rem;
   color: var(--purple);
   font-size: 3rem;
-}
-a {
-  color: var(--black);
 }
 .activity_row {
   display: flex;

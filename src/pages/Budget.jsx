@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { Container, Button, BudgetList, ConfigureBudget } from "../components";
+import {
+  Container,
+  Button,
+  BudgetList,
+  ConfigureBudgetModal,
+} from "../components";
 
 const Budget = (props) => {
   const [showConfigureModal, setShowConfigureModal] = useState(false);
@@ -14,7 +19,7 @@ const Budget = (props) => {
       </div>
       <BudgetList />
       {showConfigureModal && (
-        <ConfigureBudget onClose={hideConfigureModalHandler} />
+        <ConfigureBudgetModal onClose={hideConfigureModalHandler} />
       )}
     </Container>
   );

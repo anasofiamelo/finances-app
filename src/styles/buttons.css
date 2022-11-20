@@ -16,3 +16,6 @@ button,
 .button-text_animated {
   padding: 0.5rem 0.4rem;
 }
+.button-icon {
+  font-size: 1.5rem;
+}

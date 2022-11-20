@@ -15,6 +15,7 @@ const BudgetList = (props) => {
         <td>{opt.category}</td>
         <td>{monthValue}</td>
         <td>{yearValue}</td>
+        <td>EditBtn DeleteBtn</td>
       </tr>
     );
   });
@@ -27,6 +28,7 @@ const BudgetList = (props) => {
             <th>Category</th>
             <th>Value/Month</th>
             <th>Value/Year</th>
+            <th>Actions</th>
           </>
         }
       >
