@@ -60,7 +60,6 @@ button {
 .row {
   align-items: center;
 }
-.input-icon,
 .title {
   color: var(--grey);
 }

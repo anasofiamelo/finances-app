@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import moment from "moment";
-import { Table, ThWithSort } from "../../components";
+import { Table, ThWithSort, Button } from "../../components";
 import {
   incomesIcons,
   expensesIcons,
@@ -8,6 +7,7 @@ import {
   formatMomentDate,
 } from "../../utils";
 import useSort from "../../hooks/useSort";
+import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 
 const TransactionsList = (props) => {
   const { transactions } = props;
@@ -18,6 +18,23 @@ const TransactionsList = (props) => {
   useEffect(() => {
     setSortedTransactions(sortedTransac);
   }, [sortedTransac]);
+
+  const teste = (e) => {
+    console.log(e.target.parentElement);
+  };
+
+  const actionButtons = (
+    <>
+      <div className="action-buttons-container">
+        <Button onClick={teste}>
+          <AiOutlineEdit className="action-icon" />
+        </Button>
+        <Button onClick={teste}>
+          <AiOutlineDelete className="action-icon" />
+        </Button>
+      </div>
+    </>
+  );
 
   const mappedTransactions = sortedTransactions.map((transaction, index) => {
     const { value, date, payment, description, type } = transaction;
@@ -32,6 +49,8 @@ const TransactionsList = (props) => {
         <td>{description}</td>
         <td>{transacValue}</td>
         <td>{payment}</td>
+        <td>yes!</td>
+        <td>{actionButtons}</td>
       </tr>
     );
   });
@@ -61,6 +80,8 @@ const TransactionsList = (props) => {
             Value
           </ThWithSort>
           <th>Payment</th>
+          <th>Paid</th>
+          <th>Actions</th>
         </>
       }
     >
