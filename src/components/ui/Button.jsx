@@ -1,11 +1,11 @@
 const Button = (props) => {
   return (
-    <div style={props.style} onClick={props.onClick}>
-      <button
-        style={props.style}
-        className="button_animated"
-        type={props.type || "button"}
-      >
+    <div
+      className="button_animated-container"
+      style={props.style}
+      onClick={props.onClick}
+    >
+      <button style={props.style} type={props.type || "button"}>
         {props.buttonIcon}
         <span style={{ marginLeft: props.buttonIcon ? "1rem" : "0" }}>
           {props.children}

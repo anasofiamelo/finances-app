@@ -1,12 +1,4 @@
-import {
-  BsFillHouseFill,
-  BsTools,
-  BsFillBagFill,
-  BsCart4,
-} from "react-icons/bs";
 import { Icon } from "@iconify/react";
-import { IoFastFoodOutline } from "react-icons/io5";
-import { FaUserShield } from "react-icons/fa";
 
 const typeofExpenses = [
   "House",
@@ -15,6 +7,104 @@ const typeofExpenses = [
   "Shop",
   "Supermarket",
   "Food",
+];
+
+export const budgetOptions = [
+  {
+    label: "Personal Expenses",
+    options: [
+      { id: 1, label: "Gym", value: "Gym", optGroupTitle: "Personal Expenses" },
+      {
+        id: 2,
+        label: "Phone",
+        value: "Phone",
+        optGroupTitle: "Personal Expenses",
+      },
+      {
+        id: 3,
+        label: "Shopping",
+        value: "Shopping",
+        optGroupTitle: "Personal Expenses",
+      },
+      {
+        id: 4,
+        label: "Accessories",
+        value: "Accessories",
+        optGroupTitle: "Personal Expenses",
+      },
+    ],
+  },
+  {
+    label: "Food",
+    options: [
+      { id: 5, label: "Lunch", value: "Lunch", optGroupTitle: "Food" },
+      {
+        id: 6,
+        label: "Coffee/Snacks",
+        value: "Coffee/Snacks",
+        optGroupTitle: "Food",
+      },
+      {
+        id: 7,
+        label: "Supermarket",
+        value: "Supermarket",
+        optGroupTitle: "Food",
+      },
+      { id: 8, label: "Bakery", value: "Bakery", optGroupTitle: "Food" },
+      {
+        id: 9,
+        label: "Restaurant",
+        value: "Restaurant",
+        optGroupTitle: "Food",
+      },
+    ],
+  },
+  {
+    label: "House",
+    options: [
+      { id: 10, label: "Rent", value: "Rent", optGroupTitle: "House" },
+      {
+        id: 11,
+        label: "Water bill",
+        value: "Water bill",
+        optGroupTitle: "House",
+      },
+      {
+        id: 12,
+        label: "Condominium",
+        value: "Condominium",
+        optGroupTitle: "House",
+      },
+      {
+        id: 13,
+        label: "Housekeeper",
+        value: "Housekeeper",
+        optGroupTitle: "House",
+      },
+      { id: 14, label: "Gas", value: "Gas", optGroupTitle: "House" },
+      { id: 15, label: "Internet", value: "Internet", optGroupTitle: "House" },
+      {
+        id: 16,
+        label: "Eletricity bill",
+        value: "Eletricity bill",
+        optGroupTitle: "House",
+      },
+      {
+        id: 17,
+        label: "Cleaning materials",
+        value: "Cleaning materials",
+        optGroupTitle: "House",
+      },
+      { id: 18, label: "Cable TV", value: "Cable TV", optGroupTitle: "House" },
+      {
+        id: 19,
+        label: "Furniture",
+        value: "Furniture",
+        optGroupTitle: "House",
+      },
+      { id: 20, label: "Laundry", value: "Laundry", optGroupTitle: "House" },
+    ],
+  },
 ];
 
 export const expensesColors = {

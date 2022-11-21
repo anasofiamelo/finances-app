@@ -14,7 +14,7 @@ const TransactionValueCards = (props) => {
   return (
     <>
       <TransactionValueCard
-        backgroundColor="var(--black)"
+        style={{ backgroundColor: "var(--black)" }}
         color="var(--white)"
         title="Current balance"
         goto="/transactions"
@@ -23,7 +23,7 @@ const TransactionValueCards = (props) => {
       />
 
       <TransactionValueCard
-        backgroundColor="var(--less-lime)"
+        style={{ backgroundColor: "var(--less-lime)" }}
         title="Incomes"
         goto="/incomes"
         value={totalIncomes}
@@ -31,7 +31,7 @@ const TransactionValueCards = (props) => {
       />
 
       <TransactionValueCard
-        backgroundColor="var(--less-purple)"
+        style={{ backgroundColor: "var(--less-purple)" }}
         color="var(--white)"
         title="Expenses"
         goto="/expenses"

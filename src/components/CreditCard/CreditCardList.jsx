@@ -25,7 +25,13 @@ const CreditCardList = (props) => {
   return (
     <>
       <div className="credit-card_page_grid">
-        <Container className="column">{mappedCreditCards}</Container>
+        <Container
+          className="column"
+          // style={{ backgroundColor: "var(--black)" }}
+        >
+          <h2 className="container-title">Credit card list</h2>
+          {mappedCreditCards}
+        </Container>
 
         <BestCreditCardAvailable cards={cards}></BestCreditCardAvailable>
       </div>
