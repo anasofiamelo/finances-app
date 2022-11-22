@@ -1,6 +1,7 @@
 import { Modal, Button, InputLabel } from "..";
 import { budgetOptions } from "../../utils/Transactions/typeofExpenses";
 import { useState } from "react";
+import { Icon } from "@iconify/react";
 import Select from "react-select";
 import SelectedBudgetOptionCard from "./SelectedBudgetOptionCard";
 
@@ -38,8 +39,13 @@ const ConfigureBudgetModal = (props) => {
     }),
   };
 
+  const nextButtonIcon = (
+    <Icon icon="material-symbols:arrow-forward-ios-rounded" />
+  );
+
   const firstFormStep = (
     <>
+      <h2 className="subtitle">Select predefined budgets</h2>
       <Select
         onChange={handleChangeSelectedOptions}
         isMulti
@@ -48,7 +54,7 @@ const ConfigureBudgetModal = (props) => {
         styles={styles}
       />
 
-      <div className="row space-between">
+      <div className="row space-between" style={{ margin: "2rem 0" }}>
         <span
           style={{
             backgroundColor: "var(--light-grey)",
@@ -57,9 +63,11 @@ const ConfigureBudgetModal = (props) => {
             borderRadius: "2px",
           }}
         />
+
         <span style={{ fontWeight: "500", fontFamily: "var(--raleway)" }}>
           or
         </span>
+
         <span
           style={{
             backgroundColor: "var(--light-grey)",
@@ -70,9 +78,13 @@ const ConfigureBudgetModal = (props) => {
         />
       </div>
 
-      <InputLabel label="CUSTOM BUDGET" />
+      <h2 className="subtitle">Fill your custom budget</h2>
 
-      <Button onClick={handleButtonClick}>Next</Button>
+      <InputLabel label="Custom budget" />
+
+      <Button onClick={handleButtonClick} buttonIcon={nextButtonIcon}>
+        Next
+      </Button>
     </>
   );
 

@@ -18,7 +18,7 @@ const Dashboard = () => {
           <TransactionValueCards />
         </div>
       </div>
-      <Reports transactions={transactions} />
+      {/* <Reports transactions={transactions} /> */}
     </div>
   );
 };

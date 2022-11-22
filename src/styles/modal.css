@@ -1,6 +1,5 @@
 .modal_title {
   display: flex;
-  justify-content: center;
   font-family: var(--oswald);
   font-size: 3rem;
   font-weight: 400;

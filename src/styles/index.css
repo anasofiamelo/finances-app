@@ -78,7 +78,7 @@ button {
   margin-bottom: 2.5rem;
 }
 .subtitle {
-  font-family: var(--oswald);
+  font-family: var(--poppins);
   color: var(--grey);
   font-weight: 300;
 }
