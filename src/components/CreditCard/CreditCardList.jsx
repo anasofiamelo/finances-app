@@ -1,18 +1,10 @@
 import { NavLink } from "react-router-dom";
-import { useCreditCard } from "../../context/credit_card.context";
-import {
-  CreditCardCard,
-  BestCreditCardAvailable,
-  Container,
-} from "../../components";
+import { CreditCardCard, Container } from "../../components";
 
 const CreditCardList = (props) => {
-  const { cards } = useCreditCard();
-
-  const mappedCreditCards = cards.map((card) => (
+  const listedCreditCards = props.cards.map((card) => (
     <NavLink
       style={{
-        width: "100%",
         marginBottom: "4rem",
       }}
       key={card.cardName}
@@ -23,19 +15,10 @@ const CreditCardList = (props) => {
   ));
 
   return (
-    <>
-      <div className="credit-card_page_grid">
-        <Container
-          className="column"
-          // style={{ backgroundColor: "var(--black)" }}
-        >
-          <h2 className="container-title">Credit card list</h2>
-          {mappedCreditCards}
-        </Container>
-
-        <BestCreditCardAvailable cards={cards}></BestCreditCardAvailable>
-      </div>
-    </>
+    <Container className="column">
+      <h2 className="container-title">Credit card list</h2>
+      {listedCreditCards}
+    </Container>
   );
 };
 

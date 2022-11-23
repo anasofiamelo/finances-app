@@ -20,12 +20,12 @@ import CreditCardCard from "./CreditCard/CreditCardCard";
 import BestCreditCardAvailable from "./CreditCard/BestCreditCardAvailable";
 import AddCreditCardModal from "./CreditCard/AddCreditCardModal";
 import CreditCardDetails from "./CreditCard/CreditCardDetails";
-import CreditCardInvoice from "./CreditCard/Invoices/Invoice";
 import CreditCardLimit from "./CreditCard/CreditCardLimit";
 
 //---------------------------CREDIT CARD INVOICES---------------------------
 import Invoices from "./CreditCard/Invoices/Invoices";
-import InvoicesList from "./CreditCard/Invoices/InvoicesList";
+import InvoiceTr from "./CreditCard/Invoices/InvoiceTr";
+import InvoicesTable from "./CreditCard/Invoices/InvoicesTable";
 import AddInvoiceModal from "./CreditCard/Invoices/AddInvoiceModal";
 
 //---------------------------GOALS---------------------------
@@ -65,7 +65,7 @@ export {
   AddTransactionDropdown,
   //invoices
   Invoices,
-  InvoicesList,
+  InvoicesTable,
   AddInvoiceModal,
   //credit card
   CreditCardList,
@@ -73,7 +73,7 @@ export {
   BestCreditCardAvailable,
   AddCreditCardModal,
   CreditCardLimit,
-  CreditCardInvoice,
+  InvoiceTr,
   CreditCardDetails,
   //else
   Goals,
