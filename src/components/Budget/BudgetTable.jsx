@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Container, Table } from "../../components";
-import { budget, totalBudget } from "../../utils";
-import { formatValue } from "../../utils";
+import { Container, Table } from "..";
+import { budget, totalBudget, formatValue } from "../../utils";
 
-const BudgetList = (props) => {
+const BudgetTable = (props) => {
   const [year, setYear] = useState(2022);
   // const changeYearHandler = (e) => setYear(e.target.value);
 
@@ -41,4 +40,4 @@ const BudgetList = (props) => {
   );
 };
 
-export default BudgetList;
+export default BudgetTable;

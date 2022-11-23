@@ -47,7 +47,7 @@ import Button from "./ui/Button";
 import ButtonWithIcon from "./ui/ButtonWithIcon";
 
 //---------------------------BUDGET---------------------------
-import BudgetList from "./Budget/BudgetList";
+import BudgetTable from "./Budget/BudgetTable";
 import ConfigureBudgetModal from "./Budget/ConfigureBudgetModal";
 
 export {
@@ -90,6 +90,6 @@ export {
   Input,
   InputLabel,
   //budget
-  BudgetList,
+  BudgetTable,
   ConfigureBudgetModal,
 };

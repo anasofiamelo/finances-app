@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 // -- styles: forms.css --
 
 const SelectedBudgetOptionCard = (props) => {
+  console.log("props", props);
   const label = (
     <span className="row">
       <span className="budget-input-optgroup-title">{props.optGroupTitle}</span>
@@ -16,7 +17,7 @@ const SelectedBudgetOptionCard = (props) => {
   );
 
   return (
-    <div className="column budget-input_container">
+    <div key={props.id} className="column budget-input_container">
       <label className="budget-input_label-container" htmlFor={props.id}>
         {label}
       </label>
@@ -25,6 +26,7 @@ const SelectedBudgetOptionCard = (props) => {
         id={props.id}
         placeholder="Value per month"
         type="number"
+        onChange={props.onChangeValue}
       />
     </div>
   );

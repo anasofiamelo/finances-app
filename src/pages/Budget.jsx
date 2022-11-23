@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
   Container,
   Button,
-  BudgetList,
+  BudgetTable,
   ConfigureBudgetModal,
 } from "../components";
 
@@ -17,7 +17,7 @@ const Budget = (props) => {
         <h2 className="title">Budget</h2>
         <Button onClick={openConfigureModalHandler}>Configure budget</Button>
       </div>
-      <BudgetList />
+      <BudgetTable />
       {showConfigureModal && (
         <ConfigureBudgetModal onClose={hideConfigureModalHandler} />
       )}

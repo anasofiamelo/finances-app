@@ -19,14 +19,25 @@ const ConfigureBudgetModal = (props) => {
         <SelectedBudgetOptionCard {...option} />
       ))}
 
-      <ButtonWithIcon
-        buttonIcon={<Icon icon="material-symbols:arrow-back-ios-rounded" />}
-        iconPosition="left"
-        className="modal_action-button"
-        onClick={handleButtonClick}
-      >
-        Back
-      </ButtonWithIcon>
+      <div className="row space-between">
+        <ButtonWithIcon
+          buttonIcon={<Icon icon="material-symbols:arrow-back-ios-rounded" />}
+          iconPosition="left"
+          className="modal_action-button"
+          onClick={handleButtonClick}
+        >
+          Back
+        </ButtonWithIcon>
+
+        <ButtonWithIcon
+          buttonIcon={<Icon icon="line-md:confirm" />}
+          iconPosition="right"
+          className="modal_action-button"
+          onClick={handleButtonClick}
+        >
+          Confirm
+        </ButtonWithIcon>
+      </div>
     </>
   );
 
