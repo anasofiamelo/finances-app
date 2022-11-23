@@ -18,12 +18,13 @@
   font-size: 0.85rem;
 }
 .budget-input {
+  margin-top: 1rem;
   border: 1px solid var(--light-grey);
   width: 100%;
 }
 .budget-input_label-container {
-  font-size: 1.5rem;
-  font-family: var(--poppins);
+  font-size: 1.2rem;
+  font-family: var(--open-sans);
 }
 .budget-input_container {
   border: 1px solid var(--light-grey);

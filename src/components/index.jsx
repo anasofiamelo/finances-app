@@ -44,6 +44,7 @@ import Input from "./ui/Input";
 import InputLabel from "./ui/InputLabel";
 import Select from "./ui/Select";
 import Button from "./ui/Button";
+import ButtonWithIcon from "./ui/ButtonWithIcon";
 
 //---------------------------BUDGET---------------------------
 import BudgetList from "./Budget/BudgetList";
@@ -85,6 +86,7 @@ export {
   ThWithSort,
   Select,
   Button,
+  ButtonWithIcon,
   Input,
   InputLabel,
   //budget

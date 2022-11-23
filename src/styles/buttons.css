@@ -5,6 +5,7 @@ button,
   display: flex;
   align-items: center;
   cursor: pointer;
+  padding: 0.5rem 0.8rem;
 }
 .button_animated-container {
   transition: 0.3s width;
@@ -18,4 +19,13 @@ button,
 }
 .button-icon {
   font-size: 1.5rem;
+}
+.button_icon {
+  margin-top: 0.3rem;
+}
+.button_icon_left {
+  margin-right: 0.5rem;
+}
+.button_icon_right {
+  margin-left: 0.5rem;
 }
