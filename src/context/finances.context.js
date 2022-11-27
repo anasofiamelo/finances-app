@@ -7,6 +7,7 @@ import {
 } from "react";
 import { finances } from "../utils";
 import useSort from "../hooks/useSort";
+
 function sumValues(array) {
   return array.reduce((prev, current) => prev + current.value, 0);
 }

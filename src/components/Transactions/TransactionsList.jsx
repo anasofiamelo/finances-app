@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Table, ThWithSort, Button } from "../../components";
+import { Table, ThWithSort } from "../../components";
 import {
   incomesIcons,
   expensesIcons,
@@ -7,7 +7,7 @@ import {
   formatMomentDate,
 } from "../../utils";
 import useSort from "../../hooks/useSort";
-import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
+import { Icon } from "@iconify/react";
 
 const TransactionsList = (props) => {
   const { transactions } = props;
@@ -26,12 +26,12 @@ const TransactionsList = (props) => {
   const actionButtons = (
     <>
       <div className="action-buttons-container">
-        <Button onClick={teste}>
-          <AiOutlineEdit className="action-icon" />
-        </Button>
-        <Button onClick={teste}>
-          <AiOutlineDelete className="action-icon" />
-        </Button>
+        <button onClick={teste}>
+          <Icon icon="material-symbols:edit" className="action-icon" />
+        </button>
+        <button onClick={teste}>
+          <Icon icon="ic:round-delete" className="action-icon" />
+        </button>
       </div>
     </>
   );
@@ -49,7 +49,9 @@ const TransactionsList = (props) => {
         <td>{description}</td>
         <td>{transacValue}</td>
         <td>{payment}</td>
-        <td>yes!</td>
+        <td>
+          <input type="checkbox" />
+        </td>
         <td>{actionButtons}</td>
       </tr>
     );

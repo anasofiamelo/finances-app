@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Navbar, Goals, Invoices, Activities } from "./components";
 import { CreditCardPage, Budget, Dashboard } from "./pages";

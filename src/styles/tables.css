@@ -41,12 +41,11 @@ th {
   justify-content: space-between;
 }
 .action-icon {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: var(--black);
 }
 .action-buttons-container {
   display: flex;
-  background-color: none;
 }
 .action-buttons-container * {
   background-color: rgba(0, 0, 0, 0);

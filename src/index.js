@@ -4,6 +4,8 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { TransactionsContextProvider } from "./context/finances.context";
 import { CreditCardContextProvider } from "./context/credit_card.context";
+import { UserProvider } from "./context/users.context";
+import { TransactionsProvider } from "./context/transactions.context";
 import "./styles/index.css";
 import "./styles/default.css";
 import "./styles/tables.css";
@@ -18,11 +20,15 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <TransactionsContextProvider>
-        <CreditCardContextProvider>
-          <App />
-        </CreditCardContextProvider>
-      </TransactionsContextProvider>
+      <UserProvider>
+        <TransactionsProvider>
+          <TransactionsContextProvider>
+            <CreditCardContextProvider>
+              <App />
+            </CreditCardContextProvider>
+          </TransactionsContextProvider>
+        </TransactionsProvider>
+      </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
