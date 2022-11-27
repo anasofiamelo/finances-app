@@ -6,7 +6,6 @@ const LatestActivityRow = (props) => {
   const isIncome = value > 0;
   const icon = isIncome ? incomesIcons[type] : expensesIcons[type];
   const formattedValue = formatValue(value);
-
   return (
     <div className="activity_row">
       <p className="activity-row_icon-item">{icon}</p>

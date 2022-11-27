@@ -4,7 +4,7 @@ import { current } from "../../utils";
 
 const CreditCardDetails = (props) => {
   const { creditCard } = props;
-  const { cardName, cardLimit, cardDueDay, cardClosureDate } = creditCard;
+  const { cardName, cardLimit, cardDueDay, cardClosureDay } = creditCard;
   const { day, fullMonth, nextMonth } = current;
 
   const passedDueDate = day > cardDueDay;
@@ -15,7 +15,7 @@ const CreditCardDetails = (props) => {
     ? `${formattedDueDay}, ${nextMonth.format("MMMM")}`
     : `${formattedDueDay}, ${fullMonth}`;
 
-  const closesIn = `${cardClosureDate}, ${fullMonth}`;
+  const closesIn = `${cardClosureDay}, ${fullMonth}`;
 
   return (
     <>
@@ -27,7 +27,7 @@ const CreditCardDetails = (props) => {
           </div>
 
           <h2 className="subtitle">
-            Limit of <b>${cardLimit.toFixed(2)}</b>
+            Limit of <b>${cardLimit?.toFixed(2)}</b>
           </h2>
         </div>
         <div className="credit-card-details_description-container">

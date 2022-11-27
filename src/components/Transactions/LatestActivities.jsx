@@ -19,7 +19,10 @@ const LatestActivities = () => {
       <h2 className="title">Latest activities</h2>
 
       {latestTransactions.map((transaction) => (
-        <LatestActivityRow transaction={transaction} />
+        <LatestActivityRow
+          key={transaction.transacId}
+          transaction={transaction}
+        />
       ))}
 
       <NavLink to="/transactions" className="latest-activities_all-button">

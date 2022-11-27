@@ -8,7 +8,7 @@ const CreditCardList = (props) => {
         marginBottom: "4rem",
       }}
       key={card.cardName}
-      to={`/credit-card/${card.cardName}`}
+      to={`/credit-card/${card.cardId}`}
     >
       <CreditCardCard {...card} />
     </NavLink>

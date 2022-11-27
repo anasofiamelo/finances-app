@@ -10,32 +10,31 @@ import {
 import { BsFillPlusCircleFill } from "react-icons/bs";
 
 const Invoices = () => {
-  const { creditCard } = useParams();
-  const { cards } = useCreditCard();
+  const { creditCardId } = useParams();
+  const { getCard } = useCreditCard();
 
-  const [updatedCards, setUpdatedCards] = useState(cards);
+  const [foundCreditCard, setFoundCreditCard] = useState({});
   const [showAddInvoiceModal, setShowAddInvoiceModal] = useState(false);
-
   const showAddCreditCardPurchaseHandler = () => {
     setShowAddInvoiceModal(true);
   };
-
   const hideAddCreditCardPurchaseHandler = () => {
     setShowAddInvoiceModal(false);
   };
 
-  const foundCreditCard = updatedCards.find(
-    (card) => card.cardName === creditCard
-  );
-
   useEffect(() => {
-    setUpdatedCards(cards);
-  }, [cards]);
+    async function getClickedCardInfo() {
+      const card = await getCard(creditCardId);
+      setFoundCreditCard(card);
+    }
+
+    getClickedCardInfo();
+  }, [getCard, creditCardId]);
 
   return (
     <div className="credit-card_page_grid">
       <CreditCardDetails creditCard={{ ...foundCreditCard }} />
-      <InvoicesTable creditCard={{ ...foundCreditCard }} />
+      {/* <InvoicesTable creditCard={{ ...foundCreditCard }} /> */}
       <Button
         buttonIcon={<BsFillPlusCircleFill />}
         onClick={showAddCreditCardPurchaseHandler}

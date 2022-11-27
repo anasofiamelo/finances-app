@@ -27,7 +27,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/credit-card" element={<CreditCardPage />} />
-          <Route path="/credit-card/:creditCard" element={<Invoices />} />
+          <Route path="/credit-card/:creditCardId" element={<Invoices />} />
           <Route path="/goals" element={<Goals />} />
           <Route path="/budget" element={<Budget />} />
           <Route
