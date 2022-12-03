@@ -13,10 +13,11 @@ const Invoices = () => {
   const { creditCardId } = useParams();
   const { getCard, getCardInvoices } = useCreditCard();
 
-  const [foundCreditCard, setFoundCreditCard] = useState({});
+  const [foundCreditCard, setFoundCreditCard] = useState();
   const [creditCardInvoices, setCreditCardInvoices] = useState([]);
   const [showAddInvoiceModal, setShowAddInvoiceModal] = useState(false);
 
+  const isLoading = foundCreditCard ? false : true;
   const showAddCreditCardPurchaseHandler = () => {
     setShowAddInvoiceModal(true);
   };
@@ -36,24 +37,31 @@ const Invoices = () => {
   }, [getCard, getCardInvoices, creditCardId]);
 
   return (
-    <div className="credit-card_page_grid">
-      <CreditCardDetails creditCard={{ ...foundCreditCard }} />
-      <InvoicesTable
-        creditCard={{ ...foundCreditCard, invoices: creditCardInvoices }}
-      />
-      <Button
-        buttonIcon={<BsFillPlusCircleFill />}
-        onClick={showAddCreditCardPurchaseHandler}
-      >
-        New invoice
-      </Button>
-      {showAddInvoiceModal && (
-        <AddInvoiceModal
-          onClose={hideAddCreditCardPurchaseHandler}
-          {...foundCreditCard}
-        />
+    <>
+      {!isLoading ? (
+        <div className="credit-card_page_grid">
+          <CreditCardDetails creditCard={{ ...foundCreditCard }} />
+          <InvoicesTable
+            creditCard={{ ...foundCreditCard, invoices: creditCardInvoices }}
+            isLoading={isLoading}
+          />
+          <Button
+            buttonIcon={<BsFillPlusCircleFill />}
+            onClick={showAddCreditCardPurchaseHandler}
+          >
+            New invoice
+          </Button>
+          {showAddInvoiceModal && (
+            <AddInvoiceModal
+              onClose={hideAddCreditCardPurchaseHandler}
+              {...foundCreditCard}
+            />
+          )}
+        </div>
+      ) : (
+        <p>Loading...</p>
       )}
-    </div>
+    </>
   );
 };
 
