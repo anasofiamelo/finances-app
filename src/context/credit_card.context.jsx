@@ -46,6 +46,17 @@ export const CreditCardContextProvider = (props) => {
     }
   }
 
+  async function addInvoiceToCard(cardId, docRef) {
+    try {
+      const teste = await addDoc(
+        collection(db, "users", currentUserId, "credit-cards", cardId, docRef)
+      );
+      console.log("teste", teste);
+    } catch (error) {
+      console.log("error", error);
+    }
+  }
+
   useEffect(() => {
     async function getCurrentUserCards() {
       const cards = await getDocs(
@@ -62,7 +73,7 @@ export const CreditCardContextProvider = (props) => {
 
   return (
     <CreditCardContext.Provider
-      value={{ userCards, getCardInvoices, getCard, addCard }}
+      value={{ userCards, getCardInvoices, getCard, addCard, addInvoiceToCard }}
     >
       {props.children}
     </CreditCardContext.Provider>

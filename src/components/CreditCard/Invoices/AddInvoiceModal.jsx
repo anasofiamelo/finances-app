@@ -3,7 +3,7 @@ import { InputLabel, AddContainer, Select } from "../..";
 import { useCreditCard } from "../../../context/credit_card.context";
 import moment from "moment";
 const AddInvoiceModal = (props) => {
-  const context = useCreditCard();
+  const { userCards, addInvoiceToCard } = useCreditCard();
 
   const [value, setValue] = useState(0);
   const [item, setItem] = useState();
@@ -31,11 +31,11 @@ const AddInvoiceModal = (props) => {
 
     if (!value) return;
 
-    context.addInvoiceToCreditCard(creditCard, newPurchase);
+    addInvoiceToCard(props.cardId, newPurchase);
     props.onClose();
   };
 
-  const mappedCreditCards = context.cards.map((card) => (
+  const mappedCreditCards = userCards.map((card) => (
     <option>{card.cardName}</option>
   ));
 

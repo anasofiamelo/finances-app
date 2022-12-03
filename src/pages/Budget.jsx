@@ -1,10 +1,11 @@
 import { useState } from "react";
 import {
   Container,
-  Button,
+  ButtonWithIcon,
   BudgetTable,
   ConfigureBudgetModal,
 } from "../components";
+import { Icon } from "@iconify/react";
 
 const Budget = (props) => {
   const [showConfigureModal, setShowConfigureModal] = useState(false);
@@ -15,7 +16,12 @@ const Budget = (props) => {
     <Container>
       <div className="budget_header space-between">
         <h2 className="title">Budget</h2>
-        <Button onClick={openConfigureModalHandler}>Configure budget</Button>
+        <ButtonWithIcon
+          buttonIcon={<Icon icon="mdi:gear" />}
+          onClick={openConfigureModalHandler}
+        >
+          Configure budget
+        </ButtonWithIcon>
       </div>
       <BudgetTable />
       {showConfigureModal && (

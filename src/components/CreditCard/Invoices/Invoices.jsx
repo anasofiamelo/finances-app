@@ -5,9 +5,9 @@ import {
   InvoicesTable,
   CreditCardDetails,
   AddInvoiceModal,
-  Button,
+  ButtonWithIcon,
 } from "../../../components";
-import { BsFillPlusCircleFill } from "react-icons/bs";
+import { FiPlusCircle } from "react-icons/fi";
 
 const Invoices = () => {
   const { creditCardId } = useParams();
@@ -45,12 +45,12 @@ const Invoices = () => {
             creditCard={{ ...foundCreditCard, invoices: creditCardInvoices }}
             isLoading={isLoading}
           />
-          <Button
-            buttonIcon={<BsFillPlusCircleFill />}
+          <ButtonWithIcon
+            buttonIcon={<FiPlusCircle style={{ fontSize: "1.9rem" }} />}
             onClick={showAddCreditCardPurchaseHandler}
           >
             New invoice
-          </Button>
+          </ButtonWithIcon>
           {showAddInvoiceModal && (
             <AddInvoiceModal
               onClose={hideAddCreditCardPurchaseHandler}

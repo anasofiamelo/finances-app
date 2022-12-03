@@ -6,6 +6,7 @@ const CreditCardList = (props) => {
     <NavLink
       style={{
         marginBottom: "4rem",
+        width: "100%",
       }}
       key={card.cardName}
       to={`/credit-card/${card.cardId}`}
