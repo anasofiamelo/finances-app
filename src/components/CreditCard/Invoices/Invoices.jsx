@@ -16,6 +16,7 @@ const Invoices = () => {
   const [foundCreditCard, setFoundCreditCard] = useState({});
   const [creditCardInvoices, setCreditCardInvoices] = useState([]);
   const [showAddInvoiceModal, setShowAddInvoiceModal] = useState(false);
+
   const showAddCreditCardPurchaseHandler = () => {
     setShowAddInvoiceModal(true);
   };
@@ -38,8 +39,7 @@ const Invoices = () => {
     <div className="credit-card_page_grid">
       <CreditCardDetails creditCard={{ ...foundCreditCard }} />
       <InvoicesTable
-        invoices={creditCardInvoices}
-        creditCard={{ ...foundCreditCard }}
+        creditCard={{ ...foundCreditCard, invoices: creditCardInvoices }}
       />
       <Button
         buttonIcon={<BsFillPlusCircleFill />}

@@ -1,18 +1,16 @@
-import moment from "moment";
-
 const InvoiceTr = (props) => {
-  const { invoice, index } = props;
-  const { item, boughtIn, parcelValue, paidFromTotal } = invoice;
-  const formattedDate = moment(boughtIn).format("DD/MM/YYYY");
-  const valueStyle = { fontWeight: "500", color: "var(--red)" };
-
+  const { invoice } = props;
+  const { item, boughtInDate, parcelValue, paidFromTotal } = invoice;
+  const formattedDate = boughtInDate.format("DD/MM/YYYY");
   return (
-    <tr key={index} id={index}>
+    <tr>
       <td>{formattedDate}</td>
       <td>
         {item} ({paidFromTotal})
       </td>
-      <td style={valueStyle}>$ {parcelValue}</td>
+      <td style={{ fontWeight: "500", color: "var(--red)" }}>
+        $ {parcelValue}
+      </td>
     </tr>
   );
 };
