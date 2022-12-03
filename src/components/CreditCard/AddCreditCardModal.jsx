@@ -23,12 +23,11 @@ const AddCreditCardModal = (props) => {
     const newCard = {
       cardLimit: limit,
       cardName: name,
-      cardClosureDate: closureDate,
-      cardDueDate: dueDate,
-      invoices: [],
+      cardClosureDay: closureDate,
+      cardDueDay: dueDate,
     };
 
-    creditCardContext.addCardHandler(newCard);
+    creditCardContext.addCard(newCard);
     props.onClose();
   };
 

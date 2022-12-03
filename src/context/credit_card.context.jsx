@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useContext, createContext, useState } from "react";
-import { formatCardsInvoices } from "../utils";
-import { getDocs, getDoc, doc, collection } from "firebase/firestore";
+// import { formatCardsInvoices } from "../utils";
+import { getDocs, getDoc, doc, collection, addDoc } from "firebase/firestore";
 import { db } from "../services/firebase_config";
 import { useAuth } from "./auth.context";
 
@@ -10,25 +10,6 @@ const CreditCardContext = createContext({});
 export const CreditCardContextProvider = (props) => {
   const { currentUserId } = useAuth();
   const [userCards, setUserCards] = useState([]);
-  // const formattedCards = formatCardsInvoices(userCards);
-  // const [cards, setCards] = useState(formattedCards);
-
-  // function addCardHandler(card) {
-  //   setCards((prev) => [...prev, card]);
-  // }
-
-  // function addInvoiceToCreditCard(cardName, invoice) {
-  //   let cardInvoices = getCardInvoices(cardName);
-  //   cardInvoices = [...cardInvoices, invoice];
-  //   setCards((cards) => {
-  //     return cards.map((card) => {
-  //       if (card.cardName === cardName) {
-  //         return { ...card, invoices: cardInvoices };
-  //       }
-  //       return card;
-  //     });
-  //   });
-  // }
 
   async function getCard(cardId) {
     try {
@@ -54,6 +35,17 @@ export const CreditCardContextProvider = (props) => {
     return invoicesData;
   }
 
+  async function addCard(docRef) {
+    try {
+      await addDoc(
+        collection(db, "users", currentUserId, "credit-cards"),
+        docRef
+      );
+    } catch (error) {
+      console.log("error", error);
+    }
+  }
+
   useEffect(() => {
     async function getCurrentUserCards() {
       const cards = await getDocs(
@@ -69,7 +61,9 @@ export const CreditCardContextProvider = (props) => {
   }, [currentUserId]);
 
   return (
-    <CreditCardContext.Provider value={{ userCards, getCardInvoices, getCard }}>
+    <CreditCardContext.Provider
+      value={{ userCards, getCardInvoices, getCard, addCard }}
+    >
       {props.children}
     </CreditCardContext.Provider>
   );
