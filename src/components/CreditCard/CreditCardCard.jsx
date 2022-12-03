@@ -12,7 +12,7 @@ const CreditCardCard = (props) => {
         <h2 className="card_title">{props.cardName}</h2>
       </div>
       <p>Limit: $ {props.cardLimit.toFixed(2)}</p>
-      <p>Closure day: {props.cardClosureDate}</p>
+      <p>Closure day: {props.cardClosureDay}</p>
     </>
   );
 };

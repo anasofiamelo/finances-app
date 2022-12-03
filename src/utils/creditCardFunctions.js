@@ -2,34 +2,61 @@ import moment, { months } from "moment";
 
 const creditCard = "";
 
-export const formatInvoices = (
-  creditCard,
-  selectedDate = { month: moment().month() }
-) => {
-  return creditCard.invoices.map((invoice) => {
+export const formatInvoices = (invoices, selectedDate) => {
+  return invoices.map((invoice) => {
+    console.log("to aki");
     const { value, timesPurchased } = invoice;
     const parcelValue = (value / timesPurchased).toFixed(2);
-    const chargeDate = calcDateOfCharge(creditCard, invoice);
-    const endDate = calcDateOfEnd(invoice, chargeDate);
+    // const chargeDate = calcDateOfCharge(creditCard, invoice);
+    // const endDate = calcDateOfEnd(invoice, chargeDate);
 
-    const paidParcels = selectedDate.month - chargeDate.month();
-    const missingValue = (timesPurchased - paidParcels) * parcelValue;
-    const paidFromTotal = `${paidParcels}/${timesPurchased}`;
+    // const paidParcels = selectedDate.month - chargeDate.month();
+    // const missingValue = (timesPurchased - paidParcels) * parcelValue;
+    // const paidFromTotal = `${paidParcels}/${timesPurchased}`;
 
-    if (paidParcels === 0 || paidParcels < 0 || paidParcels > timesPurchased) {
-      return {};
-    }
+    // if (paidParcels === 0 || paidParcels < 0 || paidParcels > timesPurchased) {
+    // return {};
+    // }
 
     return {
       ...invoice,
-      chargeDate,
-      endDate,
+      // chargeDate,
+      // endDate,
       parcelValue,
-      paidFromTotal,
-      missingValue,
+      // paidFromTotal,
+      // missingValue,
     };
   });
 };
+
+// export const formatInvoices = (
+//   creditCard,
+//   selectedDate = { month: moment().month() }
+// ) => {
+//   return creditCard.invoices.map((invoice) => {
+//     const { value, timesPurchased } = invoice;
+//     const parcelValue = (value / timesPurchased).toFixed(2);
+//     const chargeDate = calcDateOfCharge(creditCard, invoice);
+//     const endDate = calcDateOfEnd(invoice, chargeDate);
+
+//     const paidParcels = selectedDate.month - chargeDate.month();
+//     const missingValue = (timesPurchased - paidParcels) * parcelValue;
+//     const paidFromTotal = `${paidParcels}/${timesPurchased}`;
+
+//     if (paidParcels === 0 || paidParcels < 0 || paidParcels > timesPurchased) {
+//       return {};
+//     }
+
+//     return {
+//       ...invoice,
+//       chargeDate,
+//       endDate,
+//       parcelValue,
+//       paidFromTotal,
+//       missingValue,
+//     };
+//   });
+// };
 
 export const calcUsedLimit = (invoices) =>
   invoices.reduce((prev, current) => prev + current.missingValue, 0).toFixed(2);

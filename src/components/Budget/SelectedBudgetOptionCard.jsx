@@ -4,7 +4,6 @@ import { Icon } from "@iconify/react";
 // -- styles: forms.css --
 
 const SelectedBudgetOptionCard = (props) => {
-  console.log("props", props);
   const label = (
     <span className="row">
       <span className="budget-input-optgroup-title">{props.optGroupTitle}</span>

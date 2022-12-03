@@ -13,7 +13,6 @@ const AddTransaction = (props) => {
   );
   const [transactionValue, setTransactionValue] = useState();
   const [transactionDate, setTransactionDate] = useState();
-  console.log("transactionDate", transactionDate);
   const changeTransactionValueHandler = (event) => {
     setTransactionValue(event.target.value);
   };

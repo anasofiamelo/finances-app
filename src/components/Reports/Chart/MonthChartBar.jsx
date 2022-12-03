@@ -6,8 +6,6 @@ const MonthChartBar = (props) => {
   if (props.maxValue > 0) {
     barFillHeight = Math.round((props.value / props.maxValue) * 100) + "%";
   }
-  // console.log("barFillHeight", barFillHeight);
-  // console.log("props", props);
   return (
     <div className={classes["chart-bar"]}>
       <div className={classes["chart-bar__inner"]}>

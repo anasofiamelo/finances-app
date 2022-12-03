@@ -63,7 +63,6 @@ export const CreditCardContextProvider = (props) => {
         cardId: doc.id,
         ...doc.data(),
       }));
-      console.log("cardsData", cardsData);
       setUserCards(cardsData);
     }
     getCurrentUserCards();
