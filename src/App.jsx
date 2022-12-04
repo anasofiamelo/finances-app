@@ -2,10 +2,12 @@ import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Navbar, Goals, Invoices, Activities } from "./components";
 import { CreditCardPage, Budget, Dashboard } from "./pages";
-import { useTransactions } from "./context/finances.context";
+import { useTransactions } from "./context/transactions.context";
 
 function App() {
-  const { incomes, expenses, transactions } = useTransactions();
+  const { userTransactions } = useTransactions();
+  const incomes = userTransactions.filter((transac) => transac.value > 0);
+  const expenses = userTransactions.filter((transac) => transac.value < 0);
   const [showAddTransaction, setShowAddTransaction] = useState(false);
 
   const toggleShowAddTransactionHandler = () =>
@@ -30,7 +32,10 @@ function App() {
           <Route
             path="/transactions"
             element={
-              <Activities title="Your activities" transactions={transactions} />
+              <Activities
+                title="Your activities"
+                transactions={userTransactions}
+              />
             }
           />
           <Route

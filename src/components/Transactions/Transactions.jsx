@@ -1,15 +1,17 @@
-import { useReducer, useEffect, useCallback } from "react";
-import { useTransactions } from "../../context/finances.context";
+import { useReducer, useCallback } from "react";
 import { Container, TransactionsList, TransactionHeader } from "..";
 import transactionTypes from "../../hooks/transactionTypes";
 import moment from "moment";
 
 const Transactions = (props) => {
-  const context = useTransactions();
-
-  const transactions = !!props.transactions
-    ? props.transactions
-    : context.transactions;
+  // const transactions = props.transactions.map((transaction) => {
+  //   const parsedDate = moment(transaction.date.toDate());
+  //   return { ...transaction, date: parsedDate };
+  // });
+  const transactions = props.transactions.map((transaction) => ({
+    ...transaction,
+    date: moment(transaction.date.toDate()),
+  }));
 
   const currentYear = moment().year();
   const currentMonth = moment().month();
@@ -40,9 +42,9 @@ const Transactions = (props) => {
     dispatchSelectState({ type: "FILTER_DESCRIPTION", filterInput: value });
   };
 
-  useEffect(() => {
-    return dispatchSelectState({ type: "TRANSACTIONS_UPDATE" });
-  }, [transactions]);
+  // useEffect(() => {
+  // return dispatchSelectState({ type: "TRANSACTIONS_UPDATE" });
+  // }, [transactions]);
 
   const totalBalanceTransactions = selectedBalance.filteredTransactions
     .reduce((prev, current) => prev + current.value, 0)
