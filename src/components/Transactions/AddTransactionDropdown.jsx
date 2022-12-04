@@ -31,42 +31,44 @@ const AddTransactionDropdown = () => {
   };
 
   return (
-    <div className="dropdown-container">
-      <div onClick={openIncomeModalHandler} className="dropdown-item">
-        <BiLineChart style={{ fontSize: "1.5rem", color: "var(--green)" }} />
-        Income
-      </div>
-      <div onClick={openExpenseModalHandler} className="dropdown-item">
-        <BiLineChartDown style={{ color: "var(--red)" }} />
-        Expense
-      </div>
-      <div
-        onClick={openCreditCardInvoiceModalHandler}
-        className="dropdown-item"
-      >
-        <BsCreditCard style={{ color: "var(--purple)" }} />
-        Card Invoice
-      </div>
+    <div style={{ position: "relative", background: "red" }}>
+      <div className="dropdown-container">
+        <div onClick={openIncomeModalHandler} className="dropdown-item">
+          <BiLineChart style={{ fontSize: "1.5rem", color: "var(--green)" }} />
+          Income
+        </div>
+        <div onClick={openExpenseModalHandler} className="dropdown-item">
+          <BiLineChartDown style={{ color: "var(--red)" }} />
+          Expense
+        </div>
+        <div
+          onClick={openCreditCardInvoiceModalHandler}
+          className="dropdown-item"
+        >
+          <BsCreditCard style={{ color: "var(--purple)" }} />
+          Card Invoice
+        </div>
 
-      {openIncomeModal && (
-        <AddTransaction
-          onClose={hideOpenIncomeModalHandler}
-          transactionType="Income"
-          transactionCategories={typeofIncomes}
-        />
-      )}
+        {openIncomeModal && (
+          <AddTransaction
+            onClose={hideOpenIncomeModalHandler}
+            transactionType="Income"
+            transactionCategories={typeofIncomes}
+          />
+        )}
 
-      {openExpenseModal && (
-        <AddTransaction
-          onClose={hideOpenExpenseModalHandler}
-          transactionType="Expense"
-          transactionCategories={typeofExpenses}
-        />
-      )}
+        {openExpenseModal && (
+          <AddTransaction
+            onClose={hideOpenExpenseModalHandler}
+            transactionType="Expense"
+            transactionCategories={typeofExpenses}
+          />
+        )}
 
-      {openCreditCardInvoiceModal && (
-        <AddInvoiceModal onClose={hideOpenCreditCardInvoiceModalHandler} />
-      )}
+        {openCreditCardInvoiceModal && (
+          <AddInvoiceModal onClose={hideOpenCreditCardInvoiceModalHandler} />
+        )}
+      </div>
     </div>
   );
 };

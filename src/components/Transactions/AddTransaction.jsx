@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { InputLabel, Select, AddContainer } from "../../components";
-import { useTransactions } from "../../context/finances.context";
+import { useTransactions } from "../../context/transactions.context";
 import { BsFillCalculatorFill, BsJournalText } from "react-icons/bs";
-import moment from "moment";
 
 const AddTransaction = (props) => {
-  const { addTransactionHandler } = useTransactions();
+  const { addTransaction } = useTransactions();
 
   const [transactionDescription, setTransactionDescription] = useState();
   const [transactionCategory, setTransactionCategory] = useState(
@@ -13,21 +12,15 @@ const AddTransaction = (props) => {
   );
   const [transactionValue, setTransactionValue] = useState();
   const [transactionDate, setTransactionDate] = useState();
-  const changeTransactionValueHandler = (event) => {
+
+  const changeTransactionValueHandler = (event) =>
     setTransactionValue(event.target.value);
-  };
-
-  const changeTransactionDescriptionHandler = (event) => {
+  const changeTransactionDescriptionHandler = (event) =>
     setTransactionDescription(event.target.value);
-  };
-
-  const changeTransactionCategoryHandler = (event) => {
+  const changeTransactionCategoryHandler = (event) =>
     setTransactionCategory(event.target.value);
-  };
-
-  const changeTransactionDateHandler = (event) => {
+  const changeTransactionDateHandler = (event) =>
     setTransactionDate(event.target.value);
-  };
 
   const submitAddTransactionFormHandler = (event) => {
     event.preventDefault();
@@ -41,12 +34,12 @@ const AddTransaction = (props) => {
       payment: "Cash",
       value,
       description: transactionDescription,
-      date: moment(transactionDate),
+      date: new Date(transactionDate),
     };
 
     if (!transactionValue) return;
 
-    addTransactionHandler(transaction);
+    addTransaction(transaction);
     props.onClose();
   };
 

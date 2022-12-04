@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Navbar, Goals, Invoices, Activities } from "./components";
 import { CreditCardPage, Budget, Dashboard } from "./pages";
@@ -8,19 +8,16 @@ function App() {
   const { incomes, expenses, transactions } = useTransactions();
   const [showAddTransaction, setShowAddTransaction] = useState(false);
 
-  const showAddTransactionHandler = () => {
-    setShowAddTransaction(true);
-  };
+  const toggleShowAddTransactionHandler = () =>
+    setShowAddTransaction((prev) => !prev);
 
-  const hideAddTransactionHandler = () => {
-    setShowAddTransaction(false);
-  };
+  const hideAddTransactionHandler = () => setShowAddTransaction(false);
 
   return (
     <>
       <Navbar
         showAddTransaction={showAddTransaction}
-        onShowAddTransaction={showAddTransactionHandler}
+        onToggleShowAddTransaction={toggleShowAddTransactionHandler}
         onHideAddTransaction={hideAddTransactionHandler}
       />
       <div onClick={hideAddTransactionHandler} className="App">

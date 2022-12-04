@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { getDocs, collection } from "firebase/firestore";
+import { getDocs, collection, addDoc } from "firebase/firestore";
 import { db } from "../services/firebase_config";
 import { useAuth } from "./auth.context";
 
@@ -10,7 +10,7 @@ export function TransactionsProvider({ children }) {
   const [userTransactions, setUserTransactions] = useState([]);
   const [userLatestTransactions, setUserLatestTransactions] = useState([]);
 
-  async function getCurrentUserTransactions(userId) {
+  async function getUserTransactions(userId) {
     try {
       const docRef = collection(db, "users", userId, "transactions");
       const docsSnap = await getDocs(docRef);
@@ -20,9 +20,21 @@ export function TransactionsProvider({ children }) {
     }
   }
 
+  async function addTransaction(docRef) {
+    try {
+      const test = await addDoc(
+        collection(db, "users", currentUserId, "transactions"),
+        docRef
+      );
+      console.log("test", test);
+    } catch (error) {
+      console.log("error", error);
+    }
+  }
+
   useEffect(() => {
     async function getTransactions() {
-      const transactions = await getCurrentUserTransactions(currentUserId);
+      const transactions = await getUserTransactions(currentUserId);
       setUserTransactions(transactions);
       setUserLatestTransactions(transactions.slice(0, 5));
     }
@@ -32,7 +44,7 @@ export function TransactionsProvider({ children }) {
 
   return (
     <TransactionsContext.Provider
-      value={{ userTransactions, userLatestTransactions }}
+      value={{ userTransactions, userLatestTransactions, addTransaction }}
     >
       {children}
     </TransactionsContext.Provider>

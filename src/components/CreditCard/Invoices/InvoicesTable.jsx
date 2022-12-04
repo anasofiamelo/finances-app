@@ -14,11 +14,11 @@ const InvoicesTable = (props) => {
   useEffect(() => {
     const formattedInvoices =
       invoices.length > 0 ? formatInvoices(creditCard, selectedDate) : [];
-    const filteredFormattedInvoices = formattedInvoices.filter(
+    const filteredInvoices = formattedInvoices.filter(
       (invoice) => Object.keys(invoice).length > 0
     );
 
-    setSortedInvoices(filteredFormattedInvoices);
+    setSortedInvoices(filteredInvoices);
   }, [selectedDate, creditCard, invoices, props.isLoading]);
 
   const changeInvoicesHandler = () => {
