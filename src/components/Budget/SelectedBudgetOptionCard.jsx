@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 
 // -- styles: forms.css --
 
 const SelectedBudgetOptionCard = (props) => {
+  const { id: optionId, options } = props;
+
+  const [monthValue, setMonthValue] = useState("");
+
+  const changeMonthValueHandler = (event) => {
+    const value = Number(event.target.value);
+    const attOptions = options.map((option) => {
+      if (optionId === option.id) {
+        return { ...option, monthValue: value };
+      }
+      return option;
+    });
+    props.setOptions(attOptions);
+    setMonthValue(value);
+  };
+
   const label = (
     <span className="row">
       <span className="budget-input-optgroup-title">{props.optGroupTitle}</span>
@@ -16,16 +32,17 @@ const SelectedBudgetOptionCard = (props) => {
   );
 
   return (
-    <div key={props.id} className="column budget-input_container">
-      <label className="budget-input_label-container" htmlFor={props.id}>
+    <div className="column budget-input_container">
+      <label className="budget-input_label-container" htmlFor={optionId}>
         {label}
       </label>
       <input
+        value={monthValue}
+        onChange={changeMonthValueHandler}
         className="budget-input"
-        id={props.id}
+        id={optionId}
         placeholder="Value per month"
         type="number"
-        onChange={props.onChangeValue}
       />
     </div>
   );

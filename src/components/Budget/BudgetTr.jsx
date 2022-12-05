@@ -2,6 +2,7 @@ import { formatValue } from "../../utils";
 import { Icon } from "@iconify/react";
 import { Button } from "../../components";
 import React from "react";
+
 const BudgetTr = (props) => {
   const { budget } = props;
   const monthValue = formatValue(budget.monthValue);
@@ -9,7 +10,7 @@ const BudgetTr = (props) => {
 
   return (
     <tr>
-      <td>{budget.category}</td>
+      <td>{budget.label}</td>
       <td>{monthValue}</td>
       <td>{yearValue}</td>
       <td className="actions-container">

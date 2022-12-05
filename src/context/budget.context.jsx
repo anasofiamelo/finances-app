@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useContext, createContext } from "react";
-// import { budget, formatValue } from "../utils";
-import { getDocs, getDoc, doc, collection, addDoc } from "firebase/firestore";
+import { getDocs, collection, addDoc } from "firebase/firestore";
 import { db } from "../services/firebase_config";
 import { useAuth } from "./auth.context";
 
@@ -17,27 +16,28 @@ export const BudgetProvider = (props) => {
         collection(db, "users", currentUserId, "budget"),
         budgetDocRef
       );
+      await getUserBudget();
     } catch (error) {
       console.log("error", error);
     }
   }
 
-  useEffect(() => {
-    async function getUserBudget() {
-      const budgetDocs = await getDocs(
-        collection(db, "users", currentUserId, "budget")
-      );
+  const getUserBudget = useCallback(async () => {
+    const budgetDocs = await getDocs(
+      collection(db, "users", currentUserId, "budget")
+    );
 
-      const budgetData = budgetDocs.docs.map((doc) => ({
-        budgetId: doc.id,
-        ...doc.data(),
-      }));
+    const budgetData = budgetDocs.docs.map((doc) => ({
+      budgetId: doc.id,
+      ...doc.data(),
+    }));
 
-      setUserBudget(budgetData);
-    }
-
-    getUserBudget();
+    setUserBudget(budgetData);
   }, [currentUserId]);
+
+  useEffect(() => {
+    getUserBudget();
+  }, [getUserBudget]);
 
   return (
     <BudgetContext.Provider value={{ userBudget, addBudget }}>
