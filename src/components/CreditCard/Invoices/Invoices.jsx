@@ -6,6 +6,7 @@ import {
   CreditCardDetails,
   AddInvoiceModal,
   ButtonWithIcon,
+  Loading,
 } from "../../../components";
 import { FiPlusCircle } from "react-icons/fi";
 
@@ -59,7 +60,7 @@ const Invoices = () => {
           )}
         </div>
       ) : (
-        <p>Loading...</p>
+        <Loading />
       )}
     </>
   );

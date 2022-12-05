@@ -2,7 +2,7 @@
 import Transactions from "./Transactions/Transactions";
 import Activities from "./Transactions/Activities";
 import LatestActivities from "./Transactions/LatestActivities";
-import TransactionsList from "./Transactions/TransactionsList";
+import TransactionsTable from "./Transactions/TransactionsTable";
 import TransactionHeader from "./Transactions/TransactionHeader";
 import TransactionValueCard from "./Transactions/TransactionValueCard";
 import TransactionValueCards from "./Transactions/TransactionValueCards";
@@ -45,6 +45,7 @@ import InputLabel from "./ui/InputLabel";
 import Select from "./ui/Select";
 import Button from "./ui/Button";
 import ButtonWithIcon from "./ui/ButtonWithIcon";
+import Loading from "./ui/Loading";
 
 //---------------------------BUDGET---------------------------
 import BudgetTable from "./Budget/BudgetTable";
@@ -57,7 +58,7 @@ export {
   Transactions,
   LatestActivities,
   Activities,
-  TransactionsList,
+  TransactionsTable,
   TransactionHeader,
   TransactionValueCard,
   TransactionValueCards,
@@ -81,6 +82,7 @@ export {
   AddGoal,
   Modal,
   Container,
+  Loading,
   Navbar,
   Table,
   ThWithSort,

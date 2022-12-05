@@ -1,13 +1,9 @@
 import { useReducer, useCallback } from "react";
-import { Container, TransactionsList, TransactionHeader } from "..";
+import { Container, TransactionsTable, TransactionHeader } from "..";
 import transactionTypes from "../../hooks/transactionTypes";
 import moment from "moment";
 
 const Transactions = (props) => {
-  // const transactions = props.transactions.map((transaction) => {
-  //   const parsedDate = moment(transaction.date.toDate());
-  //   return { ...transaction, date: parsedDate };
-  // });
   const transactions = props.transactions.map((transaction) => ({
     ...transaction,
     date: moment(transaction.date.toDate()),
@@ -58,7 +54,7 @@ const Transactions = (props) => {
         title={props.title}
       />
 
-      <TransactionsList transactions={selectedBalance.filteredTransactions} />
+      <TransactionsTable transactions={selectedBalance.filteredTransactions} />
 
       <h3>
         Total{" "}

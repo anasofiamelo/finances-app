@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 import { getDocs, collection, addDoc } from "firebase/firestore";
 import { db } from "../services/firebase_config";
 import { useAuth } from "./auth.context";
+import { useCallback } from "react";
 
 const TransactionsContext = createContext();
 
@@ -10,37 +11,36 @@ export function TransactionsProvider({ children }) {
   const [userTransactions, setUserTransactions] = useState([]);
   const [userLatestTransactions, setUserLatestTransactions] = useState([]);
 
-  async function getUserTransactions(userId) {
+  const getUserTransactions = useCallback(async () => {
     try {
-      const docRef = collection(db, "users", userId, "transactions");
+      const docRef = collection(db, "users", currentUserId, "transactions");
       const docsSnap = await getDocs(docRef);
-      return docsSnap.docs.map((doc) => ({ transacId: doc.id, ...doc.data() }));
+      const transactions = docsSnap.docs.map((doc) => ({
+        transacId: doc.id,
+        ...doc.data(),
+      }));
+      setUserTransactions(transactions);
+      setUserLatestTransactions(transactions.slice(0, 5));
     } catch (error) {
       console.log("error", error);
     }
-  }
+  }, [currentUserId]);
 
   async function addTransaction(docRef) {
     try {
-      const test = await addDoc(
+      await addDoc(
         collection(db, "users", currentUserId, "transactions"),
         docRef
       );
-      console.log("test", test);
+      await getUserTransactions();
     } catch (error) {
       console.log("error", error);
     }
   }
 
   useEffect(() => {
-    async function getTransactions() {
-      const transactions = await getUserTransactions(currentUserId);
-      setUserTransactions(transactions);
-      setUserLatestTransactions(transactions.slice(0, 5));
-    }
-
-    getTransactions();
-  }, [currentUserId]);
+    getUserTransactions();
+  }, [getUserTransactions]);
 
   return (
     <TransactionsContext.Provider
