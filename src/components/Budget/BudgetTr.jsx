@@ -5,8 +5,10 @@ import React from "react";
 
 const BudgetTr = (props) => {
   const { budget } = props;
-  const monthValue = formatValue(budget.monthValue);
-  const yearValue = formatValue(budget.monthValue * 12);
+  const negativeMonthValue = budget.monthValue * -1;
+
+  const monthValue = formatValue(negativeMonthValue);
+  const yearValue = formatValue(negativeMonthValue * 12);
 
   return (
     <tr>
