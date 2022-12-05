@@ -68,6 +68,7 @@ export const CreditCardContextProvider = (props) => {
       }));
       setUserCards(cardsData);
     }
+
     getCurrentUserCards();
   }, [currentUserId]);
 

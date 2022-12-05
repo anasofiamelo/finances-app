@@ -1,15 +1,14 @@
 const Button = (props) => {
+  const classes = props.className ? `${props.className}` : "";
   return (
-    <div
-      className="button_animated-container"
-      style={props.style}
+    <button
+      className={classes}
       onClick={props.onClick}
+      style={props.style}
+      type={props.type || "button"}
     >
-      <button style={props.style} type={props.type || "button"}>
-        {props.children}
-        {props.buttonIcon}
-      </button>
-    </div>
+      {props.children}
+    </button>
   );
 };
 

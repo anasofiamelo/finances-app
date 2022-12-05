@@ -1,5 +1,5 @@
 const ButtonWithIcon = (props) => {
-  const classes = `${props.className} button_animated-container`;
+  const classes = `${props.className}`;
 
   const iconOnLeftSide = (
     <>
@@ -20,6 +20,7 @@ const ButtonWithIcon = (props) => {
 
   return (
     <button
+      style={{ backgroundColor: "var(--purple)", color: "var(--white)" }}
       onClick={props.onClick}
       className={classes}
       type={props.type || "button"}

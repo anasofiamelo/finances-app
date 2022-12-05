@@ -6,6 +6,7 @@ import { TransactionsContextProvider } from "./context/finances.context";
 import { CreditCardContextProvider } from "./context/credit_card.context";
 import { UserProvider } from "./context/users.context";
 import { TransactionsProvider } from "./context/transactions.context";
+import { BudgetProvider } from "./context/budget.context";
 import "./styles/index.css";
 import "./styles/default.css";
 import "./styles/tables.css";
@@ -26,7 +27,9 @@ root.render(
           <TransactionsProvider>
             <TransactionsContextProvider>
               <CreditCardContextProvider>
-                <App />
+                <BudgetProvider>
+                  <App />
+                </BudgetProvider>
               </CreditCardContextProvider>
             </TransactionsContextProvider>
           </TransactionsProvider>

@@ -73,3 +73,17 @@ input::placeholder {
   color: var(--light-grey);
   font-size: 1.3rem;
 }
+.actions-container {
+  display: flex;
+}
+.edit-icon,
+.delete-icon {
+  color: var(--grey);
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.edit-icon:hover,
+.delete-icon:hover {
+  color: var(--dark-black);
+}

@@ -1,26 +1,11 @@
-button,
-.button_animated-container {
-  background-color: var(--purple);
-  color: var(--white);
-  display: flex;
-  align-items: center;
+button {
   cursor: pointer;
-  padding: 0.5rem 0.8rem;
-}
-.button_animated-container {
-  transition: 0.3s width;
-  border-radius: 0.4rem;
-  height: fit-content;
+  background: none;
   width: fit-content;
-  overflow: hidden;
-}
-.button-text_animated {
-  padding: 0.5rem 0.4rem;
+  height: fit-content;
 }
 .button-icon {
   font-size: 2rem;
-}
-.button_icon {
   margin-top: 0.3rem;
 }
 .button_icon_left {
