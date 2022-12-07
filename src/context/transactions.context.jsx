@@ -3,6 +3,7 @@ import { getDocs, collection, addDoc } from "firebase/firestore";
 import { db } from "../services/firebase_config";
 import { useAuth } from "./auth.context";
 import { useCallback } from "react";
+import moment from "moment";
 
 const TransactionsContext = createContext();
 
@@ -19,8 +20,12 @@ export function TransactionsProvider({ children }) {
         transacId: doc.id,
         ...doc.data(),
       }));
-      setUserTransactions(transactions);
-      setUserLatestTransactions(transactions.slice(0, 5));
+      const formattedTransactions = transactions.map((transaction) => ({
+        ...transaction,
+        date: moment(transaction.date.toDate()),
+      }));
+      setUserTransactions(formattedTransactions);
+      setUserLatestTransactions(formattedTransactions.slice(0, 5));
     } catch (error) {
       console.log("error", error);
     }

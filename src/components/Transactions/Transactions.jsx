@@ -1,20 +1,24 @@
 import { useReducer, useCallback } from "react";
 import { Container, TransactionsTable, TransactionHeader } from "..";
+import { formatValue } from "../../utils";
 import transactionTypes from "../../hooks/transactionTypes";
 import moment from "moment";
+import { useTransactions } from "../../context/transactions.context";
+import { useEffect } from "react";
 
 const Transactions = (props) => {
-  const transactions = props.transactions.map((transaction) => ({
-    ...transaction,
-    date: moment(transaction.date.toDate()),
-  }));
+  const { userTransactions } = useTransactions();
+
+  useEffect(() => {
+    dispatchSelectState({ type: "TRANSACTIONS_UPDATE" });
+  }, [userTransactions]);
 
   const currentYear = moment().year();
   const currentMonth = moment().month();
   const initialManageBalancesState = {
     year: currentYear,
     month: currentMonth,
-    filteredTransactions: transactions.filter(
+    filteredTransactions: userTransactions.filter(
       (transaction) =>
         transaction.date.year() === currentYear &&
         transaction.date.month() === currentMonth
@@ -22,7 +26,7 @@ const Transactions = (props) => {
   };
 
   const manageBalance = (state, action) => {
-    return transactionTypes(state, action, transactions);
+    return transactionTypes(state, action, userTransactions);
   };
 
   const [selectedBalance, dispatchSelectState] = useReducer(
@@ -38,13 +42,10 @@ const Transactions = (props) => {
     dispatchSelectState({ type: "FILTER_DESCRIPTION", filterInput: value });
   };
 
-  // useEffect(() => {
-  // return dispatchSelectState({ type: "TRANSACTIONS_UPDATE" });
-  // }, [transactions]);
-
-  const totalBalanceTransactions = selectedBalance.filteredTransactions
-    .reduce((prev, current) => prev + current.value, 0)
-    .toFixed(2);
+  const totalBalance = selectedBalance.filteredTransactions.reduce(
+    (prev, current) => prev + current.value,
+    0
+  );
 
   return (
     <Container>
@@ -56,18 +57,7 @@ const Transactions = (props) => {
 
       <TransactionsTable transactions={selectedBalance.filteredTransactions} />
 
-      <h3>
-        Total{" "}
-        <span
-          style={{
-            color: `${
-              totalBalanceTransactions > 0 ? "var(--green)" : "var(--red)"
-            }`,
-          }}
-        >
-          $ {totalBalanceTransactions}
-        </span>
-      </h3>
+      <h3>Total {formatValue(totalBalance)}</h3>
     </Container>
   );
 };

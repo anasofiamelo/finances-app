@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Table, ThWithSort } from "..";
+import { Table, ThWithSort, Loading } from "..";
 import useSort from "../../hooks/useSort";
 import TransactionTr from "./TransactionTr";
 
@@ -43,9 +43,13 @@ const TransactionsTable = (props) => {
         </>
       }
     >
-      {sortedTransactions.map((transaction) => (
-        <TransactionTr transaction={transaction} />
-      ))}
+      {transactions.length ? (
+        sortedTransactions.map((transaction, index) => (
+          <TransactionTr key={index} transaction={transaction} />
+        ))
+      ) : (
+        <Loading />
+      )}
     </Table>
   );
 };
