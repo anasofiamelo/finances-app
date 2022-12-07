@@ -11,6 +11,7 @@ import finances from "./finances";
 import userCards from "./userCards";
 import budget, { totalBudget } from "./budget";
 import {
+  formatCardsInvoices,
   formatInvoices,
   calcDateOfCharge,
   calcDateOfEnd,
@@ -39,6 +40,7 @@ export {
   calcDateOfCharge,
   calcDateOfEnd,
   formatInvoices,
+  formatCardsInvoices,
   formatValue,
   formatMomentDate,
   formatDate,

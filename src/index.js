@@ -24,15 +24,15 @@ root.render(
     <BrowserRouter>
       <AuthProvider>
         <UserProvider>
-          <TransactionsProvider>
-            <TransactionsContextProvider>
-              <CreditCardContextProvider>
+          <CreditCardContextProvider>
+            <TransactionsProvider>
+              <TransactionsContextProvider>
                 <BudgetProvider>
                   <App />
                 </BudgetProvider>
-              </CreditCardContextProvider>
-            </TransactionsContextProvider>
-          </TransactionsProvider>
+              </TransactionsContextProvider>
+            </TransactionsProvider>
+          </CreditCardContextProvider>
         </UserProvider>
       </AuthProvider>
     </BrowserRouter>

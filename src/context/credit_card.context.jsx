@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useContext, createContext, useState } from "react";
-// import { formatCardsInvoices } from "../utils";
+import { formatCardsInvoices } from "../utils";
 import { getDocs, getDoc, doc, collection, addDoc } from "firebase/firestore";
 import { db } from "../services/firebase_config";
 import { useAuth } from "./auth.context";
+import { useCallback } from "react";
 
 const CreditCardContext = createContext({});
 
@@ -35,6 +36,21 @@ export const CreditCardContextProvider = (props) => {
     return invoicesData;
   }
 
+  async function getCardsTotalInvoices(selectedDate) {
+    const cardsWithInvoices = [];
+
+    for (const card of userCards) {
+      const invoices = await getCardInvoices(card.cardId);
+      cardsWithInvoices.push({ ...card, invoices });
+    }
+
+    if (cardsWithInvoices.length) {
+      return formatCardsInvoices(cardsWithInvoices, selectedDate);
+    }
+
+    return [];
+  }
+
   async function addCard(docRef) {
     try {
       await addDoc(
@@ -57,24 +73,31 @@ export const CreditCardContextProvider = (props) => {
     }
   }
 
-  useEffect(() => {
-    async function getCurrentUserCards() {
-      const cards = await getDocs(
-        collection(db, "users", currentUserId, "credit-cards")
-      );
-      const cardsData = cards.docs.map((doc) => ({
-        cardId: doc.id,
-        ...doc.data(),
-      }));
-      setUserCards(cardsData);
-    }
-
-    getCurrentUserCards();
+  const getCurrentUserCards = useCallback(async () => {
+    const cards = await getDocs(
+      collection(db, "users", currentUserId, "credit-cards")
+    );
+    const cardsData = cards.docs.map((doc) => ({
+      cardId: doc.id,
+      ...doc.data(),
+    }));
+    setUserCards(cardsData);
   }, [currentUserId]);
+
+  useEffect(() => {
+    getCurrentUserCards();
+  }, [getCurrentUserCards]);
 
   return (
     <CreditCardContext.Provider
-      value={{ userCards, getCardInvoices, getCard, addCard, addInvoiceToCard }}
+      value={{
+        userCards,
+        getCardInvoices,
+        getCard,
+        addCard,
+        addInvoiceToCard,
+        getCardsTotalInvoices,
+      }}
     >
       {props.children}
     </CreditCardContext.Provider>

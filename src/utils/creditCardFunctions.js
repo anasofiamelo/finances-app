@@ -2,6 +2,27 @@ import moment from "moment";
 
 const creditCard = "";
 
+export const formatCardsInvoices = (creditCards, selectedDate) => {
+  return creditCards.map((card) => {
+    const formattedInvoices = formatInvoices(card, selectedDate);
+    const invoicesTotalValue = formattedInvoices.reduce(
+      (prev, curr) => prev + curr.parcelValue,
+      0
+    );
+
+    return {
+      transacId: card.cardId,
+      type: "Credit card invoice",
+      value: Number(invoicesTotalValue),
+      description: `${card.cardName} Invoice`,
+      payment: "Cash",
+      date: moment(
+        `${selectedDate.month}/${card.cardClosureDay}/${selectedDate.year}`
+      ),
+    };
+  });
+};
+
 export const formatInvoices = (creditCard, selectedDate) => {
   return creditCard.invoices.map((invoice) => {
     const { value, timesPurchased, boughtIn } = invoice;
@@ -31,35 +52,6 @@ export const formatInvoices = (creditCard, selectedDate) => {
     };
   });
 };
-
-// export const formatInvoices = (
-//   creditCard,
-//   selectedDate = { month: moment().month() }
-// ) => {
-//   return creditCard.invoices.map((invoice) => {
-//     const { value, timesPurchased } = invoice;
-//     const parcelValue = (value / timesPurchased).toFixed(2);
-//     const chargeDate = calcDateOfCharge(creditCard, invoice);
-//     const endDate = calcDateOfEnd(invoice, chargeDate);
-
-//     const paidParcels = selectedDate.month - chargeDate.month();
-//     const missingValue = (timesPurchased - paidParcels) * parcelValue;
-//     const paidFromTotal = `${paidParcels}/${timesPurchased}`;
-
-//     if (paidParcels === 0 || paidParcels < 0 || paidParcels > timesPurchased) {
-//       return {};
-//     }
-
-//     return {
-//       ...invoice,
-//       chargeDate,
-//       endDate,
-//       parcelValue,
-//       paidFromTotal,
-//       missingValue,
-//     };
-//   });
-// };
 
 export const calcUsedLimit = (invoices) =>
   invoices.reduce((prev, current) => prev + current.missingValue, 0).toFixed(2);
