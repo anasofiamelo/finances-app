@@ -6,14 +6,14 @@ export const formatCardsInvoices = (creditCards, selectedDate) => {
   return creditCards
     .map((card) => {
       const formattedInvoices = formatInvoices(card, selectedDate);
-      const invoicesTotalValue =
-        formattedInvoices.reduce((prev, curr) => prev + curr.parcelValue, 0) *
-        -1;
-
+      const invoicesTotalValue = formattedInvoices.reduce(
+        (prev, curr) => prev + +curr.parcelValue,
+        0
+      );
       return {
         transacId: card.cardId,
         type: "Credit card invoice",
-        value: invoicesTotalValue,
+        value: invoicesTotalValue * -1,
         description: `${card.cardName} Invoice`,
         payment: "Cash",
         date: moment(
@@ -25,30 +25,36 @@ export const formatCardsInvoices = (creditCards, selectedDate) => {
 };
 
 export const formatInvoices = (creditCard, selectedDate) => {
-  return creditCard.invoices.map((invoice) => {
-    const { value, timesPurchased, boughtIn } = invoice;
-    invoice.boughtInDate = moment(boughtIn.toDate());
-    const parcelValue = (value / timesPurchased).toFixed(2);
-    const chargeDate = calcDateOfCharge(creditCard, invoice);
-    const endDate = calcDateOfEnd(invoice, chargeDate);
+  return creditCard.invoices
+    .map((invoice) => {
+      const { value, timesPurchased, boughtIn } = invoice;
+      invoice.boughtInDate = moment(boughtIn.toDate());
+      const parcelValue = (value / timesPurchased).toFixed(2);
+      const chargeDate = calcDateOfCharge(creditCard, invoice);
+      const endDate = calcDateOfEnd(invoice, chargeDate);
 
-    const paidParcels = selectedDate.month - chargeDate.month();
-    const missingValue = (timesPurchased - paidParcels) * parcelValue;
-    const paidFromTotal = `${paidParcels}/${timesPurchased}`;
+      const paidParcels = selectedDate.month - chargeDate.month();
+      const missingValue = (timesPurchased - paidParcels) * parcelValue;
+      const paidFromTotal = `${paidParcels}/${timesPurchased}`;
 
-    if (paidParcels === 0 || paidParcels < 0 || paidParcels > timesPurchased) {
-      return {};
-    }
+      if (
+        paidParcels === 0 ||
+        paidParcels < 0 ||
+        paidParcels > timesPurchased
+      ) {
+        return {};
+      }
 
-    return {
-      ...invoice,
-      chargeDate,
-      endDate,
-      parcelValue,
-      paidFromTotal,
-      missingValue,
-    };
-  });
+      return {
+        ...invoice,
+        chargeDate,
+        endDate,
+        parcelValue,
+        paidFromTotal,
+        missingValue,
+      };
+    })
+    .filter((invoice) => Object.keys(invoice).length > 0);
 };
 
 export const calcUsedLimit = (invoices) =>

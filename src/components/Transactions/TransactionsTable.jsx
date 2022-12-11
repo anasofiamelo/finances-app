@@ -5,7 +5,6 @@ import TransactionTr from "./TransactionTr";
 
 const TransactionsTable = (props) => {
   const { transactions } = props;
-  console.log("transactions", transactions);
 
   const sortedTransac = useSort(transactions, "date");
   const [sortedTransactions, setSortedTransactions] = useState(sortedTransac);

@@ -18,7 +18,6 @@ const CreditCardContext = createContext({});
 export const CreditCardContextProvider = (props) => {
   const { currentUserId } = useAuth();
   const [userCards, setUserCards] = useState([]);
-  console.log("userCards", userCards);
 
   async function getCard(cardId) {
     try {
