@@ -3,33 +3,31 @@ import moment from "moment";
 const creditCard = "";
 
 export const formatCardsInvoices = (creditCards, selectedDate) => {
-  return creditCards.map((card) => {
-    const formattedInvoices = formatInvoices(card, selectedDate);
-    const invoicesTotalValue = formattedInvoices.reduce(
-      (prev, curr) => prev + curr.parcelValue,
-      0
-    );
+  return creditCards
+    .map((card) => {
+      const formattedInvoices = formatInvoices(card, selectedDate);
+      const invoicesTotalValue =
+        formattedInvoices.reduce((prev, curr) => prev + curr.parcelValue, 0) *
+        -1;
 
-    return {
-      transacId: card.cardId,
-      type: "Credit card invoice",
-      value: Number(invoicesTotalValue),
-      description: `${card.cardName} Invoice`,
-      payment: "Cash",
-      date: moment(
-        `${selectedDate.month}/${card.cardClosureDay}/${selectedDate.year}`
-      ),
-    };
-  });
+      return {
+        transacId: card.cardId,
+        type: "Credit card invoice",
+        value: invoicesTotalValue,
+        description: `${card.cardName} Invoice`,
+        payment: "Cash",
+        date: moment(
+          `${selectedDate.month}/${card.cardClosureDay}/${selectedDate.year}`
+        ),
+      };
+    })
+    .filter((card) => card.value !== 0);
 };
 
 export const formatInvoices = (creditCard, selectedDate) => {
   return creditCard.invoices.map((invoice) => {
     const { value, timesPurchased, boughtIn } = invoice;
-    invoice.boughtInDate = moment(boughtIn).isValid()
-      ? moment(boughtIn)
-      : moment();
-
+    invoice.boughtInDate = moment(boughtIn.toDate());
     const parcelValue = (value / timesPurchased).toFixed(2);
     const chargeDate = calcDateOfCharge(creditCard, invoice);
     const endDate = calcDateOfEnd(invoice, chargeDate);

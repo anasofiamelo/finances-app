@@ -112,6 +112,20 @@ const transactionTypes = (state, action, transactions) => {
         ),
       };
     })(),
+    CARDS_INVOICES_UPDATE: (() => {
+      if (!!action.cardsInvoices)
+        return {
+          ...state,
+          filteredTransactions: [
+            ...monthTransactions(state.month),
+            ...action.cardsInvoices,
+          ],
+        };
+      return {
+        ...state,
+        filteredTransactions: monthTransactions(state.month),
+      };
+    })(),
   };
 
   return ACTION_TYPES[action.type];

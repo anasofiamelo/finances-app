@@ -1,7 +1,14 @@
 import { useEffect } from "react";
 import { useContext, createContext, useState } from "react";
 import { formatCardsInvoices } from "../utils";
-import { getDocs, getDoc, doc, collection, addDoc } from "firebase/firestore";
+import {
+  getDocs,
+  getDoc,
+  doc,
+  collection,
+  addDoc,
+  Timestamp,
+} from "firebase/firestore";
 import { db } from "../services/firebase_config";
 import { useAuth } from "./auth.context";
 import { useCallback } from "react";
@@ -11,6 +18,7 @@ const CreditCardContext = createContext({});
 export const CreditCardContextProvider = (props) => {
   const { currentUserId } = useAuth();
   const [userCards, setUserCards] = useState([]);
+  console.log("userCards", userCards);
 
   async function getCard(cardId) {
     try {
@@ -23,33 +31,46 @@ export const CreditCardContextProvider = (props) => {
     }
   }
 
-  async function getCardInvoices(cardId) {
-    const invoices = await getDocs(
-      collection(db, "users", currentUserId, "credit-cards", cardId, "invoices")
-    );
+  const getCardInvoices = useCallback(
+    async (cardId) => {
+      const invoices = await getDocs(
+        collection(
+          db,
+          "users",
+          currentUserId,
+          "credit-cards",
+          cardId,
+          "invoices"
+        )
+      );
 
-    const invoicesData = invoices.docs.map((doc) => ({
-      invoiceId: doc.id,
-      ...doc.data(),
-    }));
+      const invoicesData = invoices.docs.map((doc) => ({
+        invoiceId: doc.id,
+        ...doc.data(),
+      }));
 
-    return invoicesData;
-  }
+      return invoicesData;
+    },
+    [currentUserId]
+  );
 
-  async function getCardsTotalInvoices(selectedDate) {
-    const cardsWithInvoices = [];
+  const getCardsTotalInvoices = useCallback(
+    async (selectedDate) => {
+      const cardsWithInvoices = [];
 
-    for (const card of userCards) {
-      const invoices = await getCardInvoices(card.cardId);
-      cardsWithInvoices.push({ ...card, invoices });
-    }
+      for (const card of userCards) {
+        const invoices = await getCardInvoices(card.cardId);
+        cardsWithInvoices.push({ ...card, invoices });
+      }
 
-    if (cardsWithInvoices.length) {
-      return formatCardsInvoices(cardsWithInvoices, selectedDate);
-    }
+      if (cardsWithInvoices.length) {
+        return formatCardsInvoices(cardsWithInvoices, selectedDate);
+      }
 
-    return [];
-  }
+      return [];
+    },
+    [getCardInvoices, userCards]
+  );
 
   async function addCard(docRef) {
     try {
@@ -65,7 +86,18 @@ export const CreditCardContextProvider = (props) => {
   async function addInvoiceToCard(cardId, docRef) {
     try {
       const teste = await addDoc(
-        collection(db, "users", currentUserId, "credit-cards", cardId, docRef)
+        collection(
+          db,
+          "users",
+          currentUserId,
+          "credit-cards",
+          cardId,
+          "invoices"
+        ),
+        {
+          ...docRef,
+          boughtIn: Timestamp.fromDate(docRef.boughtIn),
+        }
       );
       console.log("teste", teste);
     } catch (error) {

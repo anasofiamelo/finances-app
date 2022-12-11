@@ -12,10 +12,10 @@ const Transactions = (props) => {
   const { userTransactions } = useTransactions();
 
   const [cardsInvoices, setCardsInvoices] = useState([]);
-  console.log("cardsInvoices", cardsInvoices);
-  console.log("cardsInvoices", cardsInvoices);
+
   const currentYear = moment().year();
   const currentMonth = moment().month();
+
   const initialManageBalancesState = {
     year: currentYear,
     month: currentMonth,
@@ -35,6 +35,10 @@ const Transactions = (props) => {
     initialManageBalancesState
   );
 
+  // useEffect(() => {
+  //   dispatchSelectState({ type: "CARDS_INVOICES_UPDATE", cardsInvoices });
+  // }, [cardsInvoices]);
+
   useEffect(() => {
     dispatchSelectState({ type: "TRANSACTIONS_UPDATE" });
   }, [userTransactions]);
@@ -48,7 +52,7 @@ const Transactions = (props) => {
       setCardsInvoices(invoices);
     }
     teste();
-  }, [userTransactions]);
+  }, [userTransactions, selectedBalance, getCardsTotalInvoices]);
 
   const changeSelectedMonthHandler = useCallback((value) => {
     dispatchSelectState({ type: "CHOOSE_MONTH", month: value.month });

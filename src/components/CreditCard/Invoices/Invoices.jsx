@@ -17,7 +17,7 @@ const Invoices = () => {
   const [foundCreditCard, setFoundCreditCard] = useState();
   const [creditCardInvoices, setCreditCardInvoices] = useState([]);
   const [showAddInvoiceModal, setShowAddInvoiceModal] = useState(false);
-
+  console.log("foundCreditCard", foundCreditCard);
   const isLoading = foundCreditCard ? false : true;
   const showAddCreditCardPurchaseHandler = () => {
     setShowAddInvoiceModal(true);
