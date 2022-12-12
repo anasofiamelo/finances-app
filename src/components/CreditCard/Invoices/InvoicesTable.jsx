@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { Container, Table, ThWithSort, InvoiceTr, MonthSwitch } from "../..";
-
 import { current, formatInvoices } from "../../../utils";
 
 const InvoicesTable = (props) => {
   const { creditCard } = props;
-  const { invoices } = creditCard;
+  const { invoices, cardId } = creditCard;
   const { fullMonth, month, year } = current;
 
   const [sortedInvoices, setSortedInvoices] = useState([]);
@@ -57,11 +56,15 @@ const InvoicesTable = (props) => {
                 </ThWithSort>
                 <th>Description</th>
                 <th>Value</th>
+                <th>Actions</th>
               </>
             }
           >
             {sortedInvoices.map((invoice) => (
-              <InvoiceTr invoice={invoice} key={invoice.invoiceId} />
+              <InvoiceTr
+                invoice={{ ...invoice, cardId }}
+                key={invoice.invoiceId}
+              />
             ))}
           </Table>
         )}

@@ -20,12 +20,16 @@ const ButtonWithIcon = (props) => {
 
   return (
     <button
-      style={{ backgroundColor: "var(--purple)", color: "var(--white)" }}
+      style={{
+        backgroundColor: "var(--purple)",
+        color: "var(--white)",
+        ...props.style,
+      }}
       onClick={props.onClick}
       className={classes}
       type={props.type || "button"}
     >
-      <div className="row">{button}</div>
+      <div>{button}</div>
     </button>
   );
 };

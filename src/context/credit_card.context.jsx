@@ -8,6 +8,7 @@ import {
   collection,
   addDoc,
   Timestamp,
+  deleteDoc,
 } from "firebase/firestore";
 import { db } from "../services/firebase_config";
 import { useAuth } from "./auth.context";
@@ -18,7 +19,6 @@ const CreditCardContext = createContext({});
 export const CreditCardContextProvider = (props) => {
   const { currentUserId } = useAuth();
   const [userCards, setUserCards] = useState([]);
-
   async function getCard(cardId) {
     try {
       const card = await getDoc(
@@ -49,6 +49,26 @@ export const CreditCardContextProvider = (props) => {
       }));
 
       return invoicesData;
+    },
+    [currentUserId]
+  );
+
+  const deleteInvoice = useCallback(
+    async (cardId, invoiceId) => {
+      try {
+        const invoiceRef = await doc(
+          db,
+          "users",
+          currentUserId,
+          "credit-cards",
+          cardId,
+          "invoices",
+          invoiceId
+        );
+        await deleteDoc(invoiceRef);
+      } catch (error) {
+        console.log("error", error);
+      }
     },
     [currentUserId]
   );
@@ -128,6 +148,7 @@ export const CreditCardContextProvider = (props) => {
         addCard,
         addInvoiceToCard,
         getCardsTotalInvoices,
+        deleteInvoice,
       }}
     >
       {props.children}

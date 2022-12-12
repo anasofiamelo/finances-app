@@ -62,7 +62,6 @@ const ConfigureBudgetFormFirstStep = (props) => {
       />
 
       <ButtonWithIcon
-        iconPosition="right"
         className="modal_action-button"
         onClick={props.onNextButtonClick}
         buttonIcon={<Icon icon="material-symbols:arrow-forward-ios-rounded" />}
