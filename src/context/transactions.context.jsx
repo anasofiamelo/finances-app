@@ -5,7 +5,13 @@ import {
   useEffect,
   useCallback,
 } from "react";
-import { getDocs, collection, addDoc } from "firebase/firestore";
+import {
+  getDocs,
+  collection,
+  addDoc,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
 import { db } from "../services/firebase_config";
 import { useAuth } from "./auth.context";
 import moment from "moment";
@@ -36,6 +42,26 @@ export function TransactionsProvider({ children }) {
     }
   }, [currentUserId]);
 
+  const deleteTransaction = useCallback(
+    async (transacId) => {
+      try {
+        console.log("to aki");
+        console.log("transacId", transacId);
+        const transacRef = await doc(
+          db,
+          "users",
+          currentUserId,
+          "transactions",
+          transacId
+        );
+        await deleteDoc(transacRef);
+        console.log("deletei");
+      } catch (error) {
+        console.log("error", error);
+      }
+    },
+    [currentUserId]
+  );
   async function addTransaction(docRef) {
     try {
       await addDoc(
@@ -54,7 +80,12 @@ export function TransactionsProvider({ children }) {
 
   return (
     <TransactionsContext.Provider
-      value={{ userTransactions, userLatestTransactions, addTransaction }}
+      value={{
+        userTransactions,
+        userLatestTransactions,
+        addTransaction,
+        deleteTransaction,
+      }}
     >
       {children}
     </TransactionsContext.Provider>
