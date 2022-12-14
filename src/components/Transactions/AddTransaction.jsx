@@ -11,7 +11,7 @@ const AddTransaction = (props) => {
   const { transactionType: type } = props;
 
   const [description, setDescription] = useState();
-  const [category, setCategory] = useState(props.transactionCategories[0]);
+  const [category, setCategory] = useState();
   const [transactionValue, setValue] = useState();
   const [date, setDate] = useState();
 
@@ -28,7 +28,6 @@ const AddTransaction = (props) => {
     event.preventDefault();
     const value =
       type === "Income" ? Number(transactionValue) : Number(-transactionValue);
-
     const transaction = {
       type: category.value,
       payment: "Cash",

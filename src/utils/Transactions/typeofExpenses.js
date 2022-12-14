@@ -165,6 +165,39 @@ export const expensesOptions = [
       },
     ],
   },
+  {
+    label: "Pet",
+    options: [
+      {
+        id: 21,
+        label: "PetShop",
+        value: "PetShop",
+        optGroupTitle: "Pet",
+        monthValue: 0,
+      },
+      {
+        id: 22,
+        label: "Veterinarian",
+        value: "Veterinarian",
+        optGroupTitle: "Pet",
+        monthValue: 0,
+      },
+      {
+        id: 23,
+        label: "Pet food",
+        value: "Pet food",
+        optGroupTitle: "Pet",
+        monthValue: 0,
+      },
+      {
+        id: 24,
+        label: "Pet medicine",
+        value: "Pet medicine",
+        optGroupTitle: "Pet",
+        monthValue: 0,
+      },
+    ],
+  },
 ];
 
 export const expensesColors = {

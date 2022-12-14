@@ -25,7 +25,7 @@ const ReactSelect = (props) => {
       <Select
         placeholder="Predefined options"
         styles={styles}
-        onChange={props.changeValueHandler}
+        onChange={props.onChange}
         options={props.options}
       />
     </div>

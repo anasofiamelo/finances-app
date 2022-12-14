@@ -9,6 +9,7 @@ import { Icon } from "@iconify/react";
 
 const Budget = (props) => {
   const [showConfigureModal, setShowConfigureModal] = useState(false);
+
   const openConfigureModalHandler = () => setShowConfigureModal(true);
   const hideConfigureModalHandler = () => setShowConfigureModal(false);
 
