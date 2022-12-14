@@ -1,4 +1,4 @@
-import { Modal, Button } from "../components";
+import { Modal, ButtonWithIcon } from "../components";
 
 const AddContainer = (props) => {
   return (
@@ -6,9 +6,9 @@ const AddContainer = (props) => {
       <form style={{ width: "100%" }} onSubmit={props.onSubmitAddForm}>
         <h2 className="modal_title">{props.title}</h2>
         {props.children}
-        <Button style={{ float: "right" }} type="submit">
+        <ButtonWithIcon style={{ float: "right" }} type="submit">
           {props.submitButtonText}
-        </Button>
+        </ButtonWithIcon>
       </form>
     </Modal>
   );

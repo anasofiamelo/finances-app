@@ -1,40 +1,40 @@
 import { useState } from "react";
-import { InputLabel, Select, AddContainer } from "../../components";
+import { InputLabel, AddContainer } from "../../components";
 import { useTransactions } from "../../context/transactions.context";
 import { BsFillCalculatorFill, BsJournalText } from "react-icons/bs";
+import { expensesOptions } from "../../utils/Transactions/typeofExpenses";
+
+import ReactSelect from "../ui/ReactSelect";
 
 const AddTransaction = (props) => {
   const { addTransaction } = useTransactions();
+  const { transactionType: type } = props;
 
-  const [transactionDescription, setTransactionDescription] = useState();
-  const [transactionCategory, setTransactionCategory] = useState(
-    props.transactionCategories[0]
-  );
-  const [transactionValue, setTransactionValue] = useState();
-  const [transactionDate, setTransactionDate] = useState();
+  const [description, setDescription] = useState();
+  const [category, setCategory] = useState(props.transactionCategories[0]);
+  const [transactionValue, setValue] = useState();
+  const [date, setDate] = useState();
 
-  const changeTransactionValueHandler = (event) =>
-    setTransactionValue(event.target.value);
-  const changeTransactionDescriptionHandler = (event) =>
-    setTransactionDescription(event.target.value);
-  const changeTransactionCategoryHandler = (event) =>
-    setTransactionCategory(event.target.value);
-  const changeTransactionDateHandler = (event) =>
-    setTransactionDate(event.target.value);
+  const changeTransactionValueHandler = (event) => setValue(event.target.value);
+
+  const changeDescriptionHandler = (event) =>
+    setDescription(event.target.value);
+
+  const changeSelectedCategoryHandler = (item) => setCategory(item);
+
+  const changeDateHandler = (event) => setDate(event.target.value);
 
   const submitAddTransactionFormHandler = (event) => {
     event.preventDefault();
     const value =
-      props.transactionType === "Income"
-        ? Number(transactionValue)
-        : Number(-transactionValue);
+      type === "Income" ? Number(transactionValue) : Number(-transactionValue);
 
     const transaction = {
-      type: transactionCategory,
+      type: category.value,
       payment: "Cash",
       value,
-      description: transactionDescription,
-      date: new Date(transactionDate),
+      description,
+      date: new Date(date),
     };
 
     if (!transactionValue) return;
@@ -43,19 +43,12 @@ const AddTransaction = (props) => {
     props.onClose();
   };
 
-  const mappedTransactionCategories = props.transactionCategories.map(
-    (value) => (
-      <option key={value} value={value}>
-        {value}
-      </option>
-    )
-  );
-
   return (
     <AddContainer
       onClose={props.onClose}
-      onSubmitAddForm={submitAddTransactionFormHandler}
       title={`New ${props.transactionType}`}
+      submitButtonText={`Add ${props.transactionType}`}
+      onSubmitAddForm={submitAddTransactionFormHandler}
     >
       <InputLabel
         label="Value"
@@ -66,19 +59,17 @@ const AddTransaction = (props) => {
         placeholder="0.00"
       />
 
-      <Select
+      <ReactSelect
         label="Category"
-        style={{ width: "100%" }}
-        value={transactionCategory}
-        onChange={changeTransactionCategoryHandler}
-        options={mappedTransactionCategories}
+        onChange={changeSelectedCategoryHandler}
+        options={expensesOptions}
       />
 
       <InputLabel
         label="Description"
         inputIcon={<BsJournalText className="input-icon" />}
-        value={transactionDescription}
-        onChange={changeTransactionDescriptionHandler}
+        value={description}
+        onChange={changeDescriptionHandler}
         placeholder={
           props.transactionType === "Expense" ? "Groceries" : "Salary of July"
         }
@@ -86,8 +77,8 @@ const AddTransaction = (props) => {
 
       <InputLabel
         label="Date of transaction"
-        value={transactionDate}
-        onChange={changeTransactionDateHandler}
+        value={date}
+        onChange={changeDateHandler}
         type="date"
       />
     </AddContainer>

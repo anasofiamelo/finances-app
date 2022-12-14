@@ -6,8 +6,19 @@ const InputLabel = (props) => {
           {props.label}
         </label>
       )}
-      <div className="row" style={{ width: "100%" }}>
-        {props.inputIcon && <span>{props.inputIcon}</span>}
+      <div
+        className="row"
+        style={{
+          width: "100%",
+          border: "1px solid var(--less-purple)",
+          borderRadius: 5,
+          background: "white",
+          padding: "0.1rem 1rem",
+        }}
+      >
+        {props.inputIcon && (
+          <span style={{ marginTop: 4 }}>{props.inputIcon}</span>
+        )}
         <input
           style={{
             width: "100%",

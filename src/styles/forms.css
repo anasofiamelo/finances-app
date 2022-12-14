@@ -1,12 +1,8 @@
 .form-group {
-  border-bottom: 1px solid var(--light-grey);
-  margin-bottom: 1.5rem;
+  margin: 1.5rem 0;
 }
 .form-group > * {
   margin: 0;
-}
-.form-group label {
-  margin-left: 0.3rem;
 }
 .input-icon {
   color: var(--grey);
@@ -14,8 +10,11 @@
   font-size: 1.2rem;
 }
 .label {
-  color: var(--light-grey);
-  font-size: 0.85rem;
+  margin-left: 0.3rem;
+  font-weight: 500;
+  color: rgb(159, 149, 161);
+  font-size: 1.1rem;
+  font-family: var(--poppins);
 }
 .budget-input {
   margin-top: 1rem;

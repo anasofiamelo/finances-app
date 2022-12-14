@@ -1,6 +1,6 @@
 import React from "react";
 import Select from "react-select";
-import { budgetOptions } from "../../utils/Transactions/typeofExpenses";
+import { expensesOptions } from "../../utils/Transactions/typeofExpenses";
 import { ButtonWithIcon } from "..";
 import { Icon } from "@iconify/react";
 
@@ -42,7 +42,7 @@ const ConfigureBudgetFormFirstStep = (props) => {
       <Select
         onChange={props.onChangeSelectedOptions}
         isMulti
-        options={budgetOptions}
+        options={expensesOptions}
         closeMenuOnSelect={false}
         styles={styles}
         placeholder="Gym, School"

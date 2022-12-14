@@ -9,7 +9,7 @@ const typeofExpenses = [
   "Food",
 ];
 
-export const budgetOptions = [
+export const expensesOptions = [
   {
     label: "Personal Expenses",
     options: [
