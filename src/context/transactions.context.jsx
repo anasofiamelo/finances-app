@@ -11,6 +11,7 @@ import {
   addDoc,
   doc,
   deleteDoc,
+  updateDoc,
 } from "firebase/firestore";
 import { db } from "../services/firebase_config";
 import { useAuth } from "./auth.context";
@@ -42,25 +43,39 @@ export function TransactionsProvider({ children }) {
     }
   }, [currentUserId]);
 
-  const deleteTransaction = useCallback(
+  const getTransacRef = useCallback(
     async (transacId) => {
+      return await doc(db, "users", currentUserId, "transactions", transacId);
+    },
+    [currentUserId]
+  );
+
+  const updateTransaction = useCallback(
+    async (transacId, editedTransac) => {
       try {
-        console.log("to aki");
-        console.log("transacId", transacId);
-        const transacRef = await doc(
-          db,
-          "users",
-          currentUserId,
-          "transactions",
-          transacId
-        );
-        await deleteDoc(transacRef);
-        console.log("deletei");
+        const transacRef = await getTransacRef(transacId);
+        const date = new Date(editedTransac.date.format("MM-DD-YYYY"));
+
+        await updateDoc(transacRef, { ...editedTransac, date });
+        await getUserTransactions();
       } catch (error) {
         console.log("error", error);
       }
     },
-    [currentUserId]
+    [getTransacRef, getUserTransactions]
+  );
+
+  const deleteTransaction = useCallback(
+    async (transacId) => {
+      try {
+        const transacRef = await getTransacRef(transacId);
+        await deleteDoc(transacRef);
+        await getUserTransactions();
+      } catch (error) {
+        console.log("error", error);
+      }
+    },
+    [getTransacRef, getUserTransactions]
   );
   async function addTransaction(docRef) {
     try {
@@ -85,6 +100,7 @@ export function TransactionsProvider({ children }) {
         userLatestTransactions,
         addTransaction,
         deleteTransaction,
+        updateTransaction,
       }}
     >
       {children}

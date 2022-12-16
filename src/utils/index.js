@@ -1,6 +1,7 @@
 import typeofExpenses, {
   expensesIcons,
   expensesColors,
+  expensesOptionsIcons,
 } from "./Transactions/typeofExpenses";
 import typeofIncomes, { incomesIcons } from "./Transactions/typeofIncomes";
 import calcExpensesPerMonth from "./Transactions/expensesPerMonth"; // calcExpensesPerMonthPercentage,
@@ -36,6 +37,7 @@ export {
   incomesIcons,
   expensesIcons,
   expensesColors,
+  expensesOptionsIcons,
   formatParcels,
   calcDateOfCharge,
   calcDateOfEnd,

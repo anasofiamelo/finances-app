@@ -151,3 +151,7 @@ button {
   font-size: 1.6rem;
   float: right;
 }
+.transaction_type-icon {
+  font-size: 2.4rem;
+  color: var(--black);
+}

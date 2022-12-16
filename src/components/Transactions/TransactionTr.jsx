@@ -1,30 +1,44 @@
 import React, { useState } from "react";
+import { Icon } from "@iconify/react";
+import { Button } from "../";
 import {
   formatValue,
   formatMomentDate,
   incomesIcons,
-  expensesIcons,
+  expensesOptionsIcons,
 } from "../../utils";
-import { Icon } from "@iconify/react";
-import { Button } from "../";
 import DeleteTransactionModal from "./DeleteTransactionModal";
+import EditTransactionModal from "./EditTransactionModal";
 
 const TransactionTr = (props) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
   const { transaction } = props;
   const { value, date, payment, description, type } = transaction;
 
   const transacValue = formatValue(value);
   const formattedDate = formatMomentDate(date);
-  const icon = value > 0 ? incomesIcons[type] : expensesIcons[type];
+
+  const icon =
+    value > 0 ? (
+      incomesIcons[type]
+    ) : (
+      <Icon
+        className="transaction_type-icon"
+        icon={expensesOptionsIcons[type]}
+      />
+    );
 
   const showDeleteModalHandler = () => setShowDeleteModal(true);
   const closeDeleteModalHandler = () => setShowDeleteModal(false);
 
+  const showEditModalHandler = () => setShowEditModal(true);
+  const closeEditModalHandler = () => setShowEditModal(false);
+
   const actionButtons = (
     <>
       <div className="action-buttons-container">
-        <Button>
+        <Button onClick={showEditModalHandler}>
           <Icon icon="material-symbols:edit" className="action-icon" />
         </Button>
         <Button onClick={showDeleteModalHandler}>
@@ -52,6 +66,12 @@ const TransactionTr = (props) => {
           onClose={closeDeleteModalHandler}
           transactionId={transaction.transacId}
           transactionDescription={transaction.description}
+        />
+      )}
+      {showEditModal && (
+        <EditTransactionModal
+          onClose={closeEditModalHandler}
+          transaction={transaction}
         />
       )}
     </>

@@ -44,6 +44,18 @@ export const expensesOptions = [
     ],
   },
   {
+    label: "Credit card",
+    options: [
+      {
+        id: 11,
+        label: "Invoices",
+        value: "Invoices",
+        optGroupTitle: "Credit Card",
+        monthValue: 0,
+      },
+    ],
+  },
+  {
     label: "Food",
     options: [
       {
@@ -55,8 +67,8 @@ export const expensesOptions = [
       },
       {
         id: 6,
-        label: "Coffee/Snacks",
-        value: "Coffee/Snacks",
+        label: "Snacks/Coffee",
+        value: "Snacks/Coffee",
         optGroupTitle: "Food",
         monthValue: 0,
       },
@@ -88,15 +100,8 @@ export const expensesOptions = [
     options: [
       {
         id: 10,
-        label: "Rent",
-        value: "Rent",
-        optGroupTitle: "House",
-        monthValue: 0,
-      },
-      {
-        id: 11,
-        label: "Water bill",
-        value: "Water bill",
+        label: "Bill",
+        value: "Bill",
         optGroupTitle: "House",
         monthValue: 0,
       },
@@ -125,13 +130,6 @@ export const expensesOptions = [
         id: 15,
         label: "Internet",
         value: "Internet",
-        optGroupTitle: "House",
-        monthValue: 0,
-      },
-      {
-        id: 16,
-        label: "Eletricity bill",
-        value: "Eletricity bill",
         optGroupTitle: "House",
         monthValue: 0,
       },
@@ -176,29 +174,66 @@ export const expensesOptions = [
         monthValue: 0,
       },
       {
-        id: 22,
-        label: "Veterinarian",
-        value: "Veterinarian",
-        optGroupTitle: "Pet",
-        monthValue: 0,
-      },
-      {
         id: 23,
         label: "Pet food",
         value: "Pet food",
         optGroupTitle: "Pet",
         monthValue: 0,
       },
+    ],
+  },
+  {
+    label: "Car",
+    options: [
       {
-        id: 24,
-        label: "Pet medicine",
-        value: "Pet medicine",
-        optGroupTitle: "Pet",
+        id: 21,
+        label: "Gasoline",
+        value: "Gasoline",
+        optGroupTitle: "Car",
+        monthValue: 0,
+      },
+    ],
+  },
+  {
+    label: "Transfer",
+    options: [
+      {
+        id: 21,
+        label: "Money Transfer",
+        value: "Money Transfer",
+        optGroupTitle: "Transfer",
         monthValue: 0,
       },
     ],
   },
 ];
+
+export const expensesOptionsIcons = {
+  Gym: "iconoir:gym",
+  Phone: "material-symbols:phone-android-outline-rounded",
+  Shopping: "material-symbols:shopping-bag-outline",
+  Accessories: "",
+  Lunch: "material-symbols:lunch-dining-outline-rounded",
+  "Snacks/Coffee": "icon-park-twotone:snacks",
+  Bakery: "mdi:bakery",
+  Restaurant: "ion:restaurant-outline",
+  Bill: "uil:bill",
+  Condominium: "mdi:house-city-outline",
+  Housekeeper: "",
+  Gas: "",
+  Internet: "",
+  "Cleaning materials": "",
+  "Cable TV": "",
+  Furniture: "",
+  Laundry: "",
+  PetShop: "map:pet-store",
+  "Pet food": "fluent-emoji-high-contrast:petri-dish",
+  "Pet medicine": "",
+  Invoices: "material-symbols:credit-card-outline",
+  Supermarket: "ps:cart-supermarket",
+  Gasoline: "mdi:gasoline",
+  "Money Transfer": "fa6-solid:money-bill-transfer",
+};
 
 export const expensesColors = {
   House: "#9381ff",
