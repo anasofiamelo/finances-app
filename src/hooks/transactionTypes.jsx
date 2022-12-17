@@ -112,6 +112,16 @@ const transactionTypes = (state, action, transactions) => {
         ),
       };
     })(),
+    FILTER_TYPE: (() => {
+      return {
+        ...state,
+        filteredTransactions: transactions.filter((transaction) =>
+          transaction.type
+            .toLowerCase()
+            .includes(action.transacType?.toLowerCase())
+        ),
+      };
+    })(),
   };
 
   return ACTION_TYPES[action.type];

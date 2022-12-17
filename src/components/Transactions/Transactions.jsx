@@ -34,9 +34,11 @@ const Transactions = (props) => {
     dispatchSelectState({ type: "CHOOSE_MONTH", month: value.month });
   }, []);
 
-  const changeDescriptionFilterHandler = (value) => {
+  const changeDescriptionFilterHandler = (value) =>
     dispatchSelectState({ type: "FILTER_DESCRIPTION", filterInput: value });
-  };
+
+  const changeTypeFilterHandler = (value) =>
+    dispatchSelectState({ type: "FILTER_TYPE", transacType: value });
 
   const totalBalance = selectedBalance.filteredTransactions.reduce(
     (prev, current) => prev + current.value,
@@ -50,13 +52,12 @@ const Transactions = (props) => {
   return (
     <Container>
       <TransactionHeader
+        title={props.title}
+        onChangeTypeFilter={changeTypeFilterHandler}
         onChangeSelectedMonth={changeSelectedMonthHandler}
         onChangeDescriptionFilter={changeDescriptionFilterHandler}
-        title={props.title}
       />
-
       <TransactionsTable transactions={selectedBalance.filteredTransactions} />
-
       <h3>Total {formatValue(totalBalance)}</h3>
     </Container>
   );

@@ -9,6 +9,33 @@ const typeofExpenses = [
   "Food",
 ];
 
+export const expensesOptionsIcons = {
+  Gym: "iconoir:gym",
+  Phone: "material-symbols:phone-android-outline-rounded",
+  Shopping: "material-symbols:shopping-bag-outline",
+  Accessories: "",
+  Lunch: "material-symbols:lunch-dining-outline-rounded",
+  "Snacks/Coffee": "icon-park-twotone:snacks",
+  Bakery: "mdi:bakery",
+  Restaurant: "ion:restaurant-outline",
+  Bill: "uil:bill",
+  Condominium: "mdi:house-city-outline",
+  Housekeeper: "",
+  Gas: "",
+  Internet: "",
+  "Cleaning materials": "",
+  "Cable TV": "",
+  Furniture: "",
+  Laundry: "",
+  PetShop: "map:pet-store",
+  "Pet food": "fluent-emoji-high-contrast:petri-dish",
+  "Pet medicine": "",
+  Invoices: "material-symbols:credit-card-outline",
+  Supermarket: "ps:cart-supermarket",
+  Gasoline: "mdi:gasoline",
+  "Money Transfer": "fa6-solid:money-bill-transfer",
+};
+
 export const expensesOptions = [
   {
     label: "Personal Expenses",
@@ -207,33 +234,6 @@ export const expensesOptions = [
     ],
   },
 ];
-
-export const expensesOptionsIcons = {
-  Gym: "iconoir:gym",
-  Phone: "material-symbols:phone-android-outline-rounded",
-  Shopping: "material-symbols:shopping-bag-outline",
-  Accessories: "",
-  Lunch: "material-symbols:lunch-dining-outline-rounded",
-  "Snacks/Coffee": "icon-park-twotone:snacks",
-  Bakery: "mdi:bakery",
-  Restaurant: "ion:restaurant-outline",
-  Bill: "uil:bill",
-  Condominium: "mdi:house-city-outline",
-  Housekeeper: "",
-  Gas: "",
-  Internet: "",
-  "Cleaning materials": "",
-  "Cable TV": "",
-  Furniture: "",
-  Laundry: "",
-  PetShop: "map:pet-store",
-  "Pet food": "fluent-emoji-high-contrast:petri-dish",
-  "Pet medicine": "",
-  Invoices: "material-symbols:credit-card-outline",
-  Supermarket: "ps:cart-supermarket",
-  Gasoline: "mdi:gasoline",
-  "Money Transfer": "fa6-solid:money-bill-transfer",
-};
 
 export const expensesColors = {
   House: "#9381ff",
