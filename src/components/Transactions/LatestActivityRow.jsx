@@ -1,13 +1,23 @@
 import React from "react";
-import { expensesIcons, incomesIcons, formatValue } from "../../utils";
+import {
+  expensesIcons,
+  incomesIcons,
+  formatValue,
+  expensesOptionsIcons,
+} from "../../utils";
 import moment from "moment";
+import { Icon } from "@iconify/react";
 
 const LatestActivityRow = (props) => {
   const { type, description, date, value } = props.transaction;
   const formattedDate = moment(date.toDate()).format("DD, MMMM");
 
   const isIncome = value > 0;
-  const icon = isIncome ? incomesIcons[type] : expensesIcons[type];
+  const icon = isIncome ? (
+    incomesIcons[type]
+  ) : (
+    <Icon icon={expensesOptionsIcons[type]} />
+  );
   const formattedValue = formatValue(value);
 
   return (

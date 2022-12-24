@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-const useSort = (list, comparableKey, isDecrescent = false) => {
+const useSort = (list, comparableKey, decrease = false) => {
   return useMemo(() => {
     const sortCrescent = () =>
       [...list].sort((a, b) => a[comparableKey] - b[comparableKey]);
@@ -8,8 +8,8 @@ const useSort = (list, comparableKey, isDecrescent = false) => {
     const sortDecrescent = () =>
       [...list].sort((a, b) => b[comparableKey] - a[comparableKey]);
 
-    return isDecrescent === true ? sortDecrescent() : sortCrescent();
-  }, [list, comparableKey, isDecrescent]);
+    return decrease ? sortDecrescent() : sortCrescent();
+  }, [list, comparableKey, decrease]);
 };
 
 export default useSort;

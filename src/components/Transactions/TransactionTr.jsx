@@ -14,7 +14,7 @@ const TransactionTr = (props) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const { transaction } = props;
-  const { value, date, payment, description, type } = transaction;
+  const { value, date, description, type } = transaction;
 
   const transacValue = formatValue(value);
   const formattedDate = formatMomentDate(date);
@@ -55,10 +55,6 @@ const TransactionTr = (props) => {
         <td className="date-item">{formattedDate}</td>
         <td>{description}</td>
         <td>{transacValue}</td>
-        <td>{payment}</td>
-        <td>
-          <input type="checkbox" />
-        </td>
         <td>{actionButtons}</td>
       </tr>
       {showDeleteModal && (

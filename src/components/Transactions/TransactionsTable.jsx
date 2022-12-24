@@ -37,8 +37,6 @@ const TransactionsTable = (props) => {
           >
             Value
           </ThWithSort>
-          <th>Payment</th>
-          <th>Paid</th>
           <th>Actions</th>
         </>
       }
