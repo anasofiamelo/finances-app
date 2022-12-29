@@ -1,16 +1,20 @@
 import { TransactionValueCard } from "../../components";
-import { useTransactions } from "../../context/finances.context";
-import { BsReception3, BsGraphDown, BsGraphUp } from "react-icons/bs";
+import { useTransactions } from "../../context/transactions.context";
+import {
+  BsReception3,
+  // BsGraphDown,
+  // BsGraphUp
+} from "react-icons/bs";
 
 const TransactionValueCards = (props) => {
-  const { totalBalance, totalIncomes, totalExpenses } = useTransactions();
+  const { userBalance } = useTransactions();
   const customStyle = (color) => {
     return { color: `var(--${color})` };
   };
 
   const balanceIcon = <BsReception3 style={customStyle("light-grey")} />;
-  const incomesIcon = <BsGraphUp style={customStyle("green")} />;
-  const expensesIcon = <BsGraphDown style={customStyle("purple")} />;
+  // const incomesIcon = <BsGraphUp style={customStyle("green")} />;
+  // const expensesIcon = <BsGraphDown style={customStyle("purple")} />;
   return (
     <>
       <TransactionValueCard
@@ -18,11 +22,11 @@ const TransactionValueCards = (props) => {
         color="var(--white)"
         title="Current balance"
         goto="/transactions"
-        value={totalBalance}
+        value={userBalance}
         icon={balanceIcon}
       />
 
-      <TransactionValueCard
+      {/* <TransactionValueCard
         style={{ backgroundColor: "var(--less-lime)" }}
         title="Incomes"
         goto="/incomes"
@@ -37,7 +41,7 @@ const TransactionValueCards = (props) => {
         goto="/expenses"
         value={totalExpenses}
         icon={expensesIcon}
-      />
+      /> */}
     </>
   );
 };

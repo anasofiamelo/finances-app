@@ -1,13 +1,13 @@
 import {
-  Reports,
+  // Reports,
   TransactionValueCards,
   // Transactions,
   LatestActivities,
 } from "../components";
-import { useTransactions } from "../context/finances.context";
+// import { useTransactions } from "../context/finances.context";
 
 const Dashboard = () => {
-  const { transactions } = useTransactions();
+  // const { transactions } = useTransactions();
 
   return (
     <div>

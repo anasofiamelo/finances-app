@@ -20,9 +20,14 @@ import moment from "moment";
 
 const TransactionsContext = createContext();
 
+function sumValues(array) {
+  return array.reduce((prev, current) => prev + current.value, 0).toFixed(2);
+}
+
 export function TransactionsProvider({ children }) {
   const { currentUserId } = useAuth();
   const [userTransactions, setUserTransactions] = useState([]);
+  const [userBalance, setUserBalance] = useState();
   const [userLatestTransactions, setUserLatestTransactions] = useState([]);
 
   const getUserTransactions = useCallback(async () => {
@@ -38,6 +43,7 @@ export function TransactionsProvider({ children }) {
         date: moment(transaction.date.toDate()),
       }));
       setUserTransactions(formattedTransactions);
+      setUserBalance(sumValues(formattedTransactions));
       setUserLatestTransactions(formattedTransactions.slice(0, 5));
     } catch (error) {
       console.log("error", error);
@@ -78,6 +84,7 @@ export function TransactionsProvider({ children }) {
     },
     [getTransacRef, getUserTransactions]
   );
+
   async function addTransaction(docRef) {
     try {
       await addDoc(
@@ -102,6 +109,7 @@ export function TransactionsProvider({ children }) {
         addTransaction,
         deleteTransaction,
         updateTransaction,
+        userBalance,
       }}
     >
       {children}
